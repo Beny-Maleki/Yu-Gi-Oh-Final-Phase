@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1002.0" stylesheets="/graphicprop/stylesheets/GamePage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.GameView">
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1002.0" stylesheets="/graphicprop/stylesheets/GamePage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.GameView">
    <AnchorPane fx:id="cardDescriptionArea" prefHeight="700.0" prefWidth="250.0" styleClass="cardDetailArea" stylesheets="@../stylesheets/GamePage.css">
       <Pane fx:id="selectedCardPane" layoutX="-5.0" layoutY="1.0" prefHeight="390.0" prefWidth="258.0" styleClass="selectedCardPane">
          <children>
@@ -101,7 +101,7 @@
          </Pane>
          <Pane fx:id="secondMainPhaseBox" layoutY="450.0" prefHeight="70.0" prefWidth="17.0">
             <children>
-               <Label layoutX="-21.0" layoutY="27.0" rotate="90.0" text="Main Phase 2">
+               <Label layoutX="-21.0" layoutY="27.0" rotate="90.0" text="client.Main Phase 2">
                   <font>
                      <Font name="System Bold" size="10.0" />
                   </font>
@@ -123,7 +123,7 @@
          </Pane>
          <Pane fx:id="firstMainPhaseBox" layoutY="270.0" prefHeight="70.0" prefWidth="17.0" styleClass="phaseName">
             <children>
-               <Label layoutX="-21.0" layoutY="27.0" rotate="90.0" text="Main Phase 1">
+               <Label layoutX="-21.0" layoutY="27.0" rotate="90.0" text="client.Main Phase 1">
                   <font>
                      <Font name="System Bold" size="10.0" />
                   </font>

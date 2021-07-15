@@ -2,18 +2,18 @@ user create --nickname ali --password danial --password goosto
 user create --nickname ali the king of the sea --password donton --password gigigo
 user create --nickname ali the king of the sea --password donton --username mirza ghasemi
 user login --username mirza ghasemi --password donton
-menu enter Main menu
+menu enter client.Main menu
 user logout
 menu enter
-menu enter Main menu
+menu enter client.Main menu
 user login --username mirza ghasemi --password donton
-menu enter Main menu
+menu enter client.Main menu
 menu show-current
 menu exit
 user create --nickname ali the king of the ocian --password koko_moko --username mirze ahmadi
 scoreboard show
-menu enter Main menu
-menu enter Main menu
+menu enter client.Main menu
+menu enter client.Main menu
 scoreboard show
 scoreboard show
 menu enter Scoreboard menu

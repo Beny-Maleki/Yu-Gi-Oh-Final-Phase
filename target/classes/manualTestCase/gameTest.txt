@@ -8,7 +8,7 @@ input:
 user create --username Yaroo --password 1234 --nickname KaftarBaz
 user create --username Arash --password Yadegari --nickname AngryBird
 user login --username Yaroo --password 1234
-menu enter Main menu
+menu enter client.Main menu
 menu enter Shop menu
 shop buy Advanced Ritual Art
 shop buy Advanced Ritual Art
@@ -439,7 +439,7 @@ deck add-card --card Haniwa --deck thirdDeck
 menu exit
 user logout
 user login --username Arash --password Yadegari
-menu enter Main menu
+menu enter client.Main menu
 menu enter Shop menu
 shop buy Advanced Ritual Art
 shop buy Advanced Ritual Art

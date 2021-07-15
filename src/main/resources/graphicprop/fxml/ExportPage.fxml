@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="700.0" prefWidth="1000.0" styleClass="rootPane" stylesheets="@../stylesheets/ShopMenu.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.ExportPageView">
+<AnchorPane fx:id="rootPane" prefHeight="700.0" prefWidth="1000.0" styleClass="rootPane" stylesheets="@../stylesheets/ShopMenu.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.ExportPageView">
     <Label layoutX="302.0" layoutY="39.0" text="Export Menu">
         <font>
             <Font name="System Bold" size="25.0" />

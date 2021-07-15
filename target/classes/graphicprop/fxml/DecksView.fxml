@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPane" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../stylesheets/DecksView.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.DecksView">
+<AnchorPane fx:id="MainPane" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../stylesheets/DecksView.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.DecksView">
     <Pane fx:id="DeckOneHolder" layoutX="310.0" layoutY="35.0" prefHeight="270.0" prefWidth="211.0" stylesheets="@../stylesheets/DecksView.css" />
     <Pane fx:id="DeckTwoHolder" layoutX="670.0" layoutY="35.0" prefHeight="270.0" prefWidth="211.0" />
     <Pane fx:id="DeckThreeHolder" layoutX="310.0" layoutY="392.0" prefHeight="270.0" prefWidth="211.0" />
     <Pane fx:id="DescriptionArea" prefHeight="700.0" prefWidth="232.0">
-        <Label alignment="CENTER" layoutX="63.0" layoutY="21.0" prefHeight="31.0" prefWidth="106.0" text="Decks view " textFill="#feffd4">
+        <Label alignment="CENTER" layoutX="63.0" layoutY="21.0" prefHeight="31.0" prefWidth="106.0" text="Decks client.view " textFill="#feffd4">
             <font>
                 <Font size="18.0" />
             </font>

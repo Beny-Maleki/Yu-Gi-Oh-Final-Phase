@@ -7,7 +7,7 @@
 input:
 user create --username Yaroo --password 1234 --nickname KaftarBaz
 user login --username Yaroo --password 1234
-menu enter Main menu
+menu enter client.Main menu
 menu enter Shop menu
 shop buy Advanced Ritual Art
 shop buy Advanced Ritual Art

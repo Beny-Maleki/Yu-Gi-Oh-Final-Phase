@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" styleClass="root" stylesheets="@../stylesheets/ImportExport.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.ImportPageView">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" styleClass="root" stylesheets="@../stylesheets/ImportExport.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.ImportPageView">
    <children>
       <Pane layoutX="154.0" layoutY="165.0" prefHeight="371.0" prefWidth="693.0" style="-fx-background-color: gray;">
          <children>

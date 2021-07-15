@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" styleClass="rootPane" stylesheets="@../stylesheets/ChooseActionPage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.ChooseMagicActionsView">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" styleClass="rootPane" stylesheets="@../stylesheets/ChooseActionPage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.ChooseMagicActionsView">
     <children>
         <AnchorPane prefHeight="700.0" prefWidth="300.0" styleClass="leftPane">
             <children>

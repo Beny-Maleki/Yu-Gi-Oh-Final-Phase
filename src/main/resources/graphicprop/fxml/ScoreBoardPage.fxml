@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../stylesheets/ScoreBoardPage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.ScoreboardView">
+<AnchorPane fx:id="pane" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../stylesheets/ScoreBoardPage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.ScoreboardView">
     <Button fx:id="Back" layoutX="460.0" layoutY="597.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" prefHeight="37.0" prefWidth="82.0" text="Back">
       <font>
          <Font size="18.0" />

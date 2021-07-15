@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" styleClass="pane" stylesheets="/graphicprop/stylesheets/WelcomePage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.WelcomeView">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" styleClass="pane" stylesheets="/graphicprop/stylesheets/WelcomePage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.WelcomeView">
     <Pane fx:id="MenuCover" layoutX="49.0" layoutY="51.0" prefHeight="491.0" prefWidth="334.0" style="-fx-background-color: black; -fx-border-radius: 12; -fx-background-radius: 12;">
         <Pane fx:id="Menu" layoutX="55.0" layoutY="55.0" prefHeight="359.0" prefWidth="224.0" stylesheets="@../stylesheets/WelcomePage.css">
             <Button fx:id="Register" layoutX="71.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" prefHeight="25.0" prefWidth="80.0" text="Register" />

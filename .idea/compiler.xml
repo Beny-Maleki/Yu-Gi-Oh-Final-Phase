@@ -7,11 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="untitled" />
-        <module name="graphics" />
         <module name="project-team-10" />
         <module name="YuGiOh" />
-        <module name="Yu_Gi_OhProject" />
         <module name="yu-gi-oh-Project - BU" />
+        <module name="graphics" />
+        <module name="Client" />
+        <module name="Yu_Gi_OhProject" />
       </profile>
     </annotationProcessing>
   </component>

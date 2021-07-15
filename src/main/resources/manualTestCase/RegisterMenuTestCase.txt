@@ -1,7 +1,7 @@
 user create --username ramtin --nickname ramti --password rami123
 menu show-current
 user login --username ramtin --password rami123
-menu enter Main menu
+menu enter client.Main menu
 menu enter Scoreboard menu
 menu show-current
 scoreboard show

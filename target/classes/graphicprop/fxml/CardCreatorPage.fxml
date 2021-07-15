@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../stylesheets/CardCreatorPage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.CardCreatorPageView">
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../stylesheets/CardCreatorPage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.CardCreatorPageView">
    <children>
       <Pane fx:id="monsterPane" layoutX="485.0" prefHeight="700.0" prefWidth="527.0">
          <children>
