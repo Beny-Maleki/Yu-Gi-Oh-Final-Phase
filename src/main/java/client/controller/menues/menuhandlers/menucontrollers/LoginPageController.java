@@ -1,6 +1,10 @@
 package client.controller.menues.menuhandlers.menucontrollers;
 
+import Connector.commands.CommandType;
+import Connector.commands.LogInCommand;
 import client.controller.Controller;
+import client.network.ClientListener;
+import client.network.ClientSender;
 import javafx.scene.control.Label;
 import client.model.Exceptions.EmptyTextFieldException;
 import client.model.enums.Error;
@@ -18,23 +22,28 @@ public class LoginPageController extends Controller {
 
         try {
             if (username.equals("") || password.equals("")) throw new EmptyTextFieldException();
-            User user = User.getUserByUserInfo(username, UserInfoType.USERNAME);
-            if (null != user) {
-                if (user.isPasswordMatch(password)) {
-                    if (LoginUser.getUser() == null) {
-                        LoginUser.setUser(user);
-                        moveToPage(message, Menu.MAIN_MENU);
-                        return;
-                    } else {
-                        message.setText(Error.INVALID_LOGIN.toString());
-                    }
-                } else {
-                    message.setText(Error.INVALID_USER_OR_PASS.toString());
-                }
-            } else message.setText(Error.INVALID_USER_OR_PASS.toString());
+
+            ClientSender.getSender().sendMessage(new LogInCommand(CommandType.LOGIN, username, password));
+
+            handleProgressBar();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            LogInCommand response = (LogInCommand) ClientListener.getServerResponse();
+            if (responseException != null) {
+                LoginUser.setUser(response.getUser());
+                message.setText(responseException.getMessage());
+                responseException = null;
+            } else {
+                moveToPage(message, Menu.MAIN_MENU);
+            }
         } catch (EmptyTextFieldException | IOException e) {
             message.setText(e.getMessage());
         }
+        message.setStyle("-fx-text-fill: red ; -fx-font-size: 15");
         displayMessage(message);
     }
 }

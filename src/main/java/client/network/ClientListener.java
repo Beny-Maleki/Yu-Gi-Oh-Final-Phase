@@ -1,6 +1,7 @@
 package client.network;
 
 import Connector.commands.RegisterCommand;
+import client.controller.Controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import Connector.commands.Command;
@@ -35,6 +36,11 @@ public class ClientListener extends Thread {
                 case DUEL:
                 case PROFILE:
             }
+            Controller.setResponseException(serverResponse.getException());
         }
+    }
+
+    public static Command getServerResponse() {
+        return serverResponse;
     }
 }

@@ -1,9 +1,14 @@
 package client.controller.menues.menuhandlers.menucontrollers;
 
+import Connector.commands.CommandType;
+import Connector.commands.RegisterCommand;
 import animatefx.animation.FadeOut;
 import client.controller.Controller;
+import client.network.ClientSender;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -27,31 +32,25 @@ public class RegisterPageController extends Controller {
         try {
             if (username.equals("") || password.equals("") || nickname.equals("")) throw new EmptyTextFieldException();
 
-            else if (null != User.getUserByUserInfo(username, UserInfoType.USERNAME)) {
-                message.setText(processOutPut(Error.INVALID_USERNAME.toString(), username));
-            } else if (null != User.getUserByUserInfo(nickname, UserInfoType.NICKNAME)) {
-                message.setText(processOutPut(Error.INVALID_NICKNAME.toString(), nickname));
-            } else {
-                new User(username, password, nickname, imageAddress);
-                moveToPage(message, Menu.LOGIN_MENU);
-                return;
+            ClientSender.getSender().sendMessage(new RegisterCommand(CommandType.REGISTER, username, nickname, password, imageAddress));
+            handleProgressBar();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
+            if (responseException != null) {
+                message.setText(responseException.getMessage());
+                responseException = null;
+            } else {
+                moveToPage(message, Menu.LOGIN_MENU);
+            }
         } catch (EmptyTextFieldException | IOException e) {
             message.setText(e.getMessage());
         }
         message.setStyle("-fx-text-fill: red ; -fx-font-size: 15");
         displayMessage(message);
-    }
-
-
-    private String processOutPut(String error, String name) {
-        if (error.contains("U_N")) {
-            error = error.replace("U_N", name);
-        } else if (error.contains("N_N")) {
-            error = error.replace("N_N", name);
-        }
-        return error;
     }
 
     public Pane makeAvatarSelector(ImageView imageView, Pane pane) throws FileNotFoundException {
@@ -172,5 +171,7 @@ public class RegisterPageController extends Controller {
             imageView.setScaleY(1);
         }
     }
+
+
 
 }

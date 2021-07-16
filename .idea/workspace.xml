@@ -4,269 +4,23 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add Client">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/commands/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/commands/CommandType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/commands/RegisterCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/network/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientSender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/csvFile/Monster.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/csvFile/SpellTrap.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/animateFX_1_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Default_Changelist/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_00_53_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_00_53__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_17_30_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06-Jul-21_17_30__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08-Jul-21_13_28_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08-Jul-21_13_28__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-Jul-21_19_12_[Default_Changelist]/opponentUserInfoBgjpeg.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-Jul-21_19_12_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-Jul-21_19_12_[Default_Changelist]/youUserInfoBGjpeg.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-Jul-21_19_12__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-May-21_00_20_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28-May-21_00_20__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_11_2021_8_44_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_11_2021_8_44_PM__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_15_2021_1_04_PM__Default_Changelist_.xml" beforeDir="false" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add server package">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/commands/LogInCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/exceptions/AlreadyLoggedIn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/exceptions/DuplicateNicknameException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/exceptions/DuplicateUsernameException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/exceptions/NotMatchingUserAndPass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/gamecontrollers/gamestagecontroller/BattlePhaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/gamecontrollers/gamestagecontroller/BattlePhaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/AudioHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/AudioHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/Regex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/Regex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/CardCreatorPage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ChooseFieldCardsDetails.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ChooseMagicActions.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ChooseMonsterActions.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/DeckModifier.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/DecksView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/DuelPage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ExportPage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/GamePage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ImportExportPage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ImportPage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/LoginPage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/MainPage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ProfilePage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/RegisterPage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/RockPaperScissor.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ScoreBoardPage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/ShopMenu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/fxml/WelcomePage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/BrownBackGround.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/AlexandriteDragon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/AxeRaider.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/BabyDragon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/BattleOx.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/BattleWarrior.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/BeastKingBarbaros.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Bitron.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Blue-Eyeswhitedragon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/CommandKnight.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/CrabTurtle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/CrawlingDragon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/CurtainOfTheDarkOnes.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/DarkBlade.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/DarkMagician.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/ExploderDragon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/FeralImp.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Fireyarou.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/FlameManipulator.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/GateGuardian.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Haniwa.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/HeraldOfCreation.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/HeroOfTheEast.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/HornImp.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Leotron.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Man-EaterBug.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Marshmallon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/MirageDragon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Scanner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/SilverFang.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/SkullGuardian.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/SlotMachine.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/SpiralSerpent.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Suijin.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Terratiger,theEmpoweredWarrior.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Texchanger.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/TheCalculator.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/TheTricky.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Unknown.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/WarriorDaiGrepher.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Wattaildragon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/Wattkid.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/YomiShip.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/Monsters/newMonster.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/AdvancedRitualArt.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/BlackPendant.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/CallofTheHaunted.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/ChangeofHeart.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/ClosedForest.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/DarkHole.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/Forest.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/Harpie'sFeatherDuster.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/MagicCylinder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/MagicJammer.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/MagicJammer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/MagnumShield.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/MessengerofPeace.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/MindCrush.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/MirrorForce.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/MonsterReborn.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/MysticalSpaceTyphoon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/NegateAttack.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/PotofGreed.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/Raigeki.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/RingofDefense.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/SolemnWarning.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/SpellAbsorption.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/SupplySquad.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/SwordofDarkDestruction.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/SwordsofRevealingLight.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/Terraforming.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/TimeSeal.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/TorrentialTribute.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/TrapHole.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/TwinTwisters.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/Umiiruka.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/UnitedWeStand.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/VanitysEmptiness.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/WallOfRevealingLight.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/Yami.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Cards/SpellTrap/newMagic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_burn.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_dark.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_desert.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_fusion.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_gaia.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_mori.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_mori.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_normal.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_normal.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_sanctu.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_shine.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_sougen.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_umi.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_water.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_yama.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Field/fie_yami.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/GreyLockBG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/IconE7035.dds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/IconE7037.dds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/IconE7038.dds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/IconE7039.dds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/LPIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/LockIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/MBB_007199.dds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/MBB_007200.dds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/MBB_007201.dds.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Pegasus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/ProfileBackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RegisterWallpaper.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/analytics.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/application-119bc1cb9db7afd546e3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/application-337f795f.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/batch-8c16cc3d37b4fed06625795493206efb180b02dfce3af2ae614d84.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/css.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/css_002.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/logo-footer-4add5d6011751a7a224fa2f1e29859be3ac25d492d299a6c.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/logo-footer-kaleido-e1e7a09f241f4fc02fda8c2dd90701fe98ef328c.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/logo-nav-22aab70183946de3d717620adef36247aca127c1a0f04885d78.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/packOfCard-removebg-preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/packOfCard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/Remove Background from Image – remove.bg_files/sso.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/empty.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/jya_cyo_1.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/jya_cyo_2.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/jya_cyo_3.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/jya_cyo_4.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/jya_gu_2.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/jya_gu_3.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/jya_gu_4.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/jya_pa_1.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/jya_pa_2.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/jya_pa_3.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/jya_pa_4.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/paper-upside.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/paper.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/paperVisual.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/paperVisual.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/rock-upside.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/rock.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/rockVisual.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/rockVisual.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/scissor-upside.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/scissor.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/scissorVisual.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/RockPaperScissor/scissorVisual.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/WelcomeWallpaper.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/YuGiOhLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/avatar1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/avatar2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/avatar3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/avatar4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/backOfCard.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/blackBG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/blackBackGround.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/bluePhaseBg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/brickBGpng.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/brickwall.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/brownBack.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/darkBlue.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/dirtSignBG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/dirtyBoardBG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/egyptMan.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/egyptWoman.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/grayBlue.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/greenPhaseBg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/imgbin_yugi-mutou-seto-kaiba-yu-gi-oh-duel-links-jaden-yuki-png.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/kaiba1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/mainPagePic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/opponentUserInfoBgjpeg.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/packOfCard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/purpleCharacter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/questionMark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/redBG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/redCharecter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/redPhaseBg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/sakaki.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/silverBG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/starsBackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/wood.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/woodTexture.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/yellowBackGround.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/yellowBrownBg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/yellowRing-removebg-preview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/images/youUserInfoBGjpeg.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/AvatarView.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/CardCreatorPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/ChooseActionPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/DeckModifier.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/DecksView.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/DuelPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/GamePage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/ImportExport.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/LoginPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/MainPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/ProfilePage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/RegisterPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/RockPaperScissor.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/ScoreBoardPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/ShopMenu.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphicprop/stylesheets/WelcomePage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/manualTestCase/MainMenuProfileAndScoreBoard.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/manualTestCase/RegisterMenuTestCase.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/manualTestCase/ShopAndBuyingCard.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/manualTestCase/gameTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Connector/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Connector/commands/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Connector/commands/RegisterCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Connector/commands/RegisterCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/RegisterPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/RegisterPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ServerGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ServerGate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,29 +88,29 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WelcomePage.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/RegisterPage.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/ProfilePageController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/client/StageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DecksView.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/jsonResources/Users.Json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/LoginView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/jsonResources/Decks.Json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/Main.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/model/gameprop/Player.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/ProfileView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/GameView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/client/model/Exceptions/EmptyTextFieldException.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jsonResources/Users.Json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/ProfileView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/jsonResources/Decks.Json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/ProfilePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/LoginView.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/DecksView.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/model/enums/Menu.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DecksView.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/model/gameprop/Player.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WelcomePage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/LoginPage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/RegisterPage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/GameView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/model/enums/Menu.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="proportion" value="0.6115204" />
@@ -401,6 +155,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="Connector.exceptions" />
       <recent name="Model" />
       <recent name="" />
     </key>
@@ -434,13 +189,31 @@
       <command value="gradle --build-cache" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.MainServer">
+    <configuration name="MainClient" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="client.Main" />
-      <module name="Client" />
+      <module name="YuGiOh" />
       <option name="VM_PARAMETERS" value="--module-path F:\javaFx\lib --add-modules javafx.controls,javafx.fxml,javafx.media" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainServer" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="server.Main" />
+      <module name="YuGiOh" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -465,12 +238,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.MainServer" />
+      <item itemvalue="Application.MainClient" />
       <item itemvalue="Gradle.G:/semister 2/java Yu_gi_oh project/yu-gi-oh-Project" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.MainClient" />
         <item itemvalue="Gradle.G:/semister 2/java Yu_gi_oh project/yu-gi-oh-Project" />
       </list>
     </recent_temporary>

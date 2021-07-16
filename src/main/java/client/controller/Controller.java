@@ -2,6 +2,7 @@ package client.controller;
 
 import animatefx.animation.*;
 import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import client.model.enums.Menu;
@@ -18,6 +20,37 @@ import java.io.IOException;
 
 public abstract class Controller {
     Parent parent;
+
+    protected static RuntimeException responseException;
+    ProgressBar loadingPB;
+    Label loading;
+
+    {
+        loadingPB = new ProgressBar();
+        loading = new Label("loading...");
+
+        loadingPB.setLayoutX(400);
+        loadingPB.setLayoutY(350);
+        loadingPB.setPrefHeight(15);
+        loadingPB.setPrefWidth(200);
+
+        loadingPB.setProgress(0);
+
+        loading.setLayoutX(400);
+        loading.setLayoutY(370);
+
+        loading.setVisible(false);
+        loadingPB.setVisible(false);
+    }
+
+
+    public static void setResponseException(RuntimeException responseException) {
+        Controller.responseException = responseException;
+    }
+
+    public static RuntimeException getResponseException() {
+        return responseException;
+    }
 
     public void moveToPage(Node node, Menu menu) throws IOException {
         Stage stage;
@@ -69,6 +102,24 @@ public abstract class Controller {
                 break;
             }
         }
+    }
+
+    public void handleProgressBar() {
+        loading.setVisible(true);
+        loadingPB.setVisible(true);
+
+        Timeline timeline = new Timeline();
+        timeline.getKeyFrames().add(
+                new KeyFrame(Duration.millis(1000), new KeyValue(loadingPB.progressProperty(), 1))
+        );
+
+        timeline.setOnFinished(e -> {
+            loadingPB.setProgress(0);
+            loading.setVisible(false);
+            loading.setVisible(false);
+        });
+
+        timeline.play();
     }
 
     public void displayMessage(Label message) {

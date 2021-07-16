@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 
 public class Command {
     private CommandType commandType;
+    private RuntimeException exception;
 
     public Command(CommandType commandType) {
         this.commandType = commandType;
@@ -17,5 +18,13 @@ public class Command {
 
     public CommandType getCommandType() {
         return commandType;
+    }
+
+    public void setException(RuntimeException exception) {
+        this.exception = exception;
+    }
+
+    public RuntimeException getException() {
+        return exception;
     }
 }
