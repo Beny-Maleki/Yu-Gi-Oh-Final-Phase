@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Formatter;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class ClientHandler implements Runnable {
     private Scanner netIn;
@@ -43,12 +44,14 @@ public class ClientHandler implements Runnable {
 
             switch (command.getCommandType()) {
                 case REGISTER: {
-                    RegisterCommand registerCommand = (RegisterCommand) command;
+                    RegisterCommand registerCommand = yaGson.fromJson(request, RegisterCommand.class);
                     handleRegister(registerCommand);
-                 }
+                    break;
+                }
                 case LOGIN: {
-                    LogInCommand logInCommand = (LogInCommand) command;
+                    LogInCommand logInCommand = yaGson.fromJson(request, LogInCommand.class);
                     handleLogIn(logInCommand);
+                    break;
                 }
             }
 
@@ -67,6 +70,7 @@ public class ClientHandler implements Runnable {
             registerCommand.setException(new DuplicateNicknameException());
         } else {
             new User(username, password, nickname, imageAddress);
+            registerCommand.setException(null);
         }
 
         netOut.format("%s\n", Command.makeJson(registerCommand));
@@ -81,8 +85,11 @@ public class ClientHandler implements Runnable {
         if (null != user) {
             if (user.isPasswordMatch(password)) {
                 if (LoginUser.getUser() == null) {
-                    ClientInfo.addUserToLoggedIn(clientInfo);
                     logInCommand.setUser(user);
+                    String token = UUID.randomUUID().toString();
+
+                    logInCommand.setToken(token);
+                    ClientInfo.addUserToLoggedIn(clientInfo);
                 } else {
                     logInCommand.setException(new AlreadyLoggedIn());
                 }
@@ -93,7 +100,7 @@ public class ClientHandler implements Runnable {
             logInCommand.setException(new NotMatchingUserAndPass());
         }
 
-        netOut.format(Command.makeJson(logInCommand));
+        netOut.format("%s\n", Command.makeJson(logInCommand));
         netOut.flush();
     }
 }

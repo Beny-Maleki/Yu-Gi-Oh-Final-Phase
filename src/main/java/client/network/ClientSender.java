@@ -1,5 +1,6 @@
 package client.network;
 
+import Connector.commands.RegisterCommand;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import Connector.commands.Command;
@@ -21,20 +22,19 @@ public class ClientSender {
     }
 
     public ClientSender() {
-        sender = this;
         try {
             formatter = new Formatter(socket.getOutputStream());
             // initializing formatting type for message
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        sender = this;
     }
 
     public void sendMessage(Command command) {
-        Gson gson = new GsonBuilder().create();
-        String commandToString = gson.toJson(command, Command.class);
+        String commandToString = Command.makeJson(command);
         formatter.format("%s\n", commandToString);
+        System.out.println(commandToString);
         formatter.flush();
         // -> sending message to server !
     }

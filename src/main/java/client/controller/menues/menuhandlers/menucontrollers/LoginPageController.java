@@ -25,9 +25,10 @@ public class LoginPageController extends Controller {
 
             ClientSender.getSender().sendMessage(new LogInCommand(CommandType.LOGIN, username, password));
 
-            handleProgressBar();
             try {
-                Thread.sleep(1000);
+                while (ClientListener.getServerResponse().getCommandType() == CommandType.WAITING) {
+                    Thread.sleep(100);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

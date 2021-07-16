@@ -41,7 +41,7 @@ public class ServerGate {
 
             Thread thread = new Thread(clientHandler);
             thread.start();
-            System.out.println("client: " + socket.getInetAddress() + " is being served");
+            System.out.println("client: " + socket.getInetAddress().getHostAddress() + " is being served");
         }
 
     }

@@ -1,5 +1,6 @@
 package client.controller;
 
+import Connector.commands.Command;
 import animatefx.animation.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -11,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import client.model.enums.Menu;
@@ -22,6 +24,8 @@ public abstract class Controller {
     Parent parent;
 
     protected static RuntimeException responseException;
+    private static Command responseCommand;
+
     ProgressBar loadingPB;
     Label loading;
 
@@ -41,6 +45,7 @@ public abstract class Controller {
 
         loading.setVisible(false);
         loadingPB.setVisible(false);
+
     }
 
 
@@ -50,6 +55,14 @@ public abstract class Controller {
 
     public static RuntimeException getResponseException() {
         return responseException;
+    }
+
+    public static void setResponseCommand(Command responseCommand) {
+        Controller.responseCommand = responseCommand;
+    }
+
+    public static Command getResponseCommand() {
+        return responseCommand;
     }
 
     public void moveToPage(Node node, Menu menu) throws IOException {

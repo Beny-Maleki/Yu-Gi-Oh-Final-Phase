@@ -18,6 +18,7 @@ public class Client {
         }
 
         listener = new ClientListener(socket);
+        client = this;
     }
 
 

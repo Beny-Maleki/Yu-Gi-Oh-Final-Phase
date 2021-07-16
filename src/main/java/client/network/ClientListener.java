@@ -1,5 +1,7 @@
 package client.network;
 
+import Connector.commands.CommandType;
+import Connector.commands.LogInCommand;
 import Connector.commands.RegisterCommand;
 import client.controller.Controller;
 import com.google.gson.Gson;
@@ -11,9 +13,13 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ClientListener extends Thread {
-    private Socket socket;
-    private Command serverResponse;
-    private Scanner netIn;
+    private static Socket socket;
+    private static Command serverResponse;
+    private static Scanner netIn;
+
+    {
+        serverResponse = new Command(CommandType.WAITING);
+    }
 
     public ClientListener(Socket socket) {
         try {
@@ -25,18 +31,32 @@ public class ClientListener extends Thread {
 
     @Override
     public void run() {
-        String command = netIn.nextLine();
-        Gson gson = new GsonBuilder().create();
-        this.serverResponse = gson.fromJson(command, Command.class);
         while (true) {
+            String command = netIn.nextLine();
+            Gson gson = new GsonBuilder().create();
+            serverResponse = gson.fromJson(command, Command.class);
+            System.out.println(serverResponse);
+
             switch (serverResponse.getCommandType()) {
                 case REGISTER:
-                    this.serverResponse = gson.fromJson(command , RegisterCommand.class);
+                    serverResponse = gson.fromJson(command , RegisterCommand.class);
+                    break;
                 case LOGIN:
+                    serverResponse = gson.fromJson(command, LogInCommand.class);
+                    break;
                 case DUEL:
                 case PROFILE:
             }
+            Controller.setResponseCommand(serverResponse);
             Controller.setResponseException(serverResponse.getException());
+
+            try {
+                Thread.sleep(110);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+           serverResponse.setCommandType(CommandType.WAITING);
         }
     }
 

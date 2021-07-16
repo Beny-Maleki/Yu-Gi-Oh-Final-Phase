@@ -25,6 +25,7 @@ public class AudioHandler {
     public AudioHandler(AudioPath audioPath) {
         Media hit = new Media(new File(Paths.get(audioPath.value).toAbsolutePath().toString()).toURI().toString());
         mediaPlayer = new MediaPlayer(hit);
+        mediaPlayer.setVolume(0.1);
         playingAudioPath = audioPath;
         audioHandlers.add(this);
     }

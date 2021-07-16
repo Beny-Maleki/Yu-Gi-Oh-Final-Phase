@@ -45,6 +45,8 @@ public class User extends FatherUser {
     }
 
     public static User getUserByUserInfo(String info, UserInfoType userInfoType) {
+        if (allUsers.size() == 0) return null;
+
         switch (userInfoType) {
             case USERNAME: {
                 for (User user : allUsers) {

@@ -4,22 +4,20 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add server package">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/commands/LogInCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/exceptions/AlreadyLoggedIn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/exceptions/DuplicateNicknameException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/exceptions/DuplicateUsernameException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Connector/exceptions/NotMatchingUserAndPass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientInfo.java" afterDir="false" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add login and register communications">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Connector/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Connector/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Connector/commands/RegisterCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Connector/commands/RegisterCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Connector/commands/CommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Connector/commands/CommandType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/RegisterPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/RegisterPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/model/userProp/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/userProp/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/ClientSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/AudioHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/AudioHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ServerGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ServerGate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,8 +187,8 @@
       <command value="gradle --build-cache" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainServer">
-    <configuration name="MainClient" type="Application" factoryName="Application" temporary="true">
+  <component name="RunManager" selected="Application.MainClient">
+    <configuration name="MainClient" type="Application" factoryName="Application" singleton="false" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="client.Main" />
@@ -200,7 +198,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainServer" type="Application" factoryName="Application">
+    <configuration name="MainServer" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="server.Main" />
       <module name="YuGiOh" />
       <method v="2">
@@ -334,12 +332,6 @@
       <workItem from="1626075601313" duration="1351000" />
       <workItem from="1626398696763" duration="843000" />
       <workItem from="1626400690795" duration="3215000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۵۷" summary="new structure for actions">
-      <created>1620390954617</created>
-      <option name="number" value="LOCAL‎۰۰۰۵۷" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۵۷" />
-      <updated>1620390954618</updated>
     </task>
     <task id="LOCAL‎۰۰۰۵۸" summary="json">
       <created>1620411136104</created>
@@ -661,7 +653,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626387949208</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="add login and register communications">
+      <created>1626420816007</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1626420816007</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -681,7 +680,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix little" />
     <MESSAGE value="fix" />
     <MESSAGE value="final version Profile menu" />
     <MESSAGE value="initial page changed" />
@@ -706,7 +704,8 @@
     <MESSAGE value="attack process" />
     <MESSAGE value="attack process animation" />
     <MESSAGE value="add Client" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Client" />
+    <MESSAGE value="add login and register communications" />
+    <option name="LAST_COMMIT_MESSAGE" value="add login and register communications" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -714,7 +713,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/client/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/SelectedCardProcessor.java</url>
           <line>15</line>
-          <properties class="controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor">
+          <properties class="client.controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor" method="process">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="3" />

@@ -1,9 +1,11 @@
 package client.controller.menues.menuhandlers.menucontrollers;
 
+import Connector.commands.Command;
 import Connector.commands.CommandType;
 import Connector.commands.RegisterCommand;
 import animatefx.animation.FadeOut;
 import client.controller.Controller;
+import client.network.ClientListener;
 import client.network.ClientSender;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,16 +28,19 @@ import java.util.Arrays;
 
 public class RegisterPageController extends Controller {
 
-    private String imageAddress;
+    private String imageAddress = "src/main/resources/graphicprop/images/avatar1.png";
 
     public void createUser(String username, String nickname, String password, Label message) {
         try {
             if (username.equals("") || password.equals("") || nickname.equals("")) throw new EmptyTextFieldException();
 
-            ClientSender.getSender().sendMessage(new RegisterCommand(CommandType.REGISTER, username, nickname, password, imageAddress));
+            RegisterCommand registerCommand = new RegisterCommand(CommandType.REGISTER, username, nickname, password, imageAddress);
+            ClientSender.getSender().sendMessage(registerCommand);
             handleProgressBar();
             try {
-                Thread.sleep(1000);
+               while (ClientListener.getServerResponse().getCommandType() == CommandType.WAITING) {
+                   Thread.sleep(100);
+               }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
