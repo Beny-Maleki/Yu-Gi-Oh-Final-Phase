@@ -93,7 +93,6 @@ public class GameView {
     public Pane field;
     public Label turnShowerUp;
     public Label turnShowerDown;
-    public Button directAttackButton;
     public ProgressBar opponentLPBar;
     public ProgressBar yourLPBar;
     public Label opponentLPLabel;
@@ -1066,22 +1065,15 @@ public class GameView {
                 animateDraw();
                 swapColorForChangeTurn();
             }
-
             setScaleForCurrentPhase(phaseName.getText());
             restartSelectedCardImage();
-        } else if (mouseEvent.getSource() == directAttackButton) {
-            directAttack();
         }
     }
 
     private void directAttack() {
     }
 
-    private void attack() {
-    }
-
     private void restartSelectedCardImage() {
-
         selectedCardImageView.setImage(GameHouse.getBackOfCardImage());
         deActiveActions();
         new FlipInX(selectedCardImageView).play();

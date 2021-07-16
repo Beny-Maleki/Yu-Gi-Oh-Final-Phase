@@ -37,11 +37,9 @@ public class BattlePhaseController extends GeneralController {
 
     public String attackMonsterHouse(Game game, MonsterHouse target) {
         AttackMonsterChain chain = new AttackMonsterChain();
-        StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append(chain.request(target, game));
         game.setCardProp(null);
-        return stringBuilder.toString();
+        return chain.request(target, game);
     }
 
     public String attackDirect(Game game) {
