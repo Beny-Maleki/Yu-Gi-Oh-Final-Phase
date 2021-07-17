@@ -13,7 +13,7 @@ public final class Regex {
     public static String duel = "duel (.+)";
     public static String showCard = "card show (?<cardName>.+)";
 
-    //Register Menu Connector.commands
+    //Register Menu connector.commands
     // -> create user
     public static String[] userCreateCommand = new String[]{
             "user create --username .+ --nickname .+ --password .+",
@@ -29,10 +29,10 @@ public final class Regex {
             "user login --password .+ --username .+"
     };
 
-    // -> main client.controller Connector.commands
+    // -> main client.controller connector.commands
     public static String moneyCheat = "cheat code: increase money -> (?<amount>\\d+)";
 
-    // -> fixed Connector.commands
+    // -> fixed connector.commands
     public static String[] otherCommands = new String[]{
             "user logout",
             "client.controller exit",
@@ -40,7 +40,7 @@ public final class Regex {
             "client.controller enter.+"
 };
 
-    // -> all Connector.commands
+    // -> all connector.commands
     public static String[][] registerCommands = new String[][]{
             userCreateCommand,
             userLoginCommand,
@@ -48,7 +48,7 @@ public final class Regex {
     };
 
 
-    //DuelPageView Connector.commands:
+    //DuelPageView connector.commands:
     public static String[] duelMenuCommands = new String[]{
             ".+(?<= |^)--second-player (\\S+)(?= --new| --rounds.*|$).*$",
             ".+(?<= |^)--rounds (\\S+)(?= --new| --second-player.*|$).*$",
@@ -60,7 +60,7 @@ public final class Regex {
     public static String deleteDeck = "deck delete (?<deckName>.+)";
     public static String activateDeck = "deck set-active (?<deckName>.+)";
 
-    // adding card Connector.commands:
+    // adding card connector.commands:
     public static String[] addCardToMainDeck = new String[]{
             "^deck add-card --card (?<cardName>.+) --deck (?<deckName>.+)$",
             "^deck add-card --deck (?<deckName>.+) --card (?<cardName>.+)$"
@@ -77,7 +77,7 @@ public final class Regex {
             "^deck add-card --side --card (?<cardName>.+) --deck (?<deckName>.+)$"
     };
 
-    // removing cards from deck Connector.commands:
+    // removing cards from deck connector.commands:
     public static String[] removeCardFromMainDeck = new String[]{
             "^deck rm-card --card (?<cardName>.+) --deck (?<deckName>.+)$",
             "^deck rm-card --deck (?<deckName>.+) --card (?<cardName>.+)$",
@@ -101,15 +101,15 @@ public final class Regex {
     };
 
     public static String showAllCardsDeckMenu = "^deck show --cards$";
-    // <- end of DeckMenu Connector.commands;
+    // <- end of DeckMenu connector.commands;
 
 
-    //ShopMenu Connector.commands:
+    //ShopMenu connector.commands:
     public static String buyCard = "^shop buy (?<cardName>.+)";
     public static String showAllShop = "shop show --all";
-    // <- end of ShopMenu Connector.commands;
+    // <- end of ShopMenu connector.commands;
 
-    //GamePlay -> general Connector.commands
+    //GamePlay -> general connector.commands
     public static String[] generalCommands = new String[]{
             "cheat code: winner",
             "cheat code: draw",

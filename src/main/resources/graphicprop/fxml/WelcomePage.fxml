@@ -13,16 +13,14 @@
             <Button fx:id="Login" layoutX="71.0" layoutY="105.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" prefHeight="26.0" prefWidth="80.0" text="Login" />
             <Button fx:id="Exit" layoutX="72.0" layoutY="206.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" prefHeight="25.0" prefWidth="80.0" text="Exit" />
          <Button fx:id="Scoreboard" layoutX="72.0" layoutY="144.0" mnemonicParsing="false" onMouseClicked="#run" onMouseEntered="#hoverAnimation" prefHeight="25.0" prefWidth="80.0" text="Scoreboard" />
-         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="12.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../images/YuGiOhLogo.png" />
-            </image>
-         </ImageView>
-           <ImageView fitHeight="144.0" fitWidth="147.0" layoutX="124.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                   <Image url="@../images/MBB_007201.dds.png" />
-               </image>
-           </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="12.0" layoutY="-21.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <Image url="@../images/YuGiOhLogo.png"/>
+            </ImageView>
+            <ImageView fitHeight="144.0" fitWidth="147.0" layoutX="124.0" layoutY="276.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <Image url="@../images/MBB_007201.dds.png"/>
+            </ImageView>
            <ImageView fitHeight="129.0" fitWidth="147.0" layoutX="-46.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
                <Image url="@../images/MBB_007200.dds.png" />
            </ImageView>

@@ -3,10 +3,10 @@ package client.controller.menues.menuhandlers.menucontrollers;
 import com.google.gson.Gson;
 import client.controller.Controller;
 import javafx.scene.control.Label;
-import client.DataBase;
-import client.model.cards.cardsProp.Card;
-import client.model.cards.cardsProp.MagicCard;
-import client.model.cards.cardsProp.MonsterCard;
+import server.ServerDataBase;
+import connector.cards.Card;
+import connector.cards.MagicCard;
+import connector.cards.MonsterCard;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -20,7 +20,7 @@ public class ImportExportMenuController extends Controller {
 //            if (matcher.find()) {
 //                cardname = matcher.group(1);
 //            }
-//            String path = "jsonResources\\ImportExport\\" + cardname + ".json";
+//            String path = "ServerResources\\ImportExport\\" + cardname + ".json";
 //            try {
 //                String json = new String(Files.readAllBytes(Paths.get(path)));
 //                Card card;
@@ -51,7 +51,7 @@ public class ImportExportMenuController extends Controller {
 //                File currentDirFile = new File(".");
 //                String helper = currentDirFile.getAbsolutePath();
 //                String path = helper.substring(0, helper.length() - 1);
-//                path = path + "jsonResources\\ImportExport\\" + cardname + ".json";
+//                path = path + "ServerResources\\ImportExport\\" + cardname + ".json";
 //                File file = new File(path);
 //                file.createNewFile();
 //                FileWriter fileWriter = new FileWriter(path);
@@ -70,7 +70,7 @@ public class ImportExportMenuController extends Controller {
                 File currentDirFile = new File(".");
                 String helper = currentDirFile.getAbsolutePath();
                 String path = helper.substring(0, helper.length() - 1);
-                path = path + "jsonResources\\ImportExport";
+                path = path + "ServerResources\\ImportExport";
                 new File(path).mkdirs();
                 path = path + "\\" + card.getName() + ".json";
                 File file = new File(path);
@@ -90,7 +90,7 @@ public class ImportExportMenuController extends Controller {
             message.setText("please fill the field first");
             return;
         }
-        String path = "jsonResources\\ImportExport\\" + cardName + ".json";
+        String path = "ServerResources\\ImportExport\\" + cardName + ".json";
             try {
                 String json = new String(Files.readAllBytes(Paths.get(path)));
                 Card card;
@@ -100,9 +100,9 @@ public class ImportExportMenuController extends Controller {
                     card = new Gson().fromJson(json, MonsterCard.class);
                 }
                 if (card instanceof MagicCard) {
-                    DataBase.getInstance().saveMagics((MagicCard) card);
+                    ServerDataBase.getInstance().saveMagics((MagicCard) card);
                 } else {
-                    DataBase.getInstance().saveMonsters((MonsterCard) card);
+                    ServerDataBase.getInstance().saveMonsters((MonsterCard) card);
                 }
                 message.setText("import done PLEASE RERUN THE PROGRAM");
             } catch (IOException e) {
@@ -116,7 +116,7 @@ public class ImportExportMenuController extends Controller {
 //        if (!magicCards.contains(magicCard)) {
 //            magicCards.add(magicCard);
 //        }
-//        DataBase.getInstance().saveMagicsToJson(magicCards);
+//        ServerDataBase.getInstance().saveMagicsToJson(magicCards);
 //    }
 //
 //    private static void updateMonsterCards(MonsterCard monsterCard) {
@@ -125,6 +125,6 @@ public class ImportExportMenuController extends Controller {
 //        if (!monsterCards.contains(monsterCard)) {
 //            monsterCards.add(monsterCard);
 //        }
-//        DataBase.getInstance().saveMonstersToJson(monsterCards);
+//        ServerDataBase.getInstance().saveMonstersToJson(monsterCards);
 //    }
 }

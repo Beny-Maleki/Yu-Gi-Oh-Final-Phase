@@ -3,7 +3,7 @@ package client.model.gameprop.BoardProp;
 import animatefx.animation.FadeOutRight;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import client.model.cards.cardsProp.Card;
+import connector.cards.Card;
 import client.model.gameprop.Selectable;
 
 import java.io.FileNotFoundException;

@@ -1,0 +1,11 @@
+#numberOfCard {
+    -fx-background-radius: 100;
+    -fx-border-radius: 100;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+}
+
+#tradeMakerPane {
+    -fx-background-color: #cf901b;
+}

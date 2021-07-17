@@ -1,7 +1,7 @@
 package client.model.gameprop.turnBasedObserver;
 
-import client.model.cards.cardsProp.Card;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.Card;
+import connector.cards.MonsterCard;
 import client.model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import client.model.gameprop.BoardProp.MonsterHouse;
 import client.model.gameprop.Player;

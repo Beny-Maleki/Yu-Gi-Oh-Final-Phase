@@ -2,8 +2,8 @@ package client.model.gameprop.BoardProp;
 
 import animatefx.animation.FadeOutRight;
 import javafx.scene.image.Image;
-import client.model.cards.cardsProp.Card;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.Card;
+import connector.cards.MonsterCard;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import client.model.gameprop.GameInProcess;

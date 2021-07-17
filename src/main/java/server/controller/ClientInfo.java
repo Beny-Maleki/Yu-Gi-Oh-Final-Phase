@@ -24,11 +24,19 @@ public class ClientInfo {
         clientInfos.add(this);
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public static void addUserToLoggedIn(ClientInfo clientInfo) {
         loggedInClients.add(clientInfo);
+    }
+
+    public static User getUserByToken(String token) {
+        for (ClientInfo clientInfo : clientInfos) {
+            clientInfo.token = token;
+            return clientInfo.user;
+        }
+        return null;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

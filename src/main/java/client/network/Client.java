@@ -9,6 +9,7 @@ public class Client {
     private static Scanner netIn;
     private final ClientListener listener;
     private Socket socket;
+    private String token;
 
     public Client() {
         try {
@@ -21,16 +22,23 @@ public class Client {
         client = this;
     }
 
+    public static Client getClient() {
+        return client;
+    }
 
     public void startGetResponseFromServer() {
         listener.start();
     }
 
-    public static Client getClient() {
-        return client;
-    }
-
     public Socket getSocket() {
         return socket;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getToken() {
+        return token;
     }
 }

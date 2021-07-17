@@ -1,7 +1,7 @@
 package client.controller.gamecontrollers.gamestagecontroller;
 
 import client.controller.gamecontrollers.GeneralController;
-import client.model.cards.cardsProp.Card;
+import connector.cards.Card;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.gameprop.BoardProp.HandHouse;
 import client.model.gameprop.GameInProcess;

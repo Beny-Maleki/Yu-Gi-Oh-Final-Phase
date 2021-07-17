@@ -1,14 +1,12 @@
-package Connector.commands;
+package connector.commands;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.UUID;
-
 public class Command {
     private CommandType commandType;
     private RuntimeException exception;
-    private String token;
+    protected String token;
 
     public Command(CommandType commandType) {
         this.commandType = commandType;

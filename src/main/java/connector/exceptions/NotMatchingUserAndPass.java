@@ -1,4 +1,4 @@
-package Connector.exceptions;
+package connector.exceptions;
 
 public class NotMatchingUserAndPass extends RuntimeException {
     public NotMatchingUserAndPass() {

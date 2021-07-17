@@ -2,9 +2,9 @@ package client.view.menudisplay;
 
 import client.model.enums.Error;
 import client.model.enums.MenusMassages.DeckMessages;
-import client.model.cards.cardsProp.Card;
-import client.model.cards.cardsProp.MagicCard;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.Card;
+import connector.cards.MagicCard;
+import connector.cards.MonsterCard;
 import client.model.userProp.Deck;
 
 public class DeckMenuDisplay {

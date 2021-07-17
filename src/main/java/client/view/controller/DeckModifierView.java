@@ -16,9 +16,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import client.model.cards.CardHouse;
 import client.model.cards.cardsEnum.Magic.RestrictionTypeInAdding;
-import client.model.cards.cardsProp.Card;
-import client.model.cards.cardsProp.MagicCard;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.Card;
+import connector.cards.MagicCard;
+import connector.cards.MonsterCard;
 import client.model.enums.Menu;
 import client.model.enums.Origin;
 import client.model.userProp.Deck;
@@ -182,16 +182,7 @@ public class DeckModifierView {
     }
 
     private void handleOnMouseEntered(ImageView imageView) {
-        imageView.setOnMouseEntered(mouseEvent -> {
-            imageView.setScaleX(1.1);
-            imageView.setScaleY(1.1);
-
-            DropShadow dropShadow = new DropShadow();
-            dropShadow.setWidth(imageView.getFitWidth());
-            dropShadow.setHeight(imageView.getFitHeight());
-            imageView.setEffect(dropShadow);
-
-        });
+        MakeATradeView.setPropertyForImageView(imageView);
     }
 
     private void handleOnMouseExited(ImageView imageView) {
@@ -278,7 +269,7 @@ public class DeckModifierView {
         User user = LoginUser.getUser();
 
         ArrayList<Card> collection = DeckModifierController.cardNameAlphabetSorter(user.getCardCollection());
-        // note this arrayList doesn't have the same refrence as the actual collection of user!
+        // note this arrayList doesn't have the same reference as the actual collection of user!
 
         FlowPane collectionFlowPane = new FlowPane();
         collectionFlowPaneStyler(collection, collectionFlowPane);

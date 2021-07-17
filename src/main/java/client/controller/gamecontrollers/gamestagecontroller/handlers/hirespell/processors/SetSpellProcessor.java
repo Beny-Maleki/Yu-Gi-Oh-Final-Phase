@@ -3,7 +3,7 @@ package client.controller.gamecontrollers.gamestagecontroller.handlers.hirespell
 import animatefx.animation.ZoomIn;
 import client.controller.gamecontrollers.gamestagecontroller.handlers.hirespell.SpellProcessor;
 import client.model.cards.cardsEnum.Magic.MagicAttribute;
-import client.model.cards.cardsProp.MagicCard;
+import connector.cards.MagicCard;
 import client.model.enums.GameEnums.CardLocation;
 import client.model.enums.GameEnums.GamePhaseEnums.MainPhase;
 import client.model.enums.GameEnums.SideOfFeature;

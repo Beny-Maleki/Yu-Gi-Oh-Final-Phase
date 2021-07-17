@@ -1,8 +1,8 @@
 package client.model.gameprop.existenceBasedObserver;
 
-import client.model.cards.cardsProp.Card;
-import client.model.cards.cardsProp.MagicCard;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.Card;
+import connector.cards.MagicCard;
+import connector.cards.MonsterCard;
 import client.model.gameprop.BoardProp.MagicHouse;
 import client.model.gameprop.BoardProp.MonsterHouse;
 import client.model.gameprop.Player;

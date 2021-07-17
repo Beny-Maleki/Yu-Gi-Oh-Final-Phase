@@ -1,4 +1,4 @@
-package Connector.exceptions;
+package connector.exceptions;
 
 public class DuplicateUsernameException extends RuntimeException {
     public DuplicateUsernameException() {

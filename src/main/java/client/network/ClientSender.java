@@ -1,9 +1,5 @@
 package client.network;
-
-import Connector.commands.RegisterCommand;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import Connector.commands.Command;
+import connector.commands.Command;
 
 import java.io.IOException;
 import java.net.Socket;

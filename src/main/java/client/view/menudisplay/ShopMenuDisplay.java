@@ -2,7 +2,7 @@ package client.view.menudisplay;
 
 import client.model.enums.Error;
 import client.model.enums.MenusMassages.ShopMessages;
-import client.model.cards.cardsProp.Card;
+import connector.cards.Card;
 
 public class ShopMenuDisplay {
     public static void display(ShopMessages message) {

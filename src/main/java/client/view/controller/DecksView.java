@@ -73,7 +73,7 @@ public class DecksView {
                 imageView.setLayoutY(90);
                 deckHolders.get(i).setStyle("-fx-background-color : #a9a8a8; -fx-background-radius: 15; -fx-opacity: 0.75");
                 deckHolders.get(i).getChildren().add(imageView);
-            } else if (USER.getAllUserDecksId().get(i) != null) {
+            } else if (USER.getAllUserDecks().get(i) != null) {
                 showPackOfCards(i);
             }
         }
@@ -124,14 +124,14 @@ public class DecksView {
     private void handleMouseClickEvent(Pane pane) {
         pane.setOnMouseClicked(mouseEvent -> {
             ArrayList<Boolean> unlockedDeckHolders = LoginUser.getUser().getUnlockedDeckHolders();
-            ArrayList<Deck> allUserDeck = USER.getAllUserDecksId();
+            ArrayList<Deck> allUserDeck = USER.getAllUserDecks();
             removeNotification();
             switch (pane.getId()) {
                 case "DeckOneHolder": {
                     if (allUserDeck.get(0) == null) {
                         emptyHolder(0);
                     } else {
-                        Deck deck = USER.getAllUserDecksId().get(0);
+                        Deck deck = USER.getAllUserDecks().get(0);
                         try {
                             fullHolder(deck, 0);
                         } catch (FileNotFoundException e) {
@@ -146,7 +146,7 @@ public class DecksView {
                     } else if (allUserDeck.get(1) == null) {
                         emptyHolder(1);
                     } else {
-                        Deck deck = USER.getAllUserDecksId().get(1);
+                        Deck deck = USER.getAllUserDecks().get(1);
                         try {
                             fullHolder(deck, 1);
                         } catch (FileNotFoundException e) {
@@ -161,7 +161,7 @@ public class DecksView {
                     } else if (allUserDeck.get(2) == null) {
                         emptyHolder(2);
                     } else {
-                        Deck deck = USER.getAllUserDecksId().get(2);
+                        Deck deck = USER.getAllUserDecks().get(2);
                         try {
                             fullHolder(deck, 2);
                         } catch (FileNotFoundException e) {
@@ -176,7 +176,7 @@ public class DecksView {
                     } else if (allUserDeck.get(3) == null) {
                         emptyHolder(3);
                     } else {
-                        Deck deck = USER.getAllUserDecksId().get(3);
+                        Deck deck = USER.getAllUserDecks().get(3);
                         try {
                             fullHolder(deck, 3);
                         } catch (FileNotFoundException e) {

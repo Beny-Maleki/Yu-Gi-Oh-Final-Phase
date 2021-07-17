@@ -1,18 +1,10 @@
-package client.model.cards.cardsProp;
+package connector.cards;
 
 import client.model.cards.cardsEnum.Monster.MonsterAttribute;
 import client.model.cards.cardsEnum.Monster.MonsterRace;
 import client.model.cards.cardsEnum.Monster.MonsterType;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MonsterCard extends Card {
-    protected static List<MonsterCard> monsterCards;
-
-    static {
-        monsterCards = new ArrayList<>();
-    }
 
     protected int attack;
     protected int defence;
@@ -31,20 +23,11 @@ public class MonsterCard extends Card {
         setType(MonsterType.assignType(type));
         setRace(MonsterRace.assignRace(race));
         setAttribute(MonsterAttribute.assignAttribute(attribute));
-        monsterCards.add(this);
     }
 
     public MonsterCard() {
     }
 
-    public static void setMonsterCards(ArrayList<MonsterCard> monsterCards) {
-        MonsterCard.monsterCards = monsterCards;
-        Card.addMonstersToCards(monsterCards);
-    }
-
-    public static List<MonsterCard> getMonsterCards() {
-        return monsterCards;
-    }
 
     @Override
     public Card getSimilarCard() {

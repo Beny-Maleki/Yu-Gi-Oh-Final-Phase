@@ -1,19 +1,19 @@
 package client.network;
 
-import Connector.commands.CommandType;
-import Connector.commands.LogInCommand;
-import Connector.commands.RegisterCommand;
 import client.controller.Controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import Connector.commands.Command;
+import connector.commands.Command;
+import connector.commands.CommandType;
+import connector.commands.commnadclasses.GetUsersCardCommand;
+import connector.commands.commnadclasses.LogInCommand;
+import connector.commands.commnadclasses.RegisterCommand;
 
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
 public class ClientListener extends Thread {
-    private static Socket socket;
     private static Command serverResponse;
     private static Scanner netIn;
 
@@ -29,6 +29,10 @@ public class ClientListener extends Thread {
         }
     }
 
+    public static Command getServerResponse() {
+        return serverResponse;
+    }
+
     @Override
     public void run() {
         while (true) {
@@ -39,10 +43,13 @@ public class ClientListener extends Thread {
 
             switch (serverResponse.getCommandType()) {
                 case REGISTER:
-                    serverResponse = gson.fromJson(command , RegisterCommand.class);
+                    serverResponse = gson.fromJson(command, RegisterCommand.class);
                     break;
                 case LOGIN:
                     serverResponse = gson.fromJson(command, LogInCommand.class);
+                    break;
+                case GET_USER_CARD:
+                    serverResponse = gson.fromJson(command, GetUsersCardCommand.class);
                     break;
                 case DUEL:
                 case PROFILE:
@@ -55,12 +62,7 @@ public class ClientListener extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-           serverResponse.setCommandType(CommandType.WAITING);
+            serverResponse.setCommandType(CommandType.WAITING);
         }
-    }
-
-    public static Command getServerResponse() {
-        return serverResponse;
     }
 }

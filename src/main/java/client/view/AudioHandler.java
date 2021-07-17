@@ -51,7 +51,7 @@ public class AudioHandler {
     }
 
     public void play() {
-        mediaPlayer.play();
+        //mediaPlayer.play();
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         playing = this;
     }

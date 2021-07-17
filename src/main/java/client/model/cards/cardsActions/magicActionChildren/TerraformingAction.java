@@ -2,8 +2,8 @@ package client.model.cards.cardsActions.magicActionChildren;
 
 import client.model.cards.cardsActions.Action;
 import client.model.cards.cardsEnum.Magic.MagicAttribute;
-import client.model.cards.cardsProp.Card;
-import client.model.cards.cardsProp.MagicCard;
+import connector.cards.Card;
+import connector.cards.MagicCard;
 import client.model.enums.GameEnums.RequestingInput;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.gameprop.BoardProp.HandHouse;

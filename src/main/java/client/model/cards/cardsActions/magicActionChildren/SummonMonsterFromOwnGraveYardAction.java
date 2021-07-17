@@ -4,7 +4,7 @@ import client.controller.gamecontrollers.GeneralController;
 import client.controller.gamecontrollers.GetStringInputFromView;
 import client.exceptions.CardNotFoundException;
 import client.model.cards.cardsActions.Action;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.MonsterCard;
 import client.model.enums.GameEnums.RequestingInput;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.gameprop.BoardProp.PlayerBoard;

@@ -1,8 +1,8 @@
 package client.model.cards.cardsActions.magicActionChildren;
 
 import client.controller.gamecontrollers.GetStringInputFromView;
-import client.model.cards.cardsProp.MagicCard;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.MagicCard;
+import connector.cards.MonsterCard;
 import client.model.enums.GameEnums.RequestingInput;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;

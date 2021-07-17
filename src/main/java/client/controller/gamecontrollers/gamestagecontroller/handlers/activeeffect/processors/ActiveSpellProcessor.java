@@ -2,7 +2,7 @@ package client.controller.gamecontrollers.gamestagecontroller.handlers.activeeff
 
 import client.controller.gamecontrollers.gamestagecontroller.handlers.activeeffect.ActiveEffectProcessor;
 import client.model.cards.cardsEnum.Magic.MagicAttribute;
-import client.model.cards.cardsProp.MagicCard;
+import connector.cards.MagicCard;
 import client.model.enums.GameEnums.CardLocation;
 import client.model.enums.GameEnums.GamePhaseEnums.General;
 import client.model.enums.GameEnums.SideOfFeature;

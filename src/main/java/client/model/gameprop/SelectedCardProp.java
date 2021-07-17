@@ -1,6 +1,6 @@
 package client.model.gameprop;
 
-import client.model.cards.cardsProp.Card;
+import connector.cards.Card;
 import client.model.enums.GameEnums.CardLocation;
 import client.model.gameprop.BoardProp.HandHouse;
 import client.model.gameprop.BoardProp.MagicHouse;

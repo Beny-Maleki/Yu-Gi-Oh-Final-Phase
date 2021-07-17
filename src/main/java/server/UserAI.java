@@ -1,7 +1,5 @@
-package client.model.userProp;
+package server;
 
-import client.model.cards.cardsProp.Card;
-import client.model.cards.cardsProp.MonsterCard;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
 import client.model.events.Event;
@@ -11,6 +9,12 @@ import client.model.gameprop.BoardProp.MagicHouse;
 import client.model.gameprop.BoardProp.MonsterHouse;
 import client.model.gameprop.Player;
 import client.model.gameprop.gamemodel.Game;
+import client.model.userProp.Deck;
+import client.model.userProp.DifficultyLevel;
+import client.model.userProp.FatherUser;
+import connector.cards.Card;
+import connector.cards.MagicCard;
+import connector.cards.MonsterCard;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,21 +60,20 @@ public class UserAI extends FatherUser {
                 strongMonsterNumber = 13;
                 break;
         }
-
-        List<Card> monsterCards = MonsterCard.getCards();
-        List<Card> magicCards = MonsterCard.getCards();
+//TODO the process of getting card is wrong
+        List<MonsterCard> monsterCards = ServerCardCollection.getGameMonsterCards();
+        List<MagicCard> magicCards = ServerCardCollection.getGameMagicCards();
         Collections.shuffle(monsterCards);
         Collections.shuffle(magicCards);
-        for (Card card : monsterCards) {
-            MonsterCard castToMonster = (MonsterCard) card;
-            if (castToMonster.getLevel() < 5 && weakCounter != weakMonsterNumber) {
-                activeDeck.addCardToMainDeck(castToMonster);
+        for (MonsterCard card : monsterCards) {
+            if (card.getLevel() < 5 && weakCounter != weakMonsterNumber) {
+                activeDeck.addCardToMainDeck(card);
                 weakCounter++;
-            } else if (castToMonster.getLevel() < 7 && normalCounter != normalMonsterNumber) {
-                activeDeck.addCardToMainDeck(castToMonster);
+            } else if (card.getLevel() < 7 && normalCounter != normalMonsterNumber) {
+                activeDeck.addCardToMainDeck(card);
                 normalCounter++;
             } else if (strongCounter != strongMonsterNumber) {
-                activeDeck.addCardToMainDeck(castToMonster);
+                activeDeck.addCardToMainDeck(card);
                 strongCounter++;
             }
         }

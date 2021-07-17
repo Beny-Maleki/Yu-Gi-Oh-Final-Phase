@@ -1,6 +1,6 @@
 package client.view.game;
 
-import client.model.cards.cardsProp.Card;
+import connector.cards.Card;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.gameprop.BoardProp.*;
 import client.model.gameprop.Player;

@@ -1,4 +1,4 @@
-package client.model.cards.cardsProp;
+package connector.cards;
 
 import client.controller.gamecontrollers.GetStringInputFromView;
 import client.model.cards.cardsActions.Action;
@@ -22,11 +22,6 @@ import java.util.Locale;
 
 
 public class MagicCard extends Card {
-    private static ArrayList<MagicCard> magicCards;
-
-    static {
-        magicCards = new ArrayList<>();
-    }
 
     private ArrayList<Action> actionsOfMagic;
     private ArrayList<Event> triggers;
@@ -46,7 +41,6 @@ public class MagicCard extends Card {
         setTypeOfMagic(MagicType.setType(typeOfMagic));
         setMagicAttribute(MagicAttribute.setAttribute(magicAttribute));
         setMagicRestriction(RestrictionTypeInAdding.setSpeed(typeOfRestriction));
-        magicCards.add(this);
         setMagicEffect(name);
         setMagicEvents(name);
     }
@@ -54,16 +48,6 @@ public class MagicCard extends Card {
     public MagicCard() {
         super();
     }
-
-    public static void setMagicCards(ArrayList<MagicCard> magicCards) {
-        MagicCard.magicCards = magicCards;
-        Card.addMagicsToCards(magicCards);
-    }
-
-    public static ArrayList<MagicCard> getMagicCards() {
-        return magicCards;
-    }
-
     @Override
     public Card getSimilarCard() {
         return new MagicCard(name, typeOfMagic.toString(), magicAttribute.toString(),
@@ -203,19 +187,6 @@ public class MagicCard extends Card {
         if (name.equals("Terraforming")) {
             actionsOfMagic.add(new TerraformingAction());
         }
-//        if (name.equals("Magic Jammer") || name.equals("Magic Cylinder"))
-//            actionsOfMagic.add(StoppingActivationAction.getInstance());
-//        if (name.equals("Advanced Ritual Art")) actionsOfMagic.add(RitualSummonAction.getInstance());
-//        if (name.equals("Ring of Defense") || name.equals("Negate Attack"))
-//            actionsOfMagic.add(MakeDamageZero.getInstance());
-//        if (name.equals("Trap Hole") || name.equals("Twin Twisters"))
-//            ;
-//        if (name.equals("Magnum Shield") || name.equals("United We Stand"))
-//            actionsOfMagic.add(ChangingMonsterAttackAction.getInstance());
-//        if (name.equals("Spell Absorption")) actionsOfMagic.add(ChangingLifePointAction.getInstance());
-//        if (name.equals("Magnum Shield") || name.equals("United We Stand") || name.equals("Sword of Dark Destruction") || name.equals("Umiiruka") || name.equals("Forest") || name.equals("Yami"))
-//            actionsOfMagic.add(ChangeDefenceOfMonsterCard.getInstance());
-//        if (name.equals("Negate Attack")) actionsOfMagic.add(EndBattlePhaseAction.getInstance());
     }
 
     @Override

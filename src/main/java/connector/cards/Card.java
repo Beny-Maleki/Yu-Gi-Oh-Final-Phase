@@ -1,25 +1,16 @@
-package client.model.cards.cardsProp;
+package connector.cards;
 
-import javafx.scene.image.Image;
 import client.model.events.Event;
 import client.model.gameprop.gamemodel.Game;
+import javafx.scene.image.Image;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public abstract class Card {
-    private static final HashMap<Integer, Boolean> IS_SEEN_BEFORE;
-    protected static List<Card> cards;
     public static int numberOfCard;
     public static int numberOfOriginalCards;
 
-    static {
-        IS_SEEN_BEFORE = new HashMap<>();
-        cards = new ArrayList<>();
-    }
 
     protected int ID;
     protected String name;
@@ -31,7 +22,6 @@ public abstract class Card {
         setName(name);
         setDescription(description);
         setPrice(price);
-        cards.add(this);
         setID(numberOfCard);
         numberOfCard++;
     }
@@ -40,71 +30,12 @@ public abstract class Card {
     public Card() {
     }
 
-    public static HashMap<Integer, Boolean> getIsSeenBefore() {
-        return IS_SEEN_BEFORE;
-    }
-
-    public static int getCardPriceByName(String name) {
-        for (Card card : cards) {
-            if (card.name.equals(name)) {
-                return card.price;
-            }
-        }
-        return -1; // No such card notExists.
-    }
-
     public static void setNumberOfOriginalCards(int numberOfOriginalCards) {
         Card.numberOfOriginalCards = numberOfOriginalCards;
     }
 
-    public static String getDescriptionByName(String name) {
-        for (Card card : cards) {
-            if (card.name.equals(name)) {
-                return card.description;
-            }
-        }
-        return null; // No such card notExists.
-    }
-
     public static void setNumberOfCard(int numberOfCard) {
         Card.numberOfCard = numberOfCard;
-    }
-
-    public static void addMagicsToCards(ArrayList<MagicCard> magicCards) {
-        cards.addAll(magicCards);
-    }
-
-    public static void addMonstersToCards(ArrayList<MonsterCard> monsterCards) {
-        cards.addAll(monsterCards);
-    }
-
-    public static List<Card> getCards() {
-        return cards;
-    }
-
-    public static ArrayList<Card> getOriginalCard() {
-        ArrayList<Card> originalCard = new ArrayList<>();
-        cards.forEach((card -> {
-            if (card.getID() < Card.numberOfOriginalCards) {
-                originalCard.add(card);
-            }
-        }));
-        return originalCard;
-    }
-
-    public static Card getCardById(int ID) {
-        for (Card card : cards) {
-            if (card.ID == ID) {
-                return card;
-            }
-        }
-        System.out.println("cant find " + ID);
-        return null;
-    }
-
-    public static Integer newSimilarCard() {
-        return numberOfCard - 1;
-
     }
 
     public static Image getCardImage(Card card) {

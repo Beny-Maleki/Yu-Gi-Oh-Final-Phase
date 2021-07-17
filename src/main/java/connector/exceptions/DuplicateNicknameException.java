@@ -1,4 +1,4 @@
-package Connector.exceptions;
+package connector.exceptions;
 
 public class DuplicateNicknameException extends RuntimeException {
     public DuplicateNicknameException() {

@@ -1,10 +1,10 @@
 package client.model.userProp;
 
-import client.model.cards.cardsProp.Card;
+import client.UserCardCollection;
+import connector.cards.Card;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class User extends FatherUser {
 
@@ -45,8 +45,6 @@ public class User extends FatherUser {
     }
 
     public static User getUserByUserInfo(String info, UserInfoType userInfoType) {
-        if (allUsers.size() == 0) return null;
-
         switch (userInfoType) {
             case USERNAME: {
                 for (User user : allUsers) {
@@ -75,30 +73,6 @@ public class User extends FatherUser {
         allUsers = users;
     }
 
-    public static void serialize() {
-        for (User user : allUsers) {
-            ArrayList<Integer> cardCollection = user.cardCollection;
-            Deck.findSimilarCard(cardCollection);
-        }
-    }
-
-    public static void deSerialize() {
-        HashMap<Integer, Boolean> isIDSeenBefore = Card.getIsSeenBefore();
-        for (User user : allUsers) {
-            ArrayList<Integer> cardCollection = user.cardCollection;
-            for (int i = 0; i < cardCollection.size(); i++) {
-                Integer ID = cardCollection.get(i);
-                if (isIDSeenBefore.containsKey(ID)) {
-                    Card card = Card.getCardById(ID);
-                    assert card != null;
-                    card.getSimilarCard();
-                    user.cardCollection.set(i, Card.newSimilarCard());
-                } else {
-                    isIDSeenBefore.put(ID, true);
-                }
-            }
-        }
-    }
 
     public String getAvatarAddress() {
         if (avatarAddress == null) {
@@ -139,7 +113,7 @@ public class User extends FatherUser {
         return password.equals(this.password);
     }
 
-    public ArrayList<Deck> getAllUserDecksId() {
+    public ArrayList<Deck> getAllUserDecks() {
         ArrayList<Deck> allUserDecks = new ArrayList<>();
         for (String deckId : allUserDecksId) {
             allUserDecks.add(Deck.getDeckById(deckId));
@@ -154,7 +128,7 @@ public class User extends FatherUser {
     public ArrayList<Card> getCardCollection() {
         ArrayList<Card> cards = new ArrayList<>();
         for (Integer ID : cardCollection) {
-            cards.add(Card.getCardById(ID));
+            cards.add(UserCardCollection.getCardById(ID));
         }
         return cards;
     }
@@ -173,10 +147,6 @@ public class User extends FatherUser {
 
     public void removeCardFromUserCollection(Card card) {
         cardCollection.remove(card.getID());
-    }
-
-    public boolean isCardInUserCardCollection(Card card) {
-        return !this.getCardCollection().contains(card);
     }
 
     public void addDeckId(String ID, int place) {
@@ -205,7 +175,7 @@ public class User extends FatherUser {
 
     @Override
     public Deck getActiveDeck() {
-        for (Deck deck : getAllUserDecksId()) {
+        for (Deck deck : getAllUserDecks()) {
             if (deck != null) {
                 if (deck.isDeckActivated())
                     return deck;

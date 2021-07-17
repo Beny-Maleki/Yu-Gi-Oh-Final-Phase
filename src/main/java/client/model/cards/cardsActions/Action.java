@@ -6,8 +6,8 @@ import client.model.cards.cardsActions.magicActionChildren.ChangingEquipedMonste
 import client.model.cards.cardsActions.magicActionChildren.ChangingEquippedMonsterDefence;
 import client.model.cards.cardsActions.magicActionChildren.ChangingSomeRaceEquipedMonsterAttack;
 import client.model.cards.cardsActions.magicActionChildren.ChangingSomeRaceEquipedMonsterDefence;
-import client.model.cards.cardsProp.MagicCard;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.MagicCard;
+import connector.cards.MonsterCard;
 import client.model.enums.GameEnums.RequestingInput;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.gameprop.BoardProp.PlayerBoard;

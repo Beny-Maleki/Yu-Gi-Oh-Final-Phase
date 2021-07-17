@@ -23,12 +23,10 @@ public class WelcomePageController extends Controller {
     }
 
     public void saveData() throws IOException {
-        User.serialize();
-        Deck.serialize();
-        FileWriter writer = new FileWriter("jsonResources//Decks.Json");
+        FileWriter writer = new FileWriter("ServerResources//Decks.Json");
         writer.write(new Gson().toJson(Deck.getAllDecks()));
         writer.close();
-        writer = new FileWriter("jsonResources//Users.Json");
+        writer = new FileWriter("ServerResources//Users.Json");
         writer.write(new Gson().toJson(User.getAllUsers()));
         writer.close();
     }

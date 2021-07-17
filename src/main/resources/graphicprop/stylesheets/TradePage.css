@@ -1,0 +1,24 @@
+.popUp {
+    -fx-border-color: yellow;
+}
+
+.popUp-button {
+    -fx-border-style: None;
+    -fx-background-color: #ffb838;
+    -fx-text-fill: white;
+    -fx-background-radius: 0;
+}
+
+.popUp-button:hover {
+    -fx-background-color: yellow;
+}
+
+.label {
+    -fx-background-color: #ffb838;
+    -fx-text-fill: white;
+    -fx-background-radius: 0;
+}
+
+.menu-bar {
+    -fx-background-color: #ffb838;
+}

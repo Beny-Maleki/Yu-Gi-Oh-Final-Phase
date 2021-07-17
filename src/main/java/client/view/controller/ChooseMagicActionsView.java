@@ -1,6 +1,7 @@
 package client.view.controller;
 
 import animatefx.animation.Wobble;
+import client.UserCardCollection;
 import client.controller.menues.menuhandlers.menucontrollers.CardCreatorController;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -10,7 +11,7 @@ import client.model.cards.cardsActions.Action;
 import client.model.cards.cardsEnum.Magic.MagicAttribute;
 import client.model.cards.cardsEnum.Magic.MagicType;
 import client.model.cards.cardsEnum.Magic.RestrictionTypeInAdding;
-import client.model.cards.cardsProp.MagicCard;
+import connector.cards.MagicCard;
 import client.model.enums.Menu;
 import client.model.events.Event;
 
@@ -53,7 +54,7 @@ public class ChooseMagicActionsView {
         this.magicType = magicType;
         this.restrictionTypeInAdding = restrictionTypeInAdding;
         setDetailOfCard(details);
-        magicCards = MagicCard.getMagicCards();
+        magicCards = (ArrayList<MagicCard>) UserCardCollection.getUserMagicCards();
         setFirstDescription();
         updatePriceHere();
     }

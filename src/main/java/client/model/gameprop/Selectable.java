@@ -1,6 +1,6 @@
 package client.model.gameprop;
 
-import client.model.cards.cardsProp.Card;
+import connector.cards.Card;
 
 public interface Selectable {
     Card getCard();

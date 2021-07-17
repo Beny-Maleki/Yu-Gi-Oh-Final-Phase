@@ -1,4 +1,4 @@
-package Connector.exceptions;
+package connector.exceptions;
 
 public class AlreadyLoggedIn extends RuntimeException{
     public AlreadyLoggedIn() {

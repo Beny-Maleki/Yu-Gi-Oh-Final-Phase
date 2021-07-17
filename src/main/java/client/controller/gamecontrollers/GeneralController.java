@@ -2,8 +2,8 @@ package client.controller.gamecontrollers;
 
 import client.controller.gamecontrollers.gamestagecontroller.DrawPhaseController;
 import client.controller.gamecontrollers.gamestagecontroller.handlers.activeeffect.ActiveEffectChain;
-import client.model.cards.cardsProp.Card;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.Card;
+import connector.cards.MonsterCard;
 import client.model.enums.GameEnums.CardLocation;
 import client.model.enums.GameEnums.GameError;
 import client.model.enums.GameEnums.GamePhaseEnums.General;
@@ -132,7 +132,7 @@ public class GeneralController {
     }
 
     public boolean finishRound(Game game) throws FileNotFoundException {
-        GameInProcess.getGame().finishRound(game.getTurnOfGame());
+      game.finishRound(game.getTurnOfGame());
         return roundOrGameResults(game);
     }
 

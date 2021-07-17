@@ -1,8 +1,8 @@
 package client.model.cards.cardsActions.magicActionChildren;
 
 import client.model.cards.cardsActions.Action;
-import client.model.cards.cardsProp.Card;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.Card;
+import connector.cards.MonsterCard;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.gameprop.BoardProp.PlayerBoard;
 import client.model.gameprop.GameInProcess;

@@ -4,7 +4,7 @@ import client.controller.Controller;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import client.DataBase;
+import server.ServerDataBase;
 import client.model.cards.cardsActions.Action;
 import client.model.cards.cardsEnum.Magic.MagicAttribute;
 import client.model.cards.cardsEnum.Magic.MagicType;
@@ -12,8 +12,8 @@ import client.model.cards.cardsEnum.Magic.RestrictionTypeInAdding;
 import client.model.cards.cardsEnum.Monster.MonsterAttribute;
 import client.model.cards.cardsEnum.Monster.MonsterRace;
 import client.model.cards.cardsEnum.Monster.MonsterType;
-import client.model.cards.cardsProp.MagicCard;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.MagicCard;
+import connector.cards.MonsterCard;
 import client.model.events.Event;
 import client.model.userProp.LoginUser;
 
@@ -46,7 +46,7 @@ public class CardCreatorController extends Controller {
         if (description.equals("")) {
             message.setText("please fill description first");
         } else {
-            DataBase.getInstance().saveMonsters(new MonsterCard(name, level, monsterAttribute.toString(), monsterRace.toString(), monsterType.toString(), attack, defense, description, price.split(" ")[1]));
+            ServerDataBase.getInstance().saveMonsters(new MonsterCard(name, level, monsterAttribute.toString(), monsterRace.toString(), monsterType.toString(), attack, defense, description, price.split(" ")[1]));
             message.setText("you create monster successfully PLEASE RERUN THE PROGRAM");
         }
         displayMessage(message);
@@ -86,7 +86,7 @@ public class CardCreatorController extends Controller {
         MagicCard magicCard = new MagicCard(name, typeOfMagic, magicAttribute, description, typeOfRestriction, String.valueOf(priceInt));
         magicCard.setActionsOfMagic(actions);
         magicCard.setTriggers(triggers);
-        DataBase.getInstance().saveMagics(magicCard);
+        ServerDataBase.getInstance().saveMagics(magicCard);
         LoginUser.getUser().changeBalance((priceInt / 10) * -1);
         displayMessage(message);
     }

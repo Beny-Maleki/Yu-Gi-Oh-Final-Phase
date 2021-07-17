@@ -1,7 +1,9 @@
 package client.controller;
 
-import Connector.commands.Command;
+import connector.commands.Command;
 import animatefx.animation.*;
+import client.model.enums.Menu;
+import client.view.controller.ScoreboardView;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -12,11 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import client.model.enums.Menu;
-import client.view.controller.ScoreboardView;
 
 import java.io.IOException;
 

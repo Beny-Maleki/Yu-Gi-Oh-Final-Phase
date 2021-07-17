@@ -2,8 +2,8 @@ package client.model.gameprop.BoardProp;
 
 import animatefx.animation.FadeOut;
 import javafx.scene.image.Image;
-import client.model.cards.cardsProp.Card;
-import client.model.cards.cardsProp.MagicCard;
+import connector.cards.Card;
+import connector.cards.MagicCard;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.enums.GameEnums.cardvisibility.MagicHouseVisibilityState;
 import client.model.gameprop.GameInProcess;

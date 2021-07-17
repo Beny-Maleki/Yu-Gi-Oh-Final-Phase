@@ -12,13 +12,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import client.model.cards.CardHouse;
-import client.model.cards.cardsProp.Card;
-import client.model.cards.cardsProp.MagicCard;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.Card;
+import connector.cards.MagicCard;
+import connector.cards.MonsterCard;
 import client.model.enums.Menu;
 import client.model.enums.Origin;
 import client.model.userProp.LoginUser;
 import client.model.userProp.User;
+import server.ServerCardCollection;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -86,8 +87,8 @@ public class ShopView {
 
     public void drawSlides() {
         slidesOfShopCards = new ArrayList<>();
-
-        ArrayList<Card> cards = ShopMenuController.cardNameAlphabetSorter(Card.getOriginalCard());
+        //TODO change to response
+        ArrayList<Card> cards = ShopMenuController.cardNameAlphabetSorter(ServerCardCollection.getCards());
         int numOfSlides = (cards.size() / 15);
         if (cards.size() % 15 != 0) numOfSlides++; // for now because of additional not used cards there is one empty page left empty!
 

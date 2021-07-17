@@ -1,7 +1,7 @@
 package client.controller.menues.menuhandlers.menucontrollers;
 
 import client.controller.Controller;
-import client.model.cards.cardsProp.Card;
+import connector.cards.Card;
 import client.model.enums.Error;
 import client.model.enums.MenusMassages.DeckMessages;
 import client.model.userProp.Deck;
@@ -51,7 +51,7 @@ public class ShopMenuController extends Controller {
                 count++;
             }
         }
-        for (Deck deck : loggedInUser.getAllUserDecksId()) {
+        for (Deck deck : loggedInUser.getAllUserDecks()) {
             if (deck != null) {
                 for (Card c : deck.getMainDeck()) {
                     if (c.getName().equals(selectedCard.getName())) {

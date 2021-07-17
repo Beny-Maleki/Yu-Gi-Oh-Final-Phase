@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import client.model.enums.Menu;
 import client.view.AudioHandler;
 import client.view.AudioPath;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
@@ -18,11 +19,13 @@ public class WelcomeView {
     public Button Login;
     public Button Exit;
     public Button Scoreboard;
+    public AnchorPane popUp;
 
     WelcomePageController controller;
 
     {
         controller = WelcomePageController.getInstance();
+
     }
 
     @FXML

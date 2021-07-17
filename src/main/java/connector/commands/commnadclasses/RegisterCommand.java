@@ -1,7 +1,7 @@
-package Connector.commands;
+package connector.commands.commnadclasses;
 
-import Connector.commands.Command;
-import Connector.commands.CommandType;
+import connector.commands.Command;
+import connector.commands.CommandType;
 
 public class RegisterCommand extends Command {
     private String username;

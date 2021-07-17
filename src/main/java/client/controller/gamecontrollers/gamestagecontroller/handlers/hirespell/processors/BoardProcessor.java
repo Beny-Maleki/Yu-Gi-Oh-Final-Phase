@@ -2,7 +2,7 @@ package client.controller.gamecontrollers.gamestagecontroller.handlers.hirespell
 
 import client.controller.gamecontrollers.gamestagecontroller.handlers.hirespell.SpellProcessor;
 import client.model.cards.cardsEnum.Magic.MagicAttribute;
-import client.model.cards.cardsProp.MagicCard;
+import connector.cards.MagicCard;
 import client.model.enums.GameEnums.GamePhaseEnums.MainPhase;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.gameprop.BoardProp.PlayerBoard;

@@ -1,24 +1,18 @@
 package client.controller.menues.menuhandlers.menucontrollers;
 
-import Connector.commands.Command;
-import Connector.commands.CommandType;
-import Connector.commands.RegisterCommand;
+import connector.commands.CommandType;
+import connector.commands.commnadclasses.RegisterCommand;
 import animatefx.animation.FadeOut;
 import client.controller.Controller;
+import client.model.Exceptions.EmptyTextFieldException;
+import client.model.enums.Menu;
 import client.network.ClientListener;
 import client.network.ClientSender;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import client.model.Exceptions.EmptyTextFieldException;
-import client.model.enums.Error;
-import client.model.enums.Menu;
-import client.model.userProp.User;
-import client.model.userProp.UserInfoType;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

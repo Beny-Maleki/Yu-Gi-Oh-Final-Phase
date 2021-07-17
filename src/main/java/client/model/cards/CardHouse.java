@@ -2,7 +2,7 @@ package client.model.cards;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import client.model.cards.cardsProp.Card;
+import connector.cards.Card;
 import client.model.enums.Origin;
 
 import java.util.ArrayList;

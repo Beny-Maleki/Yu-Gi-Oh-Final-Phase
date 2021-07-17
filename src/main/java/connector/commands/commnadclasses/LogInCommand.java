@@ -1,5 +1,7 @@
-package Connector.commands;
+package connector.commands.commnadclasses;
 
+import connector.commands.Command;
+import connector.commands.CommandType;
 import client.model.userProp.User;
 
 public class LogInCommand extends Command {

@@ -6,8 +6,8 @@ import client.controller.gamecontrollers.gamestagecontroller.handlers.changeposi
 import client.controller.gamecontrollers.gamestagecontroller.handlers.flipsummon.FlipSummonChain;
 import client.controller.gamecontrollers.gamestagecontroller.handlers.hiremonster.HireMonsterChain;
 import client.controller.gamecontrollers.gamestagecontroller.handlers.hirespell.SetSpellChain;
-import client.model.cards.cardsProp.MagicCard;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.MagicCard;
+import connector.cards.MonsterCard;
 import client.model.enums.GameEnums.GamePhaseEnums.MainPhase;
 import client.model.enums.GameEnums.TypeOfHire;
 import client.model.enums.GameEnums.WantedPos;

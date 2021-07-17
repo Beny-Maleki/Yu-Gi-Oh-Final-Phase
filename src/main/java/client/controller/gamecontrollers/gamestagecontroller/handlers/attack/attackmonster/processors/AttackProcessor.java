@@ -1,7 +1,7 @@
 package client.controller.gamecontrollers.gamestagecontroller.handlers.attack.attackmonster.processors;
 
 import client.controller.gamecontrollers.gamestagecontroller.handlers.attack.attackmonster.AttackMonsterProcessor;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.MonsterCard;
 import client.model.enums.GameEnums.GamePhaseEnums.BattlePhase;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;

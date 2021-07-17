@@ -2,7 +2,7 @@ package client.controller.gamecontrollers.gamestagecontroller.handlers.hiremonst
 
 import client.controller.gamecontrollers.gamestagecontroller.handlers.hiremonster.MonsterProcessor;
 import client.model.cards.cardsEnum.Monster.MonsterType;
-import client.model.cards.cardsProp.MonsterCard;
+import connector.cards.MonsterCard;
 import client.model.enums.GameEnums.GamePhaseEnums.MainPhase;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.enums.GameEnums.TypeOfHire;

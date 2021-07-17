@@ -1,6 +1,6 @@
 package client.model.gameprop.gamemodel;
 
-import client.model.cards.cardsProp.Card;
+import connector.cards.Card;
 import client.model.enums.GameEnums.PlayerTurn;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.enums.GameEnums.TypeOfHire;

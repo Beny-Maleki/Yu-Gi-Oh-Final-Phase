@@ -3,7 +3,7 @@ package client.model.cards.cardsActions.magicActionChildren;
 
 import client.controller.gamecontrollers.GetStringInputFromView;
 import client.model.cards.cardsActions.Action;
-import client.model.cards.cardsProp.Card;
+import connector.cards.Card;
 import client.model.enums.GameEnums.RequestingInput;
 import client.model.enums.GameEnums.SideOfFeature;
 import client.model.gameprop.BoardProp.HandHouse;
