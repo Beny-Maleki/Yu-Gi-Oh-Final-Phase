@@ -35,11 +35,13 @@ public class LoginPageController extends Controller {
 
             LogInCommand response = (LogInCommand) ClientListener.getServerResponse();
             if (responseException != null) {
-                processLoginResponse(message, response);
+                message.setText(responseException.getMessage());
+                responseException = null;
             } else {
+                processLoginResponse(message, response);
                 ClientSender.getSender().sendMessage(new GetUsersCardCommand(CommandType.GET_USER_CARD, Client.getClient().getToken()));
                 try {
-                    while (ClientListener.getServerResponse().getCommandType() == CommandType.WAITING) {
+                    while (ClientListener.getServerResponse().getCommandType() != CommandType.GET_USER_CARD) {
                         Thread.sleep(100);
                     }
                 } catch (InterruptedException e) {
@@ -64,7 +66,5 @@ public class LoginPageController extends Controller {
     private void processLoginResponse(Label message, LogInCommand response) {
         LoginUser.setUser(response.getUser());
         Client.getClient().setToken(response.getToken());
-        message.setText(responseException.getMessage());
-        responseException = null;
     }
 }

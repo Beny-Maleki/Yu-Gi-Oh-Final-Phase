@@ -31,7 +31,6 @@ public class ClientHandler implements Runnable {
     ClientHandler(Socket clientSocket) throws IOException {
         netIn = new Scanner(clientSocket.getInputStream());
         netOut = new Formatter(clientSocket.getOutputStream());
-
         clientInfo = new ClientInfo(clientSocket);
     }
 
@@ -73,9 +72,13 @@ public class ClientHandler implements Runnable {
         assert user != null;
         separateUserCollectionCard(user, monsterCards, magicCards);
         for (Deck deck : user.getAllUserDecks()) {
-            separateDeckCards(monsterCards, magicCards, deck.getMainDeck());
-            separateDeckCards(monsterCards, magicCards, deck.getSideDeck());
+            if (deck != null) {
+                separateDeckCards(monsterCards, magicCards, deck.getMainDeck());
+                separateDeckCards(monsterCards, magicCards, deck.getSideDeck());
+            }
         }
+        getUsersCardCommand.setUserMonsterCard(monsterCards);
+        getUsersCardCommand.setUserMagicCard(magicCards);
         netOut.format("%s\n", Command.makeJson(getUsersCardCommand));
         netOut.flush();
     }
@@ -105,7 +108,7 @@ public class ClientHandler implements Runnable {
         } else if (null != User.getUserByUserInfo(nickname, UserInfoType.NICKNAME)) {
             registerCommand.setException(new DuplicateNicknameException());
         } else {
-            new User(username, password, nickname, imageAddress);
+            new User(username, nickname,password ,  imageAddress);
             registerCommand.setException(null);
         }
 
@@ -124,7 +127,7 @@ public class ClientHandler implements Runnable {
                     logInCommand.setUser(user);
                     String token = UUID.randomUUID().toString();
                     logInCommand.setToken(token);
-                    ClientInfo.addUserToLoggedIn(clientInfo);
+                    ClientInfo.addUserToLoggedIn(clientInfo, token, user);
                 } else {
                     logInCommand.setException(new AlreadyLoggedIn());
                 }

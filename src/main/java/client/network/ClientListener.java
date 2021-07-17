@@ -54,6 +54,8 @@ public class ClientListener extends Thread {
                 case DUEL:
                 case PROFILE:
             }
+
+            System.out.println("the command typeis : " + serverResponse.getCommandType());
             Controller.setResponseCommand(serverResponse);
             Controller.setResponseException(serverResponse.getException());
 

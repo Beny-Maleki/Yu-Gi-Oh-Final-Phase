@@ -124,7 +124,7 @@ public class ServerDataBase {
 
     private ArrayList<MonsterCard> loadMonsterCards(ArrayList<MonsterCard> monsterCards) {
         try {
-            String json = new String(Files.readAllBytes(Paths.get("src/main/java/server/ServerResources/MagicCard.json")));
+            String json = new String(Files.readAllBytes(Paths.get("src/main/java/server/ServerResources/MonsterCard.json")));
             monsterCards = new Gson().fromJson(json,
                     new TypeToken<List<MonsterCard>>() {
                     }.getType());
@@ -154,7 +154,7 @@ public class ServerDataBase {
     private void loadUserAndDeckJson() {
         String json;
         try {
-            json = new String(Files.readAllBytes(Paths.get("src/main/java/server/ServerResources/MagicCard.json")));
+            json = new String(Files.readAllBytes(Paths.get("src/main/java/server/ServerResources/Decks.json")));
             ArrayList<Deck> decks;
             decks = new Gson().fromJson(json,
                     new TypeToken<List<Deck>>() {
@@ -166,7 +166,7 @@ public class ServerDataBase {
         }
 
         try {
-            json = new String(Files.readAllBytes(Paths.get("src/main/java/server/ServerResources/MagicCard.json")));
+            json = new String(Files.readAllBytes(Paths.get("src/main/java/server/ServerResources/Users.json")));
             ArrayList<User> users;
             users = new Gson().fromJson(json,
                     new TypeToken<List<User>>() {

@@ -11,24 +11,25 @@ public class GetUsersCardCommand extends Command {
     private List<MonsterCard> userMonsterCard;
     private List<MagicCard> userMagicCard;
 
+
     public GetUsersCardCommand(CommandType commandType, String token) {
         super(commandType);
         this.token = token;
-    }
-
-    public void setUserMagicCard(List<MagicCard> userMagicCard) {
-        this.userMagicCard = userMagicCard;
-    }
-
-    public void setUserMonsterCard(List<MonsterCard> userMonsterCard) {
-        this.userMonsterCard = userMonsterCard;
     }
 
     public List<MagicCard> getUserMagicCard() {
         return userMagicCard;
     }
 
+    public void setUserMagicCard(List<MagicCard> userMagicCard) {
+        this.userMagicCard = userMagicCard;
+    }
+
     public List<MonsterCard> getUserMonsterCard() {
         return userMonsterCard;
+    }
+
+    public void setUserMonsterCard(List<MonsterCard> userMonsterCard) {
+        this.userMonsterCard = userMonsterCard;
     }
 }

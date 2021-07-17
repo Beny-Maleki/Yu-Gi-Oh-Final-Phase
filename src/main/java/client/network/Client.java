@@ -2,11 +2,9 @@ package client.network;
 
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class Client {
     private static Client client;
-    private static Scanner netIn;
     private final ClientListener listener;
     private Socket socket;
     private String token;
