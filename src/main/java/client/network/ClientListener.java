@@ -55,7 +55,7 @@ public class ClientListener extends Thread {
                 case PROFILE:
             }
 
-            System.out.println("the command typeis : " + serverResponse.getCommandType());
+            System.out.println("the command type is : " + serverResponse.getCommandType());
             Controller.setResponseCommand(serverResponse);
             Controller.setResponseException(serverResponse.getException());
 

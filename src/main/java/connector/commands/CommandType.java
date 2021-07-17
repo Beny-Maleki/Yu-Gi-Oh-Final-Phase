@@ -8,4 +8,5 @@ public enum CommandType {
     PROFILE,
     GET_USER_CARD,
     GET_SHOP_AVAILABLE_CARD,
+    CHAT
 }

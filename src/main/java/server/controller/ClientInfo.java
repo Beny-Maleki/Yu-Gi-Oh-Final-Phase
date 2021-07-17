@@ -24,9 +24,20 @@ public class ClientInfo {
         clientInfos.add(this);
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setToken(String token) {
+    }
+
     public static void addUserToLoggedIn(ClientInfo clientInfo, String token, User user) {
         clientInfo.user = user;
         loggedInClients.put(token, clientInfo);
+    }
+
+    public static HashMap<String, ClientInfo> getLoggedInClients() {
+        return loggedInClients;
     }
 
     public static User getUserByToken(String token) {
@@ -37,10 +48,4 @@ public class ClientInfo {
         return loggedInClients.get(token).user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setToken(String token) {
-    }
 }
