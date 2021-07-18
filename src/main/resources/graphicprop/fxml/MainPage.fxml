@@ -27,10 +27,9 @@
     <Button fx:id="importExport" layoutX="44.0" styleClass="button-game" layoutY="542.0" mnemonicParsing="false"
             onMouseClicked="#run" onMouseEntered="#soundEffect" prefHeight="57.0" prefWidth="238.0" text="Import Export"/>
     <ImageView fx:id="tradeButton" fitHeight="104.0" styleClass="button-game" fitWidth="75.0" layoutX="839.0"
-               layoutY="562.0" onMouseClicked="#run" onMouseEntered="#soundEffect" pickOnBounds="true" preserveRatio="true">
-        <image>
-            <Image url="@../images/backOfCard.jpg"/>
-        </image>
+               layoutY="562.0" onMouseClicked="#run" onMouseEntered="#soundEffect" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../images/backOfCard.jpg"/>
     </ImageView>
     <Label alignment="CENTER" layoutX="831.0" layoutY="594.0" prefHeight="39.0" prefWidth="88.0" text="TRADE"
            textFill="RED">
