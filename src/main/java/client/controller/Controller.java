@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public abstract class Controller {
     Parent parent;
@@ -132,6 +134,11 @@ public abstract class Controller {
         });
 
         timeline.play();
+    }
+
+    public Matcher matcher(String regex, String command) {
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(command);
     }
 
     public void displayMessage(Label message) {

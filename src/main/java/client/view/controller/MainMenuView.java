@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import client.model.enums.Menu;
 import client.view.AudioHandler;
 import client.view.AudioPath;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
@@ -20,6 +21,9 @@ public class MainMenuView {
     private final MainMenuController controller;
     public Button createCard;
     public Button importExport;
+    public AnchorPane chatRoomPopUp;
+    public AnchorPane popUp;
+
 
     {
         controller = new MainMenuController();

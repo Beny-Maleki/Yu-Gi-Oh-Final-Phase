@@ -4,15 +4,23 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add client listener">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/model/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/ChatBoxCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/MessageDatabase.java" afterDir="false" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add chat box">
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/ChatRoomController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/ChatRoomView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/ChatCommandType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ChatRoom.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/closeIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/sendIcon.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connector/commands/CommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/commands/CommandType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/MainMenuView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/ChatBoxCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/ChatBoxCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ClientInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/CommandBranch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/UserManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/UserPatterns.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +53,9 @@
         <option value="JUnit5 Test Class" />
         <option value="JUnit4 Test Class" />
         <option value="package-info" />
-        <option value="FxmlFile" />
         <option value="CSS File" />
         <option value="Enum" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -132,7 +140,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Viewer" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/server/model" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/graphicprop/images" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -156,11 +164,11 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Asus\Desktop\Yu-Gi-Oh-Final-Phase\src\main\resources\graphicprop\images" />
       <recent name="C:\Users\Asus\Desktop\Yu-Gi-Oh-Final-Phase\src\main\java\server\model" />
       <recent name="C:\Users\Asus\Desktop\Yu-Gi-Oh-Final-Phase\src\main\java\client\model" />
       <recent name="C:\Users\Asus\Desktop\Yu-Gi-Oh-Final-Phase\src\main\java\connector\commands\commnadclasses" />
       <recent name="C:\Users\Asus\Desktop\graphics\src\main\resources\graphicprop\images\Cards\SpellTrap" />
-      <recent name="C:\Users\Asus\Desktop\graphics\src\main\resources\graphicprop\images" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -200,6 +208,19 @@
     <configuration name="MainServer" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="server.Main" />
       <module name="YuGiOh" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -322,13 +343,7 @@
       <workItem from="1626400690795" duration="3215000" />
       <workItem from="1626487443413" duration="13535000" />
       <workItem from="1626518022073" duration="1729000" />
-      <workItem from="1626519812161" duration="686000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۵۸" summary="json">
-      <created>1620411136104</created>
-      <option name="number" value="LOCAL‎۰۰۰۵۸" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۵۸" />
-      <updated>1620411136104</updated>
+      <workItem from="1626519812161" duration="15263000" />
     </task>
     <task id="LOCAL‎۰۰۰۵۹" summary="json">
       <created>1620413922144</created>
@@ -651,7 +666,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626420816007</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="add chat box">
+      <created>1626520882812</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1626520882813</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,8 +693,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix" />
-    <MESSAGE value="final version Profile menu" />
     <MESSAGE value="initial page changed" />
     <MESSAGE value="--DeckModifier updated:&#10;hovering cards whilst on them,&#10;changing slides&#10;relevant message&#10;other nodes scheme designed" />
     <MESSAGE value="--DeckModifier updated:&#10;move cards logic added&#10;selected Card improved&#10;button visibilities fixed" />
@@ -696,7 +716,9 @@
     <MESSAGE value="attack process animation" />
     <MESSAGE value="add Client" />
     <MESSAGE value="add login and register communications" />
-    <option name="LAST_COMMIT_MESSAGE" value="add login and register communications" />
+    <MESSAGE value="add cht box" />
+    <MESSAGE value="add chat box" />
+    <option name="LAST_COMMIT_MESSAGE" value="add chat box" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

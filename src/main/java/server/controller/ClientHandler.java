@@ -11,10 +11,7 @@ import connector.cards.Card;
 import connector.cards.MagicCard;
 import connector.cards.MonsterCard;
 import connector.commands.Command;
-import connector.commands.commnadclasses.ChatBoxCommand;
-import connector.commands.commnadclasses.GetUsersCardCommand;
-import connector.commands.commnadclasses.LogInCommand;
-import connector.commands.commnadclasses.RegisterCommand;
+import connector.commands.commnadclasses.*;
 import connector.exceptions.AlreadyLoggedIn;
 import connector.exceptions.DuplicateNicknameException;
 import connector.exceptions.DuplicateUsernameException;
@@ -152,33 +149,36 @@ public class ClientHandler implements Runnable {
     }
 
     private void handleChatBox(ChatBoxCommand chatBoxCommand) {
-        boolean haveSentNewMessage = chatBoxCommand.haveSentMessage();
-        boolean haveOmittedMessage = chatBoxCommand.haveOmittedMessage();
-        boolean haveEditedMessage = chatBoxCommand.haveEditedMessage();
-        boolean havePinnedMessage = chatBoxCommand.havePinnedMessage();
-
+        ChatCommandType type = chatBoxCommand.getChatCommandType();
         String sentMessage;
         User sender;
-        if (haveSentNewMessage) {
-            sentMessage = chatBoxCommand.getSentMessage();
-            sender = chatBoxCommand.getSender();
+        switch (type) {
+            case NEW_MESSAGE: {
+                sentMessage = chatBoxCommand.getSentMessage();
+                sender = chatBoxCommand.getSender();
 
-            boolean isInReplyToAnother = chatBoxCommand.isInReplyToAnother();
-            String IDInReplyTo = null;
-            if (isInReplyToAnother) IDInReplyTo = chatBoxCommand.getIDInReplyTo();
+                boolean isInReplyToAnother = chatBoxCommand.isInReplyToAnother();
+                String IDInReplyTo = null;
+                if (isInReplyToAnother) IDInReplyTo = chatBoxCommand.getIDInReplyTo();
 
-            new Message(sentMessage, sender, isInReplyToAnother, IDInReplyTo);
-        } else if (haveOmittedMessage) {
-            String ID = chatBoxCommand.getMessageID();
-            MessageDatabase.getInstance().removeFromAllMessages(ID);
-        } else if (haveEditedMessage) {
-            String ID = chatBoxCommand.getMessageID();
-            Message message = MessageDatabase.getInstance().getFromAllMessages(ID);
-            message.setMessage(chatBoxCommand.getSentMessage());
-        } else if (havePinnedMessage) {
-            String ID = chatBoxCommand.getMessageID();
-            Message toPin = MessageDatabase.getInstance().getFromAllMessages(ID);
-            MessageDatabase.getInstance().putToPinnedMessages(ID, toPin);
+                new Message(sentMessage, sender, isInReplyToAnother, IDInReplyTo);
+                break;
+            }
+            case OMIT_MESSAGE: {
+                String ID = chatBoxCommand.getMessageID();
+                MessageDatabase.getInstance().removeFromAllMessages(ID);
+                break;
+            }
+            case EDIT_MESSAGE: {
+                String ID = chatBoxCommand.getMessageID();
+                Message message = MessageDatabase.getInstance().getFromAllMessages(ID);
+                message.setMessage(chatBoxCommand.getSentMessage());
+            }
+            case PIN_MESSAGE: {
+                String ID = chatBoxCommand.getMessageID();
+                Message toPin = MessageDatabase.getInstance().getFromAllMessages(ID);
+                MessageDatabase.getInstance().putToPinnedMessages(ID, toPin);
+            }
         }
 
         chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoggedInClients().size());
