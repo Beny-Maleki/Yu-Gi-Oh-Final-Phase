@@ -1,85 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" onMouseClicked="#run" prefHeight="700.0" prefWidth="1000" styleClass="root" stylesheets="/graphicprop/stylesheets/DeckModifier.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.DeckModifierView">
-   <AnchorPane fx:id="mainDeckPane" layoutX="30.0" layoutY="241.0" prefHeight="270.0" prefWidth="500.0"
-               styleClass="mainDeckPane">
-      <Rectangle fx:id="previousMainDeck" height="87.0" layoutX="5.0" layoutY="81.0" onMouseClicked="#run"
-                 style="-fx-cursor: hand;" width="15.0"/>
-      <Label fx:id="previousMainDeckButtonLabel" layoutX="-10.0" layoutY="116.0" onMouseClicked="#run" rotate="270.0"
-             style="-fx-cursor: hand;" text="Previous" textFill="WHITE"/>
-      <Rectangle fx:id="nextMainDeck" height="87.0" layoutX="480.0" layoutY="81.0" onMouseClicked="#run"
-                 style="-fx-cursor: hand;" width="15.0"/>
-      <Label fx:id="nextMainDeckButtonLabel" layoutX="475.0" layoutY="116.0" onMouseClicked="#run" rotate="90.0"
-             style="-fx-cursor: hand;" text="Next" textFill="WHITE"/>
+<AnchorPane fx:id="anchorPane" onMouseClicked="#run" prefHeight="700.0" prefWidth="1000" styleClass="root" stylesheets="/graphicprop/stylesheets/DeckModifier.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.DeckModifierView">
+   <AnchorPane fx:id="mainDeckPane" layoutX="30.0" layoutY="241.0" prefHeight="270.0" prefWidth="500.0" styleClass="mainDeckPane">
+      <Rectangle fx:id="previousMainDeck" height="87.0" layoutX="5.0" layoutY="81.0" onMouseClicked="#run" style="-fx-cursor: hand;" width="15.0" />
+      <Label fx:id="previousMainDeckButtonLabel" layoutX="-10.0" layoutY="116.0" onMouseClicked="#run" rotate="270.0" style="-fx-cursor: hand;" text="Previous" textFill="WHITE" />
+      <Rectangle fx:id="nextMainDeck" height="87.0" layoutX="480.0" layoutY="81.0" onMouseClicked="#run" style="-fx-cursor: hand;" width="15.0" />
+      <Label fx:id="nextMainDeckButtonLabel" layoutX="475.0" layoutY="116.0" onMouseClicked="#run" rotate="90.0" style="-fx-cursor: hand;" text="Next" textFill="WHITE" />
    </AnchorPane>
-   <AnchorPane fx:id="sideDeckPane" layoutX="30.0" layoutY="546.0" prefHeight="140.0" prefWidth="500.0"
-               styleClass="sideDeckPane">
-      <Rectangle fx:id="nextSideDeck" height="87.0" layoutX="479.0" layoutY="27.0" onMouseClicked="#run"
-                 style="-fx-cursor: hand;" width="15.0"/>
-      <Label fx:id="nextSideDeckButtonLabel" layoutX="474.0" layoutY="61.0" onMouseClicked="#run" rotate="90.0"
-             style="-fx-cursor: hand;" text="Next" textFill="WHITE"/>
-      <Rectangle fx:id="previousSideDeck" height="87.0" layoutX="5.0" layoutY="27.0" onMouseClicked="#run"
-                 width="15.0"/>
-      <Label fx:id="previousSideDeckButtonLabel" layoutX="-9.0" layoutY="61.0" onMouseClicked="#run" rotate="270.0"
-             style="-fx-cursor: hand;" text="Previous" textFill="WHITE"/>
+   <AnchorPane fx:id="sideDeckPane" layoutX="30.0" layoutY="546.0" prefHeight="140.0" prefWidth="500.0" styleClass="sideDeckPane">
+      <Rectangle fx:id="nextSideDeck" height="87.0" layoutX="479.0" layoutY="27.0" onMouseClicked="#run" style="-fx-cursor: hand;" width="15.0" />
+      <Label fx:id="nextSideDeckButtonLabel" layoutX="474.0" layoutY="61.0" onMouseClicked="#run" rotate="90.0" style="-fx-cursor: hand;" text="Next" textFill="WHITE" />
+      <Rectangle fx:id="previousSideDeck" height="87.0" layoutX="5.0" layoutY="27.0" onMouseClicked="#run" width="15.0" />
+      <Label fx:id="previousSideDeckButtonLabel" layoutX="-9.0" layoutY="61.0" onMouseClicked="#run" rotate="270.0" style="-fx-cursor: hand;" text="Previous" textFill="WHITE" />
    </AnchorPane>
-   <HBox alignment="CENTER" layoutX="592.0" layoutY="635.0" prefHeight="45.0" prefWidth="235.0"
-         styleClass="titleOfPage">
+   <HBox alignment="CENTER" layoutX="592.0" layoutY="635.0" prefHeight="45.0" prefWidth="235.0" styleClass="titleOfPage">
       <Label layoutX="10.0" prefHeight="36.0" prefWidth="219.0" text="Deck Construction">
          <font>
-            <Font name="System Bold Italic" size="25.0"/>
+            <Font name="System Bold Italic" size="25.0" />
          </font>
       </Label>
    </HBox>
-   <Button fx:id="backButton" layoutX="864.0" layoutY="640.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="65.0" style="-fx-cursor: hand;" styleClass="button" onMouseClicked="#run" text="Back" />
-   <Button fx:id="moveToMainDeckButton" layoutX="595.0" layoutY="563.0" mnemonicParsing="false" onMouseClicked="#run" text="Move to client.Main Deck" />
+   <Button fx:id="backButton" layoutX="864.0" layoutY="640.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="36.0" prefWidth="65.0" style="-fx-cursor: hand;" styleClass="button" text="Back" />
+   <Button fx:id="moveToMainDeckButton" layoutX="595.0" layoutY="563.0" mnemonicParsing="false" onMouseClicked="#run" text="Move to Main Deck" />
    <Button fx:id="moveToSideDeckButton" layoutX="736.0" layoutY="563.0" mnemonicParsing="false" onMouseClicked="#run" text="Move to Side Deck" />
    <Button fx:id="moveToCollectionButton" layoutX="871.0" layoutY="563.0" mnemonicParsing="false" onMouseClicked="#run" text="Move to Collection" />
    <Pane fx:id="messageContainer" layoutX="595.0" layoutY="600.0" prefHeight="32.0" prefWidth="403.0">
       <Label fx:id="message" alignment="TOP_LEFT" layoutX="5.0" textFill="#3a5048">
          <font>
-            <Font name="System Bold Italic" size="20.0"/>
+            <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
    </Pane>
    <Pane layoutX="530.0" layoutY="241.0" prefHeight="270.0" prefWidth="30.0" style="-fx-background-color: #22364E;">
       <Label layoutX="-35.0" layoutY="35.0" rotate="90.0" text="client.Main Deck" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="20.0"/>
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
    </Pane>
    <Pane layoutX="528.0" layoutY="546.0" prefHeight="140.0" prefWidth="30.0" style="-fx-background-color: #22364E;">
       <Label layoutX="-30.0" layoutY="31.0" rotate="90.0" text="Side Deck" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="20.0"/>
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
    </Pane>
-   <Pane layoutX="595.0" layoutY="209.0" prefHeight="32.0" prefWidth="274.0"
-         style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20;">
+   <Pane layoutX="595.0" layoutY="209.0" prefHeight="32.0" prefWidth="274.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20;">
       <Label layoutX="10.0" layoutY="2.0" text="Your Collection Of Cards">
          <font>
-            <Font name="System Bold" size="22.0"/>
+            <Font name="System Bold" size="22.0" />
          </font>
       </Label>
    </Pane>
    <Pane layoutX="592.0" layoutY="241.0" prefHeight="308.0" prefWidth="403.0" styleClass="selectedCardContainer">
-      <ImageView fx:id="selectedCardImageView" fitHeight="292.0" fitWidth="200.0" layoutX="8.0" layoutY="8.0"
-                 pickOnBounds="true" preserveRatio="true"/>
+      <ImageView fx:id="selectedCardImageView" fitHeight="292.0" fitWidth="200.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="selectedCardDescriptionLabel" layoutX="215.0" layoutY="25.0" textFill="WHITE">
          <font>
-            <Font size="11.0"/>
+            <Font size="11.0" />
          </font>
       </Label>
    </Pane>
    <ScrollPane fx:id="scrollPane" layoutY="4.0" prefHeight="202.0" prefWidth="1000.0">
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0"/>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
    </ScrollPane>
 </AnchorPane>

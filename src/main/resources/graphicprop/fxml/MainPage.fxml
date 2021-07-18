@@ -1,20 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../stylesheets/MainPage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.MainMenuView">
-    <ImageView fitHeight="125.0" fitWidth="254.0" layoutX="36.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../images/YuGiOhLogo.png" />
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../stylesheets/MainPage.css"
+            xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="client.view.controller.MainMenuView">
+    <ImageView fitHeight="125.0" fitWidth="254.0" layoutX="36.0" layoutY="52.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../images/YuGiOhLogo.png"/>
     </ImageView>
-    <Button fx:id="duel" layoutX="44.0" layoutY="176.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" prefHeight="58.0" prefWidth="238.0" text="DUEL" />
-    <Button fx:id="decksConstruction" layoutX="44.0" layoutY="402.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" prefHeight="58.0" prefWidth="238.0" text="Decks Construction" />
-    <Button fx:id="shop" layoutX="44.0" layoutY="326.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" prefHeight="37.0" prefWidth="238.0" text="Shop" />
-    <Button fx:id="logout" layoutX="45.0" layoutY="608.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" prefHeight="30.0" prefWidth="238.0" text="Logout" />
-   <Button fx:id="profile" layoutX="44.0" layoutY="252.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" prefHeight="58.0" prefWidth="238.0" text="Profile" />
-   <Button fx:id="createCard" layoutX="45.0" layoutY="474.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" prefHeight="57.0" prefWidth="238.0" text="Card Creator" />
-   <Button fx:id="importExport" layoutX="44.0" layoutY="542.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" prefHeight="57.0" prefWidth="238.0" text="Import Export" />
-    <fx:include fx:id="popUp" source="TradePage.fxml"/>
+    <Button fx:id="duel" styleClass="button-game" layoutX="44.0" layoutY="176.0" mnemonicParsing="false"
+            onMouseClicked="#run" prefHeight="58.0" prefWidth="238.0" text="DUEL"/>
+    <Button fx:id="decksConstruction" styleClass="button-game" layoutX="44.0" layoutY="402.0" mnemonicParsing="false"
+            onMouseClicked="#run" prefHeight="58.0" prefWidth="238.0" text="Decks Construction"/>
+    <Button fx:id="shop" layoutX="44.0" styleClass="button-game" layoutY="326.0" mnemonicParsing="false"
+            onMouseClicked="#run" prefHeight="37.0" prefWidth="238.0" text="Shop"/>
+    <Button fx:id="logout" layoutX="45.0" styleClass="button-game" layoutY="608.0" mnemonicParsing="false"
+            onMouseClicked="#run" prefHeight="30.0" prefWidth="238.0" text="Logout"/>
+    <Button fx:id="profile" layoutX="44.0" styleClass="button-game" layoutY="252.0" mnemonicParsing="false"
+            onMouseClicked="#run" prefHeight="58.0" prefWidth="238.0" text="Profile"/>
+    <Button fx:id="createCard" layoutX="45.0" styleClass="button-game" layoutY="474.0" mnemonicParsing="false"
+            onMouseClicked="#run" prefHeight="57.0" prefWidth="238.0" text="Card Creator"/>
+    <Button fx:id="importExport" layoutX="44.0" styleClass="button-game" layoutY="542.0" mnemonicParsing="false"
+            onMouseClicked="#run" prefHeight="57.0" prefWidth="238.0" text="Import Export"/>
+    <ImageView fx:id="tradeButton" fitHeight="104.0" styleClass="button-game" fitWidth="75.0" layoutX="839.0"
+               layoutY="562.0" onMouseClicked="#run" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../images/backOfCard.jpg"/>
+        </image>
+    </ImageView>
+    <Label alignment="CENTER" layoutX="831.0" layoutY="594.0" prefHeight="39.0" prefWidth="88.0" text="TRADE"
+           textFill="RED">
+        <font>
+            <Font name="Curlz MT" size="25.0"/>
+        </font>
+    </Label>
+    <fx:include source="TradePage.fxml" fx:id="tradePopUp"/>
 </AnchorPane>

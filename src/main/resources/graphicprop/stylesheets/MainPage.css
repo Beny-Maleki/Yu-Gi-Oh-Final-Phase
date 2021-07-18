@@ -3,7 +3,7 @@
     -fx-background-size: cover;
 }
 
-.button {
+.button-game{
     -fx-background-color: linear-gradient(#E0AA2C 15%, #C2360A 50%, #801F14 75%, #200302 100%);
     -fx-background-insets: 0, 1, 4, 5;
     -fx-background-radius: 9, 8, 5, 4;
@@ -15,7 +15,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(255, 255, 255, 0.2), 1, 0.0, 0, 1);
 }
 
-.button:hover{
+.button-game:hover{
     -fx-background-color: linear-gradient(#E0AA2C 30%, #C2360A 60%, #801F14 75%, #200302 100%);
     -fx-background-insets: 0, 1, 4, 5;
     -fx-background-radius: 9, 8, 5, 4;

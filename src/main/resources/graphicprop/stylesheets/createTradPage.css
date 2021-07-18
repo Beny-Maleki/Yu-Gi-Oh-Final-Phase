@@ -1,11 +1,41 @@
-#numberOfCard {
+#numberOfTradedCard {
     -fx-background-radius: 100;
     -fx-border-radius: 100;
-    -fx-background-color: black;
+    -fx-background-color: #703f21;
     -fx-text-fill: white;
-    -fx-border-color: white;
+    -fx-border-color: #372406;
 }
 
 #tradeMakerPane {
-    -fx-background-color: #cf901b;
+    -fx-background-color: #703f21;
+}
+
+#collectionScrollPane {
+    -fx-background-color: #703f21;
+}
+
+#scrollContainer {
+    -fx-background-color: #703f21;
+}
+
+#cardLayout {
+    -fx-background-image: url(../images/brownBackDark.jpg);
+    -fx-background-size: cover;
+}
+
+.scroll-bar:horizontal .thumb{
+    -fx-background-color: #703f21;
+    -fx-background-radius: 5em;
+}
+
+#selectedCardDescriptionLabel{
+    -fx-padding: 2;
+    -fx-border-color: rgba(72, 69, 69, 0.18);
+}
+
+#tradeButt{
+    -fx-background-color: #703f21;
+    -fx-border-color: rgba(10, 10, 10, 0.42);
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
 }

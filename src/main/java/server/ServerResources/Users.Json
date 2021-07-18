@@ -1,1 +1,94 @@
-[{"allUserDecksId":["202107112111531",null,null,null],"cardCollection":[70,0],"unlockedDeckHolders":[true,false,false,false],"username":"ali","password":"1234","avatarAddress":"src/main/resources/graphicprop/images/avatar1.png","deckOnModify":{"mainDeck":[14,14,36,20,1,56,72,0,0,0,27,35,37,14,14,36,20,1,56,72,0,0,0,27,35,37,14,14,36,20,1,56,72,0,0,0,27,35,37,14,14,36,20,1,56,72,0,0,0,27,35,37],"sideDeck":[],"name":"arashDeck","ID":"202107112111531","isDeckActivated":true},"score":1000,"nickname":"sas","balance":951500},{"allUserDecksId":["202107112111531",null,null,null],"cardCollection":[70,0],"unlockedDeckHolders":[true,false,false,false],"username":"Yaroo","password":"1234","avatarAddress":"src/main/resources/graphicprop/images/avatar2.png","deckOnModify":{"mainDeck":[37,14,14,36,20,1,56,72,0,0,0,27,35,14,14,36,20,1,56,72,0,0,0,27,35,37,14,14,36,20,1,56,72,0,0,0,27,35,37,14,14,36,20,1,56,72,0,0,0,27,35,37],"sideDeck":[],"name":"arashDeck","ID":"202107112111531","isDeckActivated":true},"score":1000,"activeDeck":{"mainDeck":[37,14,14,36,20,1,56,72,0,0,0,27,35,14,14,36,20,1,56,72,0,0,0,27,35,37,14,14,36,20,1,56,72,0,0,0,27,35,37,14,14,36,20,1,56,72,0,0,0,27,35,37],"sideDeck":[],"name":"arashDeck","ID":"202107112111531","isDeckActivated":true},"nickname":"Yaroo","balance":951500}]
+[
+  {
+    "allUserDecksId": [
+      "202107112111531",
+      null,
+      null,
+      null
+    ],
+    "cardCollection": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "unlockedDeckHolders": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "username": "ali",
+    "password": "1234",
+    "avatarAddress": "src/main/resources/graphicprop/images/avatar1.png",
+    "deckOnModify": {
+      "mainDeck": [
+      ],
+      "sideDeck": [],
+      "name": "arashDeck",
+      "ID": "202107112111531",
+      "isDeckActivated": true
+    },
+    "score": 1000,
+    "nickname": "sas",
+    "balance": 951500
+  },
+  {
+    "allUserDecksId": [
+      "202107112111531",
+      null,
+      null,
+      null
+    ],
+    "cardCollection": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "unlockedDeckHolders": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "username": "Yaroo",
+    "password": "1234",
+    "avatarAddress": "src/main/resources/graphicprop/images/avatar2.png",
+    "deckOnModify": {
+
+      "mainDeck": [
+        0
+      ],
+      "sideDeck": [],
+      "name": "arashDeck",
+      "ID": "202107112111531",
+      "isDeckActivated": true
+    },
+    "score": 1000,
+    "activeDeck": {
+      "mainDeck": [
+      ],
+      "sideDeck": [],
+      "name": "arashDeck",
+      "ID": "202107112111531",
+      "isDeckActivated": true
+    },
+    "nickname": "Yaroo",
+    "balance": 951500
+  }
+]

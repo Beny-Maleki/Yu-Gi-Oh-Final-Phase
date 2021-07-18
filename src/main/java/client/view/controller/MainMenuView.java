@@ -1,26 +1,31 @@
 package client.view.controller;
 
+import animatefx.animation.BounceIn;
 import client.controller.menues.menuhandlers.menucontrollers.MainMenuController;
 import client.model.enums.Menu;
 import client.view.AudioHandler;
 import client.view.AudioPath;
-import client.view.ClickButtonHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
 public class MainMenuView {
 
+    private final MainMenuController controller;
     public Button duel;
     public Button decksConstruction;
     public Button shop;
     public Button logout;
     public Button profile;
-    private final MainMenuController controller;
     public Button createCard;
     public Button importExport;
+    public ImageView tradeButton;
+    public AnchorPane tradePopUp;
+    public AnchorPane root;
 
     {
         controller = new MainMenuController();
@@ -28,6 +33,7 @@ public class MainMenuView {
 
     @FXML
     public void initialize() {
+        tradePopUp.setVisible(false);
         AudioHandler mainTheme; // stating the game theme music!
         if (AudioHandler.getPlaying() != null) {
             if (!AudioHandler.getPlayingAudioPath().equals(AudioPath.MAIN_MENU)) {
@@ -36,10 +42,10 @@ public class MainMenuView {
                 mainTheme.play();
             }
         } else {
-            mainTheme =  new AudioHandler(AudioPath.MAIN_MENU);
+            mainTheme = new AudioHandler(AudioPath.MAIN_MENU);
             mainTheme.play();
         }
-
+        controller.getPlayerTradeRequest();
     }
 
     public void run(MouseEvent event) throws IOException {
@@ -58,10 +64,13 @@ public class MainMenuView {
             controller.moveToPage(createCard, Menu.CARD_CREATOR_PAGE);
         } else if (event.getSource() == importExport) {
             controller.moveToPage(importExport, Menu.IMPORT_EXPORT);
+        } else if (event.getSource() == tradeButton) {
+            playTradePopUpAnimation();
         }
     }
 
-    public void soundEffect(MouseEvent event) {
-        ClickButtonHandler.getInstance().play();
+    private void playTradePopUpAnimation() {
+        new BounceIn(tradePopUp).play();
+        tradePopUp.setVisible(true);
     }
 }

@@ -1,8 +1,8 @@
 package client.view.controller;
 
+import animatefx.animation.FadeIn;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -15,11 +15,13 @@ public class TradePopUpView {
 
     @FXML
     public void initialize() {
+        makeATradePage.setVisible(false);
         container.getChildren().add(makeATradePage);
     }
 
 
-    public void makeATradeBut(MouseEvent event) {
-
+    public void makeATradeBut() {
+        makeATradePage.setVisible(true);
+        new FadeIn(makeATradePage).play();
     }
 }

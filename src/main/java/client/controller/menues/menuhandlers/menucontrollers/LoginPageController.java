@@ -1,6 +1,6 @@
 package client.controller.menues.menuhandlers.menucontrollers;
 
-import client.UserCardCollection;
+import client.UserDataBase;
 import client.controller.Controller;
 import client.model.Exceptions.EmptyTextFieldException;
 import client.model.enums.Menu;
@@ -35,6 +35,7 @@ public class LoginPageController extends Controller {
 
             LogInCommand response = (LogInCommand) ClientListener.getServerResponse();
             if (responseException != null) {
+                System.out.println(responseException.getMessage());
                 message.setText(responseException.getMessage());
                 responseException = null;
             } else {
@@ -50,6 +51,7 @@ public class LoginPageController extends Controller {
                 processGettingUserCardResponse(message);
             }
         } catch (EmptyTextFieldException | IOException e) {
+            e.printStackTrace();
             message.setText(e.getMessage());
         }
         message.setStyle("-fx-text-fill: red ; -fx-font-size: 15");
@@ -58,8 +60,8 @@ public class LoginPageController extends Controller {
 
     private void processGettingUserCardResponse(Label message) throws IOException {
         GetUsersCardCommand getCardResponse = (GetUsersCardCommand) ClientListener.getServerResponse();
-        UserCardCollection.setUserMagicCards(getCardResponse.getUserMagicCard());
-        UserCardCollection.setUserMonsterCards(getCardResponse.getUserMonsterCard());
+        UserDataBase.getInstance().setUserMagicCards(getCardResponse.getUserMagicCard());
+        UserDataBase.getInstance().setUserMonsterCards(getCardResponse.getUserMonsterCard());
         moveToPage(message, Menu.MAIN_MENU);
     }
 
