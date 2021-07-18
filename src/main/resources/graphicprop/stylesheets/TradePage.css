@@ -1,24 +1,30 @@
 .popUp {
-    -fx-border-color: yellow;
+    -fx-border-color: #765234;
 }
 
 .popUp-button {
     -fx-border-style: None;
-    -fx-background-color: #ffb838;
+    -fx-background-color: #765234;
     -fx-text-fill: white;
     -fx-background-radius: 0;
 }
 
 .popUp-button:hover {
-    -fx-background-color: yellow;
+    -fx-background-color: #703f21;
 }
 
 .label {
-    -fx-background-color: #ffb838;
+    -fx-background-color: #765234;
     -fx-text-fill: white;
     -fx-background-radius: 0;
 }
 
 .menu-bar {
-    -fx-background-color: #ffb838;
+    -fx-background-color:  #765234;
+    -fx-border-color: black;
+}
+
+#container{
+    -fx-background-image: url(../images/woodBackGround.jpg);
+    -fx-background-size: cover ;
 }

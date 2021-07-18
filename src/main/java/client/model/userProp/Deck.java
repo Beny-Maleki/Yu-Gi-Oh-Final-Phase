@@ -1,7 +1,7 @@
 package client.model.userProp;
 
+import client.UserDataBase;
 import connector.cards.Card;
-import client.UserCardCollection;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -59,15 +59,23 @@ public class Deck {
     public ArrayList<Card> getMainDeck() {
         ArrayList<Card> mainDeckCards = new ArrayList<>();
         for (Integer ID : mainDeck) {
-            mainDeckCards.add(UserCardCollection.getCardById(ID));
+            mainDeckCards.add(UserDataBase.getInstance().getCardById(ID));
         }
         return mainDeckCards;
+    }
+
+    public ArrayList<Integer> getMainDeckCardsID() {
+        return mainDeck;
+    }
+
+    public ArrayList<Integer> getSideDeckCardsID() {
+        return sideDeck;
     }
 
     public ArrayList<Card> getSideDeck() {
         ArrayList<Card> sideDeckCards = new ArrayList<>();
         for (Integer ID : sideDeck) {
-            sideDeckCards.add(UserCardCollection.getCardById(ID));
+            sideDeckCards.add(UserDataBase.getInstance().getCardById(ID));
         }
         return sideDeckCards;
     }
@@ -90,10 +98,6 @@ public class Deck {
         }
 
         return copy;
-    }
-
-    public void setDeckActivated(boolean deckActivated) {
-        this.isDeckActivated = deckActivated;
     }
 
     public String getName() {
@@ -157,5 +161,9 @@ public class Deck {
 
     public boolean isDeckActivated() {
         return isDeckActivated;
+    }
+
+    public void setDeckActivated(boolean deckActivated) {
+        this.isDeckActivated = deckActivated;
     }
 }

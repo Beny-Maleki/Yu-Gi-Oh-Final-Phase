@@ -2,11 +2,20 @@ package client.view.controller;
 
 import animatefx.animation.*;
 import client.controller.menues.menuhandlers.menucontrollers.DeckModifierController;
+import client.model.cards.CardHouse;
+import client.model.cards.cardsEnum.Magic.RestrictionTypeInAdding;
+import client.model.enums.Menu;
+import client.model.enums.Origin;
+import client.model.userProp.Deck;
+import client.model.userProp.LoginUser;
+import client.model.userProp.User;
+import connector.cards.Card;
+import connector.cards.MagicCard;
+import connector.cards.MonsterCard;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -14,16 +23,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
-import client.model.cards.CardHouse;
-import client.model.cards.cardsEnum.Magic.RestrictionTypeInAdding;
-import connector.cards.Card;
-import connector.cards.MagicCard;
-import connector.cards.MonsterCard;
-import client.model.enums.Menu;
-import client.model.enums.Origin;
-import client.model.userProp.Deck;
-import client.model.userProp.LoginUser;
-import client.model.userProp.User;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -220,7 +219,6 @@ public class DeckModifierView {
                 new FadeInDown(moveToCollectionButton).play();
                 new FadeInDown(moveToSideDeckButton).play();
             } else if (sideDeck.contains(selectedCard)) {
-                System.out.println("here 2");
                 moveToMainDeckButton.setVisible(true);
                 moveToCollectionButton.setVisible(true);
 

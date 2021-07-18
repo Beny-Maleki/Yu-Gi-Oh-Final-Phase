@@ -1,6 +1,6 @@
 package client.model.userProp;
 
-import client.UserCardCollection;
+import client.UserDataBase;
 import connector.cards.Card;
 
 import java.util.ArrayList;
@@ -128,8 +128,9 @@ public class User extends FatherUser {
     public ArrayList<Card> getCardCollection() {
         ArrayList<Card> cards = new ArrayList<>();
         for (Integer ID : cardCollection) {
-            cards.add(UserCardCollection.getCardById(ID));
+            cards.add(UserDataBase.getInstance().getCardById(ID));
         }
+        System.out.println(cards);
         return cards;
     }
 

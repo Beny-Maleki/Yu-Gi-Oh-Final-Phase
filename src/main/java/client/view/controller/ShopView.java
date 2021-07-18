@@ -19,7 +19,7 @@ import client.model.enums.Menu;
 import client.model.enums.Origin;
 import client.model.userProp.LoginUser;
 import client.model.userProp.User;
-import server.ServerCardCollection;
+import server.ServerDataAnalyse;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -88,7 +88,7 @@ public class ShopView {
     public void drawSlides() {
         slidesOfShopCards = new ArrayList<>();
         //TODO change to response
-        ArrayList<Card> cards = ShopMenuController.cardNameAlphabetSorter(ServerCardCollection.getCards());
+        ArrayList<Card> cards = ShopMenuController.cardNameAlphabetSorter(ServerDataAnalyse.getInstance().getCards());
         int numOfSlides = (cards.size() / 15);
         if (cards.size() % 15 != 0) numOfSlides++; // for now because of additional not used cards there is one empty page left empty!
 

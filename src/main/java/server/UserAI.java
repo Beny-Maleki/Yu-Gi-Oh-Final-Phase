@@ -61,8 +61,8 @@ public class UserAI extends FatherUser {
                 break;
         }
 //TODO the process of getting card is wrong
-        List<MonsterCard> monsterCards = ServerCardCollection.getGameMonsterCards();
-        List<MagicCard> magicCards = ServerCardCollection.getGameMagicCards();
+        List<MonsterCard> monsterCards = ServerDataAnalyse.getInstance().getGameMonsterCards();
+        List<MagicCard> magicCards = ServerDataAnalyse.getInstance().getGameMagicCards();
         Collections.shuffle(monsterCards);
         Collections.shuffle(magicCards);
         for (MonsterCard card : monsterCards) {
