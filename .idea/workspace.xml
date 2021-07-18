@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add chat box">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/ChatRoomController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/ChatRoomView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/ChatCommandType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ChatRoom.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/closeIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/sendIcon.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/MainMenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/ChatBoxCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/ChatBoxCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/CommandBranch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/UserManagement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/UserPatterns.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="updating chatbox" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -343,13 +326,7 @@
       <workItem from="1626400690795" duration="3215000" />
       <workItem from="1626487443413" duration="13535000" />
       <workItem from="1626518022073" duration="1729000" />
-      <workItem from="1626519812161" duration="15263000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۵۹" summary="json">
-      <created>1620413922144</created>
-      <option name="number" value="LOCAL‎۰۰۰۵۹" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۵۹" />
-      <updated>1620413922144</updated>
+      <workItem from="1626519812161" duration="15566000" />
     </task>
     <task id="LOCAL‎۰۰۰۶۰" summary="adding magic actions to json">
       <created>1620573345261</created>
@@ -673,7 +650,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626520882813</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="updating chatbox">
+      <created>1626613413720</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1626613413721</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -693,7 +677,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="initial page changed" />
     <MESSAGE value="--DeckModifier updated:&#10;hovering cards whilst on them,&#10;changing slides&#10;relevant message&#10;other nodes scheme designed" />
     <MESSAGE value="--DeckModifier updated:&#10;move cards logic added&#10;selected Card improved&#10;button visibilities fixed" />
     <MESSAGE value="a small bug fix" />
@@ -718,7 +701,8 @@
     <MESSAGE value="add login and register communications" />
     <MESSAGE value="add cht box" />
     <MESSAGE value="add chat box" />
-    <option name="LAST_COMMIT_MESSAGE" value="add chat box" />
+    <MESSAGE value="updating chatbox" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating chatbox" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
