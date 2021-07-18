@@ -1,0 +1,12 @@
+.pane {
+    -fx-background-image: url('../images/grayBlue.jpg');
+    -fx-background-size: cover;
+}
+
+.button {
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-font-size: 13;
+    -fx-background-color: blue;
+    -fx-text-fill: white;
+}

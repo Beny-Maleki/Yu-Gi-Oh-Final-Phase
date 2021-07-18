@@ -1,57 +1,33 @@
 package client.view;
 
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import java.io.File;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 
-
-public class AudioHandler {
-    private static ArrayList<AudioHandler> audioHandlers;
-    private static AudioHandler playing;
-    private static AudioPath playingAudioPath;
+public class AudioHandler extends FatherAudio {
+    protected static FatherAudio playing;
+    protected static AudioPath playingAudioPath;
 
     static {
-        audioHandlers = new ArrayList<>();
         playing = null;
         playingAudioPath = null;
     }
 
-    private String name;
-    private MediaPlayer mediaPlayer;
-
     public AudioHandler(AudioPath audioPath) {
-        Media hit = new Media(new File(Paths.get(audioPath.value).toAbsolutePath().toString()).toURI().toString());
-        mediaPlayer = new MediaPlayer(hit);
-        mediaPlayer.setVolume(0.1);
+        super(audioPath);
         playingAudioPath = audioPath;
-        audioHandlers.add(this);
     }
 
     public static AudioPath getPlayingAudioPath() {
         return playingAudioPath;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public MediaPlayer getMediaPlayer() {
-        return mediaPlayer;
-    }
-
-    public static AudioHandler getPlaying() {
+    public static FatherAudio getPlaying() {
         return playing;
     }
 
+    @Override
     public void play() {
-        //mediaPlayer.play();
+        mediaPlayer.play();
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         playing = this;
     }
@@ -63,7 +39,6 @@ public class AudioHandler {
     public static void unmuteThePlaying() {
         playing.getMediaPlayer().setMute(false);
     }
-
 }
 
 

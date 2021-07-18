@@ -3,17 +3,6 @@ package client.view.controller;
 import animatefx.animation.Wobble;
 import animatefx.animation.ZoomOut;
 import client.controller.menues.menuhandlers.menucontrollers.CardCreatorController;
-import javafx.collections.FXCollections;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import client.model.cards.cardsEnum.Magic.MagicAttribute;
 import client.model.cards.cardsEnum.Magic.MagicType;
 import client.model.cards.cardsEnum.Magic.RestrictionTypeInAdding;
@@ -21,6 +10,21 @@ import client.model.cards.cardsEnum.Monster.MonsterAttribute;
 import client.model.cards.cardsEnum.Monster.MonsterRace;
 import client.model.cards.cardsEnum.Monster.MonsterType;
 import client.model.enums.Menu;
+import client.view.ClickButtonHandler;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -106,6 +110,7 @@ public class CardCreatorPageView {
     }
 
     public void hoverAnimation(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
         new Wobble((Node) event.getSource()).play();
     }
 }

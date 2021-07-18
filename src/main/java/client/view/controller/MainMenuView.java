@@ -1,12 +1,13 @@
 package client.view.controller;
 
 import client.controller.menues.menuhandlers.menucontrollers.MainMenuController;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import client.model.enums.Menu;
 import client.view.AudioHandler;
 import client.view.AudioPath;
+import client.view.ClickButtonHandler;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
@@ -58,5 +59,9 @@ public class MainMenuView {
         } else if (event.getSource() == importExport) {
             controller.moveToPage(importExport, Menu.IMPORT_EXPORT);
         }
+    }
+
+    public void soundEffect(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
     }
 }

@@ -2,13 +2,14 @@ package client.view.controller;
 
 import animatefx.animation.Tada;
 import client.controller.menues.menuhandlers.menucontrollers.WelcomePageController;
+import client.model.enums.Menu;
+import client.view.AudioHandler;
+import client.view.AudioPath;
+import client.view.ClickButtonHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import client.model.enums.Menu;
-import client.view.AudioHandler;
-import client.view.AudioPath;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -56,6 +57,7 @@ public class WelcomeView {
     }
 
     public void hoverAnimation(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
         new Tada((Node) event.getSource()).play();
     }
 }

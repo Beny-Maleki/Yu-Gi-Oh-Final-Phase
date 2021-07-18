@@ -6,6 +6,26 @@ import client.controller.gamecontrollers.gamestagecontroller.BattlePhaseControll
 import client.controller.gamecontrollers.gamestagecontroller.DrawPhaseController;
 import client.controller.gamecontrollers.gamestagecontroller.MainPhaseController;
 import client.controller.gamecontrollers.gamestagecontroller.StandByPhaseController;
+import client.model.cards.cardsEnum.Magic.MagicAttribute;
+import client.model.cards.cardsEnum.Magic.MagicType;
+import client.model.enums.GameEnums.SideOfFeature;
+import client.model.enums.GameEnums.TypeOfHire;
+import client.model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
+import client.model.enums.GameEnums.gamestage.GameMainStage;
+import client.model.gameprop.BoardProp.GameHouse;
+import client.model.gameprop.BoardProp.HandHouse;
+import client.model.gameprop.BoardProp.MagicHouse;
+import client.model.gameprop.BoardProp.MonsterHouse;
+import client.model.gameprop.GameInProcess;
+import client.model.gameprop.Player;
+import client.model.gameprop.gamemodel.Game;
+import client.model.userProp.User;
+import client.view.AudioHandler;
+import client.view.AudioPath;
+import client.view.SoundEffectHandler;
+import connector.cards.Card;
+import connector.cards.MagicCard;
+import connector.cards.MonsterCard;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -30,26 +50,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import client.model.cards.cardsEnum.Magic.MagicAttribute;
-import client.model.cards.cardsEnum.Magic.MagicType;
-import connector.cards.Card;
-import connector.cards.MagicCard;
-import connector.cards.MonsterCard;
-import client.model.enums.GameEnums.SideOfFeature;
-import client.model.enums.GameEnums.TypeOfHire;
-import client.model.enums.GameEnums.cardvisibility.MonsterHouseVisibilityState;
-import client.model.enums.GameEnums.gamestage.GameMainStage;
-import client.model.gameprop.BoardProp.GameHouse;
-import client.model.gameprop.BoardProp.HandHouse;
-import client.model.gameprop.BoardProp.MagicHouse;
-import client.model.gameprop.BoardProp.MonsterHouse;
-import client.model.gameprop.GameInProcess;
-import client.model.gameprop.Player;
-import client.model.gameprop.gamemodel.Game;
-import client.model.userProp.User;
 import org.jetbrains.annotations.NotNull;
-import client.view.AudioHandler;
-import client.view.AudioPath;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -233,6 +234,10 @@ public class GameView {
         }
     }
 
+    private void soundEffectSetSummon() {
+        SoundEffectHandler.playSoundEffect(AudioPath.SUMMON_SET);
+    }
+
     private void initializeActionsIcon() {
         setHoverEffectForIcons(summonIcon);
         setHoverEffectForIcons(setMonsterIcon);
@@ -245,6 +250,7 @@ public class GameView {
                         showTributeItems();
                     }
                     animateSummon();
+                    soundEffectSetSummon();
                     deActiveActions();
                     restartSelectedCardImage();
                     reloadImages();
@@ -256,6 +262,7 @@ public class GameView {
                 showTributeItems();
             }
             animateSummon();
+            soundEffectSetSummon();
             deActiveActions();
             reloadImages();
             restartSelectedCardImage();
@@ -265,12 +272,14 @@ public class GameView {
 
         setMagicIcon.setOnMouseClicked(event -> {
             mainPhaseController.hireCard(game, TypeOfHire.SET);
+            soundEffectSetSummon();
             deActiveActions();
             restartSelectedCardImage();
             reloadImages();
         });
 
         changePositionIcon.setOnMouseExited(event -> {
+            soundEffectSetSummon();
             ((MonsterHouse) game.getCardProp().getCardPlace()).changePos();
 
         });
@@ -279,6 +288,7 @@ public class GameView {
     private void initializeAttackAction() {
         attackMonsterIcon.setOnMouseClicked(event -> {
             if (game.getPlayer(SideOfFeature.OPPONENT).getBoard().numberOfFullHouse("monster") == 0) {
+                SoundEffectHandler.playSoundEffect(AudioPath.ATTACK);
                 battlePhaseController.attackDirect(game);
                 updateHealth();
                 deActiveActions();
@@ -299,6 +309,7 @@ public class GameView {
                     });
 
                     monsterHouse.setOnMouseClicked(event3 -> {
+                        SoundEffectHandler.playSoundEffect(AudioPath.ATTACK);
                         MonsterHouse attacker = (MonsterHouse) game.getCardProp().getCardPlace();
                         String state = monsterHouse.getState();
 
@@ -362,21 +373,31 @@ public class GameView {
         opponentLPLabel.setText("LP: " + playerOpponent.getPlayerLifePoint());
 
         if (playerOpponent.getPlayerLifePoint() == 0 ||playerYou.getPlayerLifePoint() == 0){
-            finishGame();
+            if (playerOpponent.getPlayerLifePoint() == 0) {
+                finishGame(playerYou);
+            } else {
+                finishGame(playerOpponent);
+            }
         }
 
     }
 
-    private void finishGame() {
+    private void finishGame(Player winner) {
         try {
             if (controller.finishRound(game)) {
                 FadeOut fadeOut = new FadeOut(root);
                 fadeOut.setSpeed(0.5);
                 fadeOut.play();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/graphicprop/fxml/mainPage.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/graphicprop/fxml/GameResult.fxml"));
                 Parent parent = loader.load();
                 Stage stage = (Stage) field.getScene().getWindow();
                 Scene scene = new Scene(parent);
+                GameResultView controller = loader.getController();
+                if (winner.equals(playerYou)) {
+                    controller.setDetails(winner, "win");
+                } else {
+                    controller.setDetails(winner, "lose");
+                }
                 stage.setScene(scene);
                 scene.getRoot().requestFocus();
                 stage.show();
