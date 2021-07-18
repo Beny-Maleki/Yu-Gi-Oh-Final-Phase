@@ -4,47 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="fix bugs">
-      <change afterPath="$PROJECT_DIR$/src/main/java/connector/CardOnTrade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/connector/TradeRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/AcceptATradeRequestCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/GetUserTradeRequestsCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/MakeATradeRequestCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/PutCardOnTradeCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/ServerDataAnalyse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/brownBackDark.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/brownLightPic.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/woodBackGround.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/UserCardCollection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/UserDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/UserDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/model/userProp/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/userProp/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/model/userProp/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/userProp/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/ChooseMagicActionsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/ChooseMagicActionsView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/DeckModifierView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/DeckModifierView.java" afterDir="false" />
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add sound effects to final phase">
       <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/MainMenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/MakeATradeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/MakeATradeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/ShopView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/ShopView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/TradePopUpView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/TradePopUpView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connector/commands/CommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/commands/CommandType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/ServerCardCollection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/ServerDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/ServerDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/ServerResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/ServerResources/Users.Json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/UserAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/UserAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ClientInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DeckModifier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DeckModifier.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MakeATradePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MakeATradePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/TradePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/TradePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/MainPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/MainPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/TradePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/TradePage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WelcomePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WelcomePage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/createTradPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/createTradPage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,29 +77,29 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WelcomePage.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/RegisterPage.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/ProfilePageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/StageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DecksView.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/server/ServerResources/Users.Json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/LoginView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/server/ServerResources/Decks.Json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/Main.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/model/gameprop/Player.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/ProfileView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/GameView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/client/model/Exceptions/EmptyTextFieldException.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/DecksView.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/model/enums/Menu.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/GameView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/model/gameprop/Player.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WelcomePage.css" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/LoginPage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/ProfileView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/RegisterPage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/DecksView.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DecksView.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/StageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/LoginView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/ProfilePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/ServerResources/Users.Json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/ServerResources/Decks.Json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/model/enums/Menu.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="proportion" value="0.6115204" />
@@ -222,7 +184,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="client.Main" />
-      <module name="YuGiOh" />
+      <module name="Yu-Gi-Oh-Final-Phase" />
       <option name="VM_PARAMETERS" value="--module-path F:\javaFx\lib --add-modules javafx.controls,javafx.fxml,javafx.media" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -230,7 +192,7 @@
     </configuration>
     <configuration name="MainServer" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="server.Main" />
-      <module name="YuGiOh" />
+      <module name="Yu-Gi-Oh-Final-Phase" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -736,7 +698,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/client/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/SelectedCardProcessor.java</url>
           <line>15</line>
-          <properties class="client.controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor" method="process">
+          <properties class="client.controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="3" />

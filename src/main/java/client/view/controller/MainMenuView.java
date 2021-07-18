@@ -5,6 +5,7 @@ import client.controller.menues.menuhandlers.menucontrollers.MainMenuController;
 import client.model.enums.Menu;
 import client.view.AudioHandler;
 import client.view.AudioPath;
+import client.view.ClickButtonHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -72,5 +73,10 @@ public class MainMenuView {
     private void playTradePopUpAnimation() {
         new BounceIn(tradePopUp).play();
         tradePopUp.setVisible(true);
+    }
+
+
+    public void soundEffect(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
     }
 }

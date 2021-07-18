@@ -13,21 +13,21 @@
         <Image url="@../images/YuGiOhLogo.png"/>
     </ImageView>
     <Button fx:id="duel" styleClass="button-game" layoutX="44.0" layoutY="176.0" mnemonicParsing="false"
-            onMouseClicked="#run" prefHeight="58.0" prefWidth="238.0" text="DUEL"/>
+            onMouseClicked="#run" onMouseEntered="#soundEffect" prefHeight="58.0" prefWidth="238.0" text="DUEL"/>
     <Button fx:id="decksConstruction" styleClass="button-game" layoutX="44.0" layoutY="402.0" mnemonicParsing="false"
-            onMouseClicked="#run" prefHeight="58.0" prefWidth="238.0" text="Decks Construction"/>
+            onMouseClicked="#run" onMouseEntered="#soundEffect" prefHeight="58.0" prefWidth="238.0" text="Decks Construction"/>
     <Button fx:id="shop" layoutX="44.0" styleClass="button-game" layoutY="326.0" mnemonicParsing="false"
-            onMouseClicked="#run" prefHeight="37.0" prefWidth="238.0" text="Shop"/>
+            onMouseClicked="#run" onMouseEntered="#soundEffect" prefHeight="37.0" prefWidth="238.0" text="Shop"/>
     <Button fx:id="logout" layoutX="45.0" styleClass="button-game" layoutY="608.0" mnemonicParsing="false"
-            onMouseClicked="#run" prefHeight="30.0" prefWidth="238.0" text="Logout"/>
+            onMouseClicked="#run" onMouseEntered="#soundEffect" prefHeight="30.0" prefWidth="238.0" text="Logout"/>
     <Button fx:id="profile" layoutX="44.0" styleClass="button-game" layoutY="252.0" mnemonicParsing="false"
-            onMouseClicked="#run" prefHeight="58.0" prefWidth="238.0" text="Profile"/>
+            onMouseClicked="#run" onMouseEntered="#soundEffect" prefHeight="58.0" prefWidth="238.0" text="Profile"/>
     <Button fx:id="createCard" layoutX="45.0" styleClass="button-game" layoutY="474.0" mnemonicParsing="false"
-            onMouseClicked="#run" prefHeight="57.0" prefWidth="238.0" text="Card Creator"/>
+            onMouseClicked="#run" onMouseEntered="#soundEffect" prefHeight="57.0" prefWidth="238.0" text="Card Creator"/>
     <Button fx:id="importExport" layoutX="44.0" styleClass="button-game" layoutY="542.0" mnemonicParsing="false"
-            onMouseClicked="#run" prefHeight="57.0" prefWidth="238.0" text="Import Export"/>
+            onMouseClicked="#run" onMouseEntered="#soundEffect" prefHeight="57.0" prefWidth="238.0" text="Import Export"/>
     <ImageView fx:id="tradeButton" fitHeight="104.0" styleClass="button-game" fitWidth="75.0" layoutX="839.0"
-               layoutY="562.0" onMouseClicked="#run" pickOnBounds="true" preserveRatio="true">
+               layoutY="562.0" onMouseClicked="#run" onMouseEntered="#soundEffect" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../images/backOfCard.jpg"/>
         </image>
