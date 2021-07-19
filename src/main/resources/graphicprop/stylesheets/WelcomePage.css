@@ -14,16 +14,16 @@
     -fx-background-image: url('/graphicprop/images/blackBackGround.jpg');
     -fx-background-size: 333 502;
 }
-/*
 
-.button {
+
+.button-menu {
     -fx-background-color: black;
     -fx-border-color: #C67F28;
     -fx-text-fill: #C67F28;
 }
 
-.button:hover {
+.button-menu:hover {
     -fx-background-color: #C67F28;
     -fx-border-color: black;
     -fx-text-fill: black;
-}*/
+}

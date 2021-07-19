@@ -11,15 +11,13 @@ import connector.cards.Card;
 import connector.cards.MagicCard;
 import connector.cards.MonsterCard;
 import connector.commands.Command;
-import connector.commands.commnadclasses.ChatBoxCommand;
-import connector.commands.commnadclasses.GetUsersCardCommand;
-import connector.commands.commnadclasses.LogInCommand;
-import connector.commands.commnadclasses.RegisterCommand;
+import connector.commands.commnadclasses.*;
 import connector.exceptions.AlreadyLoggedIn;
 import connector.exceptions.DuplicateNicknameException;
 import connector.exceptions.DuplicateUsernameException;
 import connector.exceptions.NotMatchingUserAndPass;
 import server.MessageDatabase;
+import server.ServerDataAnalyse;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -62,6 +60,12 @@ public class ClientHandler implements Runnable {
                     handleUserCardRequest(getUsersCardCommand);
                     break;
                 }
+                case GET_USER_TRADE_REQUEST: {
+                    GetUserTradeRequestsCommand getUserTradeRequestsCommand =
+                            yaGson.fromJson(request, GetUserTradeRequestsCommand.class);
+                    handleUserTradeRequests(getUserTradeRequestsCommand);
+                    break;
+                }
 
                 case CHAT: {
                     ChatBoxCommand chatBoxCommand = yaGson.fromJson(request, ChatBoxCommand.class);
@@ -73,6 +77,14 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    private void handleUserTradeRequests(GetUserTradeRequestsCommand getUserTradeRequestsCommand) {
+        String token = getUserTradeRequestsCommand.getToken();
+        User user = ClientInfo.getUserByToken(token);
+        getUserTradeRequestsCommand.setRequests(ServerDataAnalyse.getInstance().findAllTradeRequestOfThisUser(user));
+        netOut.format("%s\n", Command.makeJson(getUserTradeRequestsCommand));
+        netOut.flush();
+    }
+
     private void handleUserCardRequest(GetUsersCardCommand getUsersCardCommand) {
         String token = getUsersCardCommand.getToken();
         User user = ClientInfo.getUserByToken(token);
@@ -82,8 +94,10 @@ public class ClientHandler implements Runnable {
         separateUserCollectionCard(user, monsterCards, magicCards);
         for (Deck deck : user.getAllUserDecks()) {
             if (deck != null) {
-                separateDeckCards(monsterCards, magicCards, deck.getMainDeck());
-                separateDeckCards(monsterCards, magicCards, deck.getSideDeck());
+                ArrayList<Card> mainDeckCards = ServerDataAnalyse.getInstance().convertIDsToCard(deck.getMainDeckCardsID());
+                ArrayList<Card> sideDeckCards = ServerDataAnalyse.getInstance().convertIDsToCard(deck.getSideDeckCardsID());
+                separateMonsterAndMagics(monsterCards, magicCards, mainDeckCards);
+                separateMonsterAndMagics(monsterCards, magicCards, sideDeckCards);
             }
         }
         getUsersCardCommand.setUserMonsterCard(monsterCards);
@@ -92,7 +106,7 @@ public class ClientHandler implements Runnable {
         netOut.flush();
     }
 
-    private void separateDeckCards(List<MonsterCard> monsterCards, List<MagicCard> magicCards, ArrayList<Card> mainDeck) {
+    private void separateMonsterAndMagics(List<MonsterCard> monsterCards, List<MagicCard> magicCards, ArrayList<Card> mainDeck) {
         for (Card card : mainDeck) {
             if (card instanceof MonsterCard) {
                 monsterCards.add((MonsterCard) card);
@@ -103,7 +117,8 @@ public class ClientHandler implements Runnable {
     }
 
     private void separateUserCollectionCard(User user, List<MonsterCard> monsterCards, List<MagicCard> magicCards) {
-        separateDeckCards(monsterCards, magicCards, user.getCardCollection());
+        ArrayList<Card> collectionCards = ServerDataAnalyse.getInstance().convertIDsToCard(user.getUserCardCollectionInteger());
+        separateMonsterAndMagics(monsterCards, magicCards, collectionCards);
     }
 
     private void handleRegister(RegisterCommand registerCommand) {
@@ -117,7 +132,7 @@ public class ClientHandler implements Runnable {
         } else if (null != User.getUserByUserInfo(nickname, UserInfoType.NICKNAME)) {
             registerCommand.setException(new DuplicateNicknameException());
         } else {
-            new User(username, nickname,password ,  imageAddress);
+            new User(username, nickname, password, imageAddress);
             registerCommand.setException(null);
         }
 

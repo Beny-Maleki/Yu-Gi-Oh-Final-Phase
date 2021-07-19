@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import connector.commands.Command;
 import connector.commands.CommandType;
+import connector.commands.commnadclasses.GetUserTradeRequestsCommand;
 import connector.commands.commnadclasses.GetUsersCardCommand;
 import connector.commands.commnadclasses.LogInCommand;
 import connector.commands.commnadclasses.RegisterCommand;
@@ -51,16 +52,17 @@ public class ClientListener extends Thread {
                 case GET_USER_CARD:
                     serverResponse = gson.fromJson(command, GetUsersCardCommand.class);
                     break;
+                case GET_USER_TRADE_REQUEST:
+                    serverResponse = gson.fromJson(command, GetUserTradeRequestsCommand.class);
                 case DUEL:
                 case PROFILE:
             }
 
-            System.out.println("the command type is : " + serverResponse.getCommandType());
             Controller.setResponseCommand(serverResponse);
             Controller.setResponseException(serverResponse.getException());
 
             try {
-                Thread.sleep(110);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

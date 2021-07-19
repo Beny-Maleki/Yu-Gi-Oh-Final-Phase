@@ -41,10 +41,6 @@ public class ClientInfo {
     }
 
     public static User getUserByToken(String token) {
-        loggedInClients.forEach(((s, clientInfo) -> {
-            System.out.println(clientInfo.user.getUsername());
-            System.out.println("and the token is " + s);
-        }));
         return loggedInClients.get(token).user;
     }
 

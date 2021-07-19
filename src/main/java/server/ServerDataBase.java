@@ -29,7 +29,7 @@ public class ServerDataBase {
     }
 
     public void updateID(Card card) {
-        Objects.requireNonNull(ServerCardCollection.getCardById(Card.numberOfOriginalCards)).setID(card.getID());
+        Objects.requireNonNull(ServerDataAnalyse.getInstance().getCardById(Card.numberOfOriginalCards)).setID(card.getID());
         card.setID(Card.numberOfOriginalCards);
     }
 
@@ -77,10 +77,8 @@ public class ServerDataBase {
         ArrayList<MagicCard> magicCards = new ArrayList<>();
         magicCards = loadMagicCards(magicCards);
         monsterCards = loadMonsterCards(monsterCards);
-        Card.setNumberOfCard(magicCards.size() + monsterCards.size());
-        Card.setNumberOfOriginalCards(magicCards.size() + monsterCards.size());
-        Deck.setNumberOfOriginalCards(magicCards.size() + monsterCards.size());
-        ServerCardCollection.setGameMagicCards(magicCards);
+        ServerDataAnalyse.getInstance().setGameMagicCards(magicCards);
+        ServerDataAnalyse.getInstance().setGameMonsterCards(monsterCards);
         loadUsers();
         //card Json
         //saveCardsToJson(monsterCards, magicCards);
@@ -177,5 +175,4 @@ public class ServerDataBase {
             e.printStackTrace();
         }
     }
-
 }
