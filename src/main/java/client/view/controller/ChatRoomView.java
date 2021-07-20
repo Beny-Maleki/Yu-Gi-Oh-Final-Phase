@@ -100,8 +100,8 @@ public class ChatRoomView extends Controller {
     }
 
     private void updateMessages() {
-        Set<String> newIDs = MessageHistory.getCurrentMessages().keySet();
-        Set<String> prevIDs = ChatRoomController.getAllMessages().keySet();
+        Set<String> newIDs = ChatRoomController.getAllMessages().keySet();
+        Set<String> prevIDs = MessageHistory.getCurrentMessages().keySet();
 
         for (String id : newIDs) {
             if (!prevIDs.contains(id)) {

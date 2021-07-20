@@ -2,13 +2,10 @@ package client.view.controller;
 
 import animatefx.animation.BounceInDown;
 import animatefx.animation.FadeIn;
-import client.UserDataBase;
 import client.controller.menues.menuhandlers.menucontrollers.TradePageController;
 import client.model.userProp.LoginUser;
 import connector.CardForTrade;
 import connector.cards.Card;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,7 +16,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -39,7 +35,7 @@ public class SeeCardOnTradeView {
 
     @FXML
     public void initialize() {
-        autoUpdatePane();
+//        autoUpdatePane();
         makeAPageForEachRequest(cardsOnTrade);
     }
 
@@ -159,22 +155,22 @@ public class SeeCardOnTradeView {
         hBox.setPrefHeight(48);
     }
 
-    private void autoUpdatePane() {
-        timeline.getKeyFrames().add(new KeyFrame(
-                Duration.millis(5000), event -> {
-            ArrayList<CardForTrade> cards = controller.getNewCardOnTrade(cardsOnTrade);
-            if (cards == null) timeline.stop();
-            else {
-                makeAPageForEachRequest(cards);
-                cardsOnTrade = UserDataBase.getInstance().getCardsForTrade();
-            }
-        }
-        ));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
-    }
+//    private void autoUpdatePane() {
+//        timeline.getKeyFrames().add(new KeyFrame(
+//                Duration.millis(5000), event -> {
+//            ArrayList<CardForTrade> cards = controller.getNewCardOnTrade(cardsOnTrade);
+//            if (cards == null) timeline.stop();
+//            else {
+//                makeAPageForEachRequest(cards);
+//                cardsOnTrade = UserDataBase.getInstance().getCardsForTrade();
+//            }
+//        }
+//        ));
+//        timeline.setCycleCount(Animation.INDEFINITE);
+//        timeline.play();
+//    }
 
-    public void stopThread() {
-        timeline.stop();
-    }
+//    public void stopThread() {
+//        timeline.stop();
+//    }
 }
