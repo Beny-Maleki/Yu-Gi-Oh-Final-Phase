@@ -1,6 +1,10 @@
 package client.view.controller;
 
 import animatefx.animation.Tada;
+import client.controller.menues.menuhandlers.menucontrollers.ScoreboardMenuController;
+import client.model.enums.Menu;
+import client.model.userProp.ScoreboardItem;
+import client.view.ClickButtonHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -8,9 +12,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import client.model.enums.Menu;
-import client.controller.menues.menuhandlers.menucontrollers.ScoreboardMenuController;
-import client.model.userProp.ScoreboardItem;
 
 import java.io.IOException;
 
@@ -68,6 +69,7 @@ public class ScoreboardView {
     }
 
     public void hoverAnimation(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
         new Tada((Node) event.getSource()).play();
     }
 }

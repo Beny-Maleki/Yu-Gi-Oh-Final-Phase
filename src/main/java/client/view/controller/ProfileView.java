@@ -3,6 +3,10 @@ package client.view.controller;
 import animatefx.animation.FadeIn;
 import animatefx.animation.Wobble;
 import client.controller.menues.menuhandlers.menucontrollers.ProfilePageController;
+import client.model.enums.Menu;
+import client.model.userProp.LoginUser;
+import client.model.userProp.User;
+import client.view.ClickButtonHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -12,9 +16,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import client.model.enums.Menu;
-import client.model.userProp.LoginUser;
-import client.model.userProp.User;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -127,6 +128,7 @@ public class ProfileView {
 
 
     public void hoverAnimation(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
         new Wobble((Node) event.getSource()).play();
     }
 }

@@ -6,6 +6,7 @@ import client.controller.menues.menuhandlers.menucontrollers.MainMenuController;
 import client.model.enums.Menu;
 import client.view.AudioHandler;
 import client.view.AudioPath;
+import client.view.ClickButtonHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -92,5 +93,10 @@ public class MainMenuView {
 
     public void showChatRoomPanel(MouseEvent mouseEvent) {
         showChatRoom();
+    }
+
+
+    public void soundEffect(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
     }
 }

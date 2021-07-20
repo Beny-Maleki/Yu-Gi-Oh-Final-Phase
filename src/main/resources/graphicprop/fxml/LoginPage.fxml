@@ -12,11 +12,11 @@
         <TextField fx:id="UserName" alignment="CENTER" layoutX="14.0" layoutY="61.0" prefHeight="25.0" prefWidth="279.0" />
         <Label layoutX="14.0" layoutY="97.0" prefHeight="20.0" prefWidth="151.0" text="Enter Duelist Password" />
         <TextField fx:id="PassWord" alignment="CENTER" layoutX="14.0" layoutY="122.0" prefHeight="25.0" prefWidth="279.0" />
-        <Button fx:id="Login" layoutX="68.0" layoutY="247.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="25.0" prefWidth="137.0" text="LOGIN" />
+        <Button fx:id="Login" layoutX="68.0" layoutY="247.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" prefHeight="25.0" prefWidth="137.0" text="LOGIN" />
         <ImageView fitHeight="553.0" fitWidth="422.0" layoutX="338.0" layoutY="-66.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../images/imgbin_yugi-mutou-seto-kaiba-yu-gi-oh-duel-links-jaden-yuki-png.png" />
         </ImageView>
-        <Button fx:id="Back" layoutX="14.0" layoutY="419.0" mnemonicParsing="false" onMouseClicked="#run" text="BACK" />
+        <Button fx:id="Back" layoutX="14.0" layoutY="419.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" text="BACK" />
         <Line endY="441.0" layoutX="321.0" layoutY="14.0" startY="-14.0" stroke="#ffe100" />
       <Label fx:id="Message" layoutX="195.0" layoutY="158.0" prefHeight="66.0" prefWidth="455.0">
          <font>

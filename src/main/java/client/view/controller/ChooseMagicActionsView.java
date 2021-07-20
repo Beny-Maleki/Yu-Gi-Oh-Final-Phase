@@ -3,17 +3,18 @@ package client.view.controller;
 import animatefx.animation.Wobble;
 import client.UserDataBase;
 import client.controller.menues.menuhandlers.menucontrollers.CardCreatorController;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import client.model.cards.cardsActions.Action;
 import client.model.cards.cardsEnum.Magic.MagicAttribute;
 import client.model.cards.cardsEnum.Magic.MagicType;
 import client.model.cards.cardsEnum.Magic.RestrictionTypeInAdding;
-import connector.cards.MagicCard;
 import client.model.enums.Menu;
 import client.model.events.Event;
+import client.view.ClickButtonHandler;
+import connector.cards.MagicCard;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -100,15 +101,11 @@ public class ChooseMagicActionsView {
             description.setText(currentMagicCard.getDescriptionWithDifferentLine());
         } else if (event.getSource() == create) {
             controller.createMagic(name, magicType.toString(), magicAttribute.toString(), descriptionFinal, restrictionTypeInAdding.toString(), price.getText(), actions, triggers, message);
-//            if (magicAttribute.toString().equals("Field")) {
-//                client.controller.moveToPage(create, Menu.CHOOSE_FIELD_CARDS_DETAILS);
-//            } else {
-//                client.controller.createMagic(name, magicType.toString(), magicAttribute.toString(), description.getText(), restrictionTypeInAdding.toString(), previous.getText(), actions, triggers, message);
-//            }
         }
     }
 
     public void hoverAnimation(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
         new Wobble((Node) event.getSource()).play();
     }
 }
