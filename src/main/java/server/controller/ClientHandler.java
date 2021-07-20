@@ -46,29 +46,34 @@ public class ClientHandler implements Runnable {
             switch (command.getCommandType()) {
                 case REGISTER: {
                     RegisterCommand registerCommand = yaGson.fromJson(request, RegisterCommand.class);
+                    registerCommand.changeCommandID();
                     handleRegister(registerCommand);
                     break;
                 }
                 case LOGIN: {
                     LogInCommand logInCommand = yaGson.fromJson(request, LogInCommand.class);
+                    logInCommand.changeCommandID();
                     handleLogIn(logInCommand);
                     break;
                 }
 
                 case GET_USER_CARD: {
                     GetUsersCardCommand getUsersCardCommand = yaGson.fromJson(request, GetUsersCardCommand.class);
+                    getUsersCardCommand.changeCommandID();
                     handleUserCardRequest(getUsersCardCommand);
                     break;
                 }
                 case GET_USER_TRADE_REQUEST: {
                     GetUserTradeRequestsCommand getUserTradeRequestsCommand =
                             yaGson.fromJson(request, GetUserTradeRequestsCommand.class);
+                    getUserTradeRequestsCommand.changeCommandID();
                     handleUserTradeRequests(getUserTradeRequestsCommand);
                     break;
                 }
 
                 case CHAT: {
                     ChatBoxCommand chatBoxCommand = yaGson.fromJson(request, ChatBoxCommand.class);
+                    chatBoxCommand.changeCommandID();
                     handleChatBox(chatBoxCommand);
                     break;
                 }
@@ -171,6 +176,12 @@ public class ClientHandler implements Runnable {
         String sentMessage;
         User sender;
         switch (type) {
+            case INITIAL_DATA_REQUEST:
+            case UPDATE: {
+                chatBoxCommand.setAllMessages(MessageDatabase.getInstance().getAllMessages());
+                chatBoxCommand.setPinnedMessageID(MessageDatabase.getInstance().getPinnedMessageID());
+                break;
+            }
             case NEW_MESSAGE: {
                 sentMessage = chatBoxCommand.getSentMessage();
                 sender = chatBoxCommand.getSender();
@@ -180,6 +191,7 @@ public class ClientHandler implements Runnable {
                 if (isInReplyToAnother) IDInReplyTo = chatBoxCommand.getIDInReplyTo();
 
                 new Message(sentMessage, sender, isInReplyToAnother, IDInReplyTo);
+                chatBoxCommand.setAllMessages(MessageDatabase.getInstance().getAllMessages());
                 break;
             }
             case OMIT_MESSAGE: {
@@ -190,18 +202,18 @@ public class ClientHandler implements Runnable {
             case EDIT_MESSAGE: {
                 String ID = chatBoxCommand.getMessageID();
                 Message message = MessageDatabase.getInstance().getFromAllMessages(ID);
-                message.setMessage(chatBoxCommand.getSentMessage());
+                message.setMessageString(chatBoxCommand.getSentMessage());
             }
             case PIN_MESSAGE: {
                 String ID = chatBoxCommand.getMessageID();
                 Message toPin = MessageDatabase.getInstance().getFromAllMessages(ID);
-                MessageDatabase.getInstance().putToPinnedMessages(ID, toPin);
+                MessageDatabase.getInstance().setPinnedMessageID(ID);
             }
         }
 
         chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoggedInClients().size());
 
-        netOut.format("%s\n", ChatBoxCommand.toJson(chatBoxCommand));
+        netOut.format("%s\n", Command.makeJson(chatBoxCommand));
         netOut.flush();
     }
 

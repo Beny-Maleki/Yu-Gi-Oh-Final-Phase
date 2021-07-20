@@ -23,31 +23,29 @@ public class LoginPageController extends Controller {
         try {
             if (username.equals("") || password.equals("")) throw new EmptyTextFieldException();
 
-            ClientSender.getSender().sendMessage(new LogInCommand(CommandType.LOGIN, username, password));
+            LogInCommand logInCommand = new LogInCommand(CommandType.LOGIN, username, password);
+            ClientListener.setCurrentCommandID(logInCommand.getCommandID());
+            ClientListener.setServerResponse(logInCommand);
 
-            try {
-                while (ClientListener.getServerResponse().getCommandType() == CommandType.WAITING) {
-                    Thread.sleep(100);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            ClientSender.getSender().sendMessage(logInCommand);
+
+            waitForServerResponse();
 
             LogInCommand response = (LogInCommand) ClientListener.getServerResponse();
             if (responseException != null) {
-                System.out.println(responseException.getMessage());
                 message.setText(responseException.getMessage());
                 responseException = null;
             } else {
                 processLoginResponse(message, response);
-                ClientSender.getSender().sendMessage(new GetUsersCardCommand(CommandType.GET_USER_CARD, Client.getClient().getToken()));
-                try {
-                    while (ClientListener.getServerResponse().getCommandType() != CommandType.GET_USER_CARD) {
-                        Thread.sleep(100);
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
+                GetUsersCardCommand getUsersCardCommand = new GetUsersCardCommand(CommandType.GET_USER_CARD, Client.getClient().getToken());
+                ClientListener.setCurrentCommandID(getUsersCardCommand.getCommandID());
+                ClientListener.setServerResponse(getUsersCardCommand);
+
+                ClientSender.getSender().sendMessage(getUsersCardCommand);
+
+                waitForServerResponse();
+
                 processGettingUserCardResponse(message);
             }
         } catch (EmptyTextFieldException | IOException e) {
@@ -56,6 +54,18 @@ public class LoginPageController extends Controller {
         }
         message.setStyle("-fx-text-fill: red ; -fx-font-size: 15");
         displayMessage(message);
+    }
+
+    private void waitForServerResponse() {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        while (true) {
+            if (!ClientListener.getCurrentCommandID().equals(ClientListener.getServerResponse().getCommandID())) break;
+        }
+        ClientListener.setCurrentCommandID(ClientListener.getServerResponse().getCommandID());
     }
 
     private void processGettingUserCardResponse(Label message) throws IOException {

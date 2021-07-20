@@ -28,16 +28,13 @@ public class RegisterPageController extends Controller {
         try {
             if (username.equals("") || password.equals("") || nickname.equals("")) throw new EmptyTextFieldException();
 
-            RegisterCommand registerCommand = new RegisterCommand(CommandType.REGISTER, username, nickname, password, imageAddress);
+            RegisterCommand registerCommand = new RegisterCommand(CommandType.REGISTER, username, password, nickname, imageAddress);
+            ClientListener.setCurrentCommandID(registerCommand.getCommandID());
+            ClientListener.setServerResponse(registerCommand);
+
             ClientSender.getSender().sendMessage(registerCommand);
-            handleProgressBar();
-            try {
-               while (ClientListener.getServerResponse().getCommandType() == CommandType.WAITING) {
-                   Thread.sleep(100);
-               }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
+            waitForServerResponse();
 
             if (responseException != null) {
                 message.setText(responseException.getMessage());
@@ -50,6 +47,22 @@ public class RegisterPageController extends Controller {
         }
         message.setStyle("-fx-text-fill: red ; -fx-font-size: 15");
         displayMessage(message);
+    }
+
+    private void waitForServerResponse() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        while (true) {
+            System.out.println();
+            System.out.println("Server response ID: " + ClientListener.getServerResponse().getCommandID());
+            System.out.println("Client sent ID: " + ClientListener.getCurrentCommandID());
+
+            if (!ClientListener.getCurrentCommandID().equals(ClientListener.getServerResponse().getCommandID())) break;
+        }
+        ClientListener.setCurrentCommandID(ClientListener.getServerResponse().getCommandID());
     }
 
     public Pane makeAvatarSelector(ImageView imageView, Pane pane) throws FileNotFoundException {

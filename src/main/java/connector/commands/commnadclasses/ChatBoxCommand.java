@@ -2,29 +2,26 @@ package connector.commands.commnadclasses;
 
 import client.model.Message;
 import client.model.userProp.User;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import connector.commands.Command;
 import connector.commands.CommandType;
 
-import java.lang.reflect.Type;
 import java.util.LinkedHashMap;
 
 public class ChatBoxCommand extends Command {
     private ChatCommandType chatCommandType;
+
     private boolean isInReplyToAnother;
-
-    private int numberOfLoggedIns;
-
     private String sentMessage;
     private String IDInReplyTo;
     private String messageID;
 
     private User sender;
+    private String pinnedMessageID;
 
+
+    private int numberOfLoggedIns;
     private LinkedHashMap<String, Message> allMessages;
-    private LinkedHashMap<String, Message> pinnedMessage;
-    
+
     public ChatBoxCommand(CommandType commandType, String sentMessage, ChatCommandType chatCommandType,
                           boolean isInReplyToAnother, String IDInReplyTo, User sender) {
         super(commandType);
@@ -37,13 +34,33 @@ public class ChatBoxCommand extends Command {
         this.sender = sender;
     }
 
+    public ChatBoxCommand(CommandType commandType, ChatCommandType chatCommandType, String messageID) {
+        super(commandType);
+        this.chatCommandType = chatCommandType;
+        this.messageID = messageID;
+    }
+
+    public ChatBoxCommand(CommandType commandType, ChatCommandType chatCommandType, String messageID, String editedMessage) {
+        super(commandType);
+        this.chatCommandType = chatCommandType;
+        this.messageID = messageID;
+        this.sentMessage = editedMessage;
+    }
 
     public String getSentMessage() {
         return sentMessage;
     }
 
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
     public User getSender() {
         return sender;
+    }
+
+    public void setAllMessages(LinkedHashMap<String, Message> allMessages) {
+        this.allMessages = allMessages;
     }
 
     public boolean isInReplyToAnother() {
@@ -74,17 +91,15 @@ public class ChatBoxCommand extends Command {
         this.chatCommandType = chatCommandType;
     }
 
-    public static String  toJson(ChatBoxCommand chatBoxCommand) {
-        Gson gson = new Gson();
-        Type type = new TypeToken<LinkedHashMap<String, Message>> () {}.getType();
-        String JSONed = gson.toJson(chatBoxCommand, type);
-        return JSONed;
+    public void setPinnedMessageID(String pinnedMessageID) {
+        this.pinnedMessageID = pinnedMessageID;
     }
 
-    public static LinkedHashMap<String, Message> fromJSON (String JSONed) {
-        Gson gson = new Gson();
-        Type type = new TypeToken<LinkedHashMap<String, Message>> () {}.getType();
-        LinkedHashMap<String, Message> messages = gson.fromJson(JSONed, type);
-        return messages;
+    public LinkedHashMap<String, Message> getAllMessages() {
+        return allMessages;
+    }
+
+    public String getPinnedMessage() {
+        return pinnedMessageID;
     }
 }
