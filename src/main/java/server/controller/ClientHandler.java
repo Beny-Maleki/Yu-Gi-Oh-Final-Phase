@@ -178,10 +178,26 @@ public class ClientHandler implements Runnable {
         if (null != user) {
             if (user.isPasswordMatch(password)) {
                 if (LoginUser.getUser() == null) {
-                    logInCommand.setUser(user);
-                    String token = UUID.randomUUID().toString();
-                    logInCommand.setToken(token);
-                    ClientInfo.addUserToLoggedIn(clientInfo, token, user);
+
+                    boolean addUser = true;
+                    ArrayList<User> loggedInUsers = ClientInfo.getLoggedInUsers();
+                    for (User loggedInUser : loggedInUsers) {
+                        if (loggedInUser.getUsername().equals(user.getUsername())) {
+                            addUser = false;
+                            break;
+                        }
+                    }
+
+                    if (!addUser) {
+                        logInCommand.setException(new AlreadyLoggedIn());
+                    } else {
+                        loggedInUsers.add(user);
+                        logInCommand.setUser(user);
+                        String token = UUID.randomUUID().toString();
+                        logInCommand.setToken(token);
+                        ClientInfo.addUserToLoggedIn(clientInfo, token, user);
+                        clientInfo.setToken(token);
+                    }
                 } else {
                     logInCommand.setException(new AlreadyLoggedIn());
                 }
@@ -201,9 +217,9 @@ public class ClientHandler implements Runnable {
         String sentMessage;
         User sender;
         switch (type) {
-            case INITIAL_DATA_REQUEST:
-            case UPDATE: {
+            case INITIAL_DATA_REQUEST: {
                 chatBoxCommand.setAllMessages(MessageDatabase.getInstance().getAllMessages());
+                chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoginClientHashMap().size());
                 chatBoxCommand.setPinnedMessageID(MessageDatabase.getInstance().getPinnedMessageID());
                 break;
             }
@@ -217,29 +233,60 @@ public class ClientHandler implements Runnable {
 
                 new Message(sentMessage, sender, isInReplyToAnother, IDInReplyTo);
                 chatBoxCommand.setAllMessages(MessageDatabase.getInstance().getAllMessages());
+                chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoginClientHashMap().size());
+                chatBoxCommand.setPinnedMessageID(MessageDatabase.getInstance().getPinnedMessageID());
+                chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE);
+
+                notifyOtherUsers(chatBoxCommand);
                 break;
             }
             case OMIT_MESSAGE: {
                 String ID = chatBoxCommand.getMessageID();
                 MessageDatabase.getInstance().removeFromAllMessages(ID);
+                chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE);
+
+                notifyOtherUsers(chatBoxCommand);
                 break;
             }
             case EDIT_MESSAGE: {
                 String ID = chatBoxCommand.getMessageID();
                 Message message = MessageDatabase.getInstance().getFromAllMessages(ID);
                 message.setMessageString(chatBoxCommand.getSentMessage());
+                chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE);
+
+                notifyOtherUsers(chatBoxCommand);
+                break;
             }
             case PIN_MESSAGE: {
                 String ID = chatBoxCommand.getMessageID();
                 Message toPin = MessageDatabase.getInstance().getFromAllMessages(ID);
                 MessageDatabase.getInstance().setPinnedMessageID(ID);
+                chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE);
+
+                notifyOtherUsers(chatBoxCommand);
+                break;
             }
         }
 
-        chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoginClientHashMap().size());
 
         netOut.format("%s\n", Command.makeJson(chatBoxCommand));
         netOut.flush();
+    }
+
+    private void notifyOtherUsers(ChatBoxCommand chatBoxCommand) {
+        Set<String> IDs  = ClientInfo.getLoginClientHashMap().keySet();
+        for (String id : IDs) {
+           if (!this.clientInfo.getToken().equals(ClientInfo.getLoginClientHashMap().get(id).getToken())) {
+               try {
+                   chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoginClientHashMap().size());
+
+                   Formatter netOutThisClient = new Formatter(clientInfo.getClientSocket().getOutputStream());
+                   netOutThisClient.format("%s\n", Command.makeJson(chatBoxCommand));
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           }
+        }
     }
 
 }

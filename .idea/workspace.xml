@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="some other bug fixes">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="a small bug fix in Login and Register">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/ClientSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/AudioHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/AudioHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/ChatRoomView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/ChatRoomView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/ChatBoxCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/ChatBoxCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ClientInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ChatRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/ChatRoom.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,12 +339,6 @@
       <workItem from="1626518022073" duration="1729000" />
       <workItem from="1626519812161" duration="686000" />
       <workItem from="1626631080537" duration="9805000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۶۴" summary="restore data again">
-      <created>1621101451197</created>
-      <option name="number" value="LOCAL‎۰۰۰۶۴" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۶۴" />
-      <updated>1621101451213</updated>
     </task>
     <task id="LOCAL‎۰۰۰۶۵" summary="restore data again">
       <created>1621101745423</created>
@@ -667,7 +667,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626781469891</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="a small bug fix in Login and Register">
+      <created>1626782175872</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1626782175874</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -687,7 +694,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="a small bug fix in messages in DeckModifierView" />
     <MESSAGE value="a small warning fix" />
     <MESSAGE value="initialized GameView" />
     <MESSAGE value="continue some morei in  GameView Initialize" />
@@ -712,7 +718,8 @@
     <MESSAGE value="bug fix in Listener" />
     <MESSAGE value="bug fix" />
     <MESSAGE value="some other bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="some other bug fixes" />
+    <MESSAGE value="a small bug fix in Login and Register" />
+    <option name="LAST_COMMIT_MESSAGE" value="a small bug fix in Login and Register" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

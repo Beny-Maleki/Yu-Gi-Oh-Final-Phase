@@ -34,6 +34,10 @@ public class ChatBoxCommand extends Command {
         this.sender = sender;
     }
 
+    public ChatBoxCommand(CommandType commandType) {
+        super(commandType);
+    }
+
     public ChatBoxCommand(CommandType commandType, ChatCommandType chatCommandType, String messageID) {
         super(commandType);
         this.chatCommandType = chatCommandType;

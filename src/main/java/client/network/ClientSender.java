@@ -30,7 +30,6 @@ public class ClientSender {
     public void sendMessage(Command command) {
         String commandToString = Command.makeJson(command);
         formatter.format("%s\n", commandToString);
-        System.out.println(commandToString);
         formatter.flush();
         // -> sending message to server !
     }

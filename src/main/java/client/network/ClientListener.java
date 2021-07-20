@@ -15,8 +15,10 @@ public class ClientListener extends Thread {
     private static Command serverResponse;
     private static Scanner netIn;
     private static String currentCommandID;
+    private static Gson gson;
 
-    {
+    static {
+        gson = new GsonBuilder().create();
         serverResponse = new Command(CommandType.WAITING);
     }
 
@@ -48,7 +50,6 @@ public class ClientListener extends Thread {
     public void run() {
         while (true) {
             String command = netIn.nextLine();
-            Gson gson = new GsonBuilder().create();
             serverResponse = gson.fromJson(command, Command.class);
 
             switch (serverResponse.getCommandType()) {

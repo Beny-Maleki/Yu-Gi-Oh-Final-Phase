@@ -1,7 +1,5 @@
 package client.view;
 
-import javafx.scene.media.MediaPlayer;
-
 
 public class AudioHandler extends FatherAudio {
     protected static FatherAudio playing;
@@ -27,9 +25,9 @@ public class AudioHandler extends FatherAudio {
 
     @Override
     public void play() {
-        mediaPlayer.play();
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        playing = this;
+//        mediaPlayer.play();
+//        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+//        playing = this;
     }
 
     public static void muteThePlaying() {

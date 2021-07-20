@@ -34,7 +34,7 @@
             <Font name="System Bold Italic" size="20.0" />
          </font></Label>
       <Label layoutX="180.0" layoutY="21.0" text="Currently online: " textFill="WHITE" />
-      <Label fx:id="numberOfLoggedInsLabel" layoutX="279.0" layoutY="21.0" text="0" textFill="WHITE" />
+      <Label fx:id="numberOfLoggedInsLabel" layoutX="279.0" layoutY="21.0" textFill="WHITE" />
       <Button layoutX="460.0" layoutY="10.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: red; -fx-background-radius: 15; -fx-border-radius: 15;" text="X" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -52,7 +52,7 @@
       <Label fx:id="pinnedMessageTitle" layoutX="14.0" layoutY="69.0" text="Pinned Message:" textFill="WHITE" />
       <Pane fx:id="pinnedMessageContainer" layoutX="118.0" layoutY="62.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-radius: 30; -fx-border-radius: 30;">
          <children>
-            <Label fx:id="pinnedMessageLabel" layoutY="6.0" text="0" textFill="WHITE" />
+            <Label fx:id="pinnedMessageLabel" layoutY="6.0" textFill="WHITE" />
          </children></Pane>
       <Button fx:id="cancelReplyButton" layoutX="473.0" layoutY="530.0" mnemonicParsing="false" onAction="#cancelReply" prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: white;" text="X" visible="false">
          <font>

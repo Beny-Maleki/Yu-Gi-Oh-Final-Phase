@@ -9,7 +9,7 @@ import client.model.Message;
 import client.model.MessageHistory;
 import client.model.userProp.LoginUser;
 import client.model.userProp.User;
-import client.network.ClientListener;
+import connector.commands.CommandType;
 import connector.commands.commnadclasses.ChatBoxCommand;
 import connector.commands.commnadclasses.ChatCommandType;
 import javafx.application.Platform;
@@ -58,11 +58,7 @@ public class ChatRoomView extends Controller {
 
         updateNumOfLoggedIns();
 
-        numberOfLoggedInsLabel.setText(String.valueOf(
-                ChatRoomController.getNumberOfLoggedIns()
-        ));
-
-        messageTextField.setText("");
+        messageTextField.clear();
 
         scrollPane.setMinViewportHeight(425);
 
@@ -71,45 +67,61 @@ public class ChatRoomView extends Controller {
         ChatRoomController.getInstance().setCurrentFXMLController(this);
 
         new Thread(() -> {
-            if (ClientListener.getServerResponse() instanceof ChatBoxCommand){
-                ChatBoxCommand response = (ChatBoxCommand) ClientListener.getServerResponse();
-                if (response.getChatCommandType() == ChatCommandType.UPDATE) {
-                    Platform.runLater(() -> {
-                        // backend:
-                        ChatRoomController.getInstance().updateData();
-                        // GUI:
-                        ChatRoomView currentView = ChatRoomController.getInstance().getCurrentFXMLController();
-                        currentView.updateNumOfLoggedIns();
-                        currentView.updateMessages();
-                        currentView.updatePinnedMessage();
-                    });
-                }
-            }
+           //while (true) {
+               if (root.isVisible()) {
+                   ChatBoxCommand response = (ChatBoxCommand) ChatRoomController.getResponseCommand();
+                   if (response.getChatCommandType() == ChatCommandType.UPDATE) {
+                       System.out.println("here");
+                       Platform.runLater(() -> {
+                           ChatRoomView currentView = ChatRoomController.getInstance().getCurrentFXMLController();
+                           currentView.generalUpdate();
 
+                           ChatRoomController.setResponseCommand(new ChatBoxCommand(CommandType.WAITING));
+                       });
+                   }
+               }
+          // }
         }).start();
     }
 
+    public void generalUpdate() {
+        ChatRoomController.getInstance().updateData();
+
+        updateNumOfLoggedIns();
+        updateMessages();
+        updatePinnedMessage();
+        ChatRoomController.setResponseCommand(new ChatBoxCommand(CommandType.WAITING));
+    }
+
     public void updateNumOfLoggedIns() {
-        int newNumberOfLoggedIns = ChatRoomController.getNumberOfLoggedIns();
+        ChatBoxCommand chatBoxCommand = (ChatBoxCommand) ChatRoomController.getResponseCommand();
+        int newNumberOfLoggedIns = chatBoxCommand.getNumberOfLoggedIns();
 
         if (MessageHistory.getCurrentNumberOfLoggedIns() != newNumberOfLoggedIns) {
             numberOfLoggedInsLabel.setText(String.valueOf(newNumberOfLoggedIns));
             new FadeInUp(numberOfLoggedInsLabel).play();
         }
+
         MessageHistory.setCurrentNumberOfLoggedIns(newNumberOfLoggedIns);
     }
 
     private void updateMessages() {
-        Set<String> newIDs = ChatRoomController.getAllMessages().keySet();
+        ChatBoxCommand chatBoxCommand = (ChatBoxCommand) ChatRoomController.getResponseCommand();
+        Set<String> newIDs = chatBoxCommand.getAllMessages().keySet();
         Set<String> prevIDs = MessageHistory.getCurrentMessages().keySet();
 
+        LinkedHashMap<String, Message> newLinkedHM = chatBoxCommand.getAllMessages();
         for (String id : newIDs) {
             if (!prevIDs.contains(id)) {
-                visualizeMessage(MessageHistory.getCurrentMessages().get(id));
+                visualizeMessage(newLinkedHM.get(id));
             }
         }
 
-        MessageHistory.setCurrentMessages(ChatRoomController.getAllMessages());
+        MessageHistory.getCurrentMessages().clear();
+        for (String newID : newIDs) {
+            Message newMessage = ChatRoomController.getAllMessages().get(newID);
+            MessageHistory.getCurrentMessages().put(newID, newMessage);
+        }
 
         scrollPane.vvalueProperty().bind(content.heightProperty());
     }
@@ -149,7 +161,7 @@ public class ChatRoomView extends Controller {
         messageTextLabel.setPadding(new Insets(0, 5, 0, 5));
 
         messagePane.getChildren().add(messageTextLabel);
-
+        messagePane.setCursor(Cursor.HAND);
         messagePane.setOnMouseClicked(e -> {
             selectedMessageID = message.getID();
             showOptions(e, message, messageContainer, messageTextLabel);
@@ -216,8 +228,8 @@ public class ChatRoomView extends Controller {
     }
 
     private void showOptions(MouseEvent mouseEvent, Message message, HBox messageContainer, Label messageLabel) {
-        double layoutX = mouseEvent.getSceneX();
-        double layoutY = mouseEvent.getSceneY();
+        double layoutX = 0;
+        double layoutY = 0;
         double sizeX = 50;
         double sizeY = 40;
 
@@ -228,6 +240,8 @@ public class ChatRoomView extends Controller {
             repliedMessageID = message.getID();
             repliedMessageLabel.setText("In reply to: " + message.getMessageString());
             cancelReplyButton.setVisible(true);
+
+            root.getChildren().remove(options);
         });
 
         HBox reply = new HBox(replyLabel);
@@ -268,21 +282,24 @@ public class ChatRoomView extends Controller {
                 deleteMessage(options, message, messageContainer);
             });
 
+            options.getChildren().addAll(edit, delete, pin);
         }
 
+        options.getChildren().add(reply);
+        options.setStyle("-fx-background-color: white");
+        options.toFront();
         root.getChildren().add(options);
 
     }
 
     private void deleteMessage(VBox options, Message message, HBox messageContainer) {
         ChatRoomController.getInstance().deleteMessage(message.getID());
-        root.getChildren().remove(options);
         content.getChildren().remove(messageContainer);
+        root.getChildren().remove(options);
     }
 
     private void pinMessage(VBox options, Message message, HBox messageContainer) {
         ChatRoomController.getInstance().pinMessage(message.getID());
-        root.getChildren().remove(options);
         pinnedMessageLabel.setAccessibleText(message.getMessageString());
         pinnedMessageContainer.setOnMouseClicked(e -> {
             scrollPane.vvalueProperty().bind(messageContainer.layoutYProperty());
@@ -290,6 +307,7 @@ public class ChatRoomView extends Controller {
         pinnedMessageLabel.setOnMouseClicked(e -> {
             scrollPane.vvalueProperty().bind(messageContainer.layoutYProperty());
         });
+        root.getChildren().remove(options);
 
     }
 
@@ -302,6 +320,7 @@ public class ChatRoomView extends Controller {
             messageLabel.setText(messageTextField.getText());
             messageTextField.clear();
         });
+        root.getChildren().remove(options);
     }
 
     private Pane makeAPopUp(Pane parent, double layoutX, double layoutY, double sizeX, double sizeY) {
