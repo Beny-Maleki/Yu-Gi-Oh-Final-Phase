@@ -23,19 +23,25 @@
     -fx-background-size: cover;
 }
 
-.scroll-bar:horizontal .thumb{
+.scroll-bar:horizontal .thumb {
     -fx-background-color: #703f21;
     -fx-background-radius: 5em;
 }
 
-#selectedCardDescriptionLabel{
+#selectedCardDescriptionLabel {
     -fx-padding: 2;
     -fx-border-color: rgba(72, 69, 69, 0.18);
 }
 
-#tradeButt{
+#tradeButt {
     -fx-background-color: #703f21;
     -fx-border-color: rgba(10, 10, 10, 0.42);
     -fx-background-radius: 7;
     -fx-border-radius: 7;
 }
+
+
+#tradeButt:hover {
+    -fx-background-color: #371b0f;
+}
+

@@ -502,5 +502,17 @@
     "name": "ramtin",
     "price": 3300,
     "description": "attack simply"
+  },
+  {
+    "attack": 1400,
+    "defence": 1100,
+    "level": 4,
+    "type": "NORMAL",
+    "race": "WARRIOR",
+    "attribute": "EARTH",
+    "ID": 76,
+    "name": "ramtin",
+    "price": 3300,
+    "description": "attack simply"
   }
 ]

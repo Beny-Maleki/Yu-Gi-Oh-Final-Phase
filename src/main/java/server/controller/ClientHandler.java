@@ -17,7 +17,7 @@ import connector.exceptions.DuplicateNicknameException;
 import connector.exceptions.DuplicateUsernameException;
 import connector.exceptions.NotMatchingUserAndPass;
 import server.MessageDatabase;
-import server.ServerDataAnalyse;
+import server.ServerDataAnalyser;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -67,6 +67,20 @@ public class ClientHandler implements Runnable {
                     break;
                 }
 
+                case PUT_CARD_FOR_TRADE: {
+                    PutCardForTradeCommand putCardForTradeCommand =
+                            yaGson.fromJson(request, PutCardForTradeCommand.class);
+                    handleNewCardOnTrade(putCardForTradeCommand);
+                    break;
+                }
+
+                case GET_CARD_FOR_TRADES: {
+                    GetCardsOnTradeCommand getCardsOnTradeCommand =
+                            yaGson.fromJson(request, GetCardsOnTradeCommand.class);
+                    handleGetCardsOnTradeCommand(getCardsOnTradeCommand);
+                    break;
+                }
+
                 case CHAT: {
                     ChatBoxCommand chatBoxCommand = yaGson.fromJson(request, ChatBoxCommand.class);
                     handleChatBox(chatBoxCommand);
@@ -77,10 +91,21 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    private void handleGetCardsOnTradeCommand(GetCardsOnTradeCommand getCardsOnTradeCommand) {
+        getCardsOnTradeCommand.setCardForTrades(ServerDataAnalyser.getInstance().getCardsOnTrades());
+        netOut.format("%s\n", Command.makeJson(getCardsOnTradeCommand));
+        netOut.flush();
+    }
+
+    private void handleNewCardOnTrade(PutCardForTradeCommand putCardForTradeCommand) {
+        ServerDataAnalyser.getInstance().putCardForTrade(putCardForTradeCommand.getCardForTrade());
+        //update user interfaces
+    }
+
     private void handleUserTradeRequests(GetUserTradeRequestsCommand getUserTradeRequestsCommand) {
         String token = getUserTradeRequestsCommand.getToken();
         User user = ClientInfo.getUserByToken(token);
-        getUserTradeRequestsCommand.setRequests(ServerDataAnalyse.getInstance().findAllTradeRequestOfThisUser(user));
+        getUserTradeRequestsCommand.setRequests(ServerDataAnalyser.getInstance().findAllTradeRequestOfThisUser(user));
         netOut.format("%s\n", Command.makeJson(getUserTradeRequestsCommand));
         netOut.flush();
     }
@@ -94,8 +119,8 @@ public class ClientHandler implements Runnable {
         separateUserCollectionCard(user, monsterCards, magicCards);
         for (Deck deck : user.getAllUserDecks()) {
             if (deck != null) {
-                ArrayList<Card> mainDeckCards = ServerDataAnalyse.getInstance().convertIDsToCard(deck.getMainDeckCardsID());
-                ArrayList<Card> sideDeckCards = ServerDataAnalyse.getInstance().convertIDsToCard(deck.getSideDeckCardsID());
+                ArrayList<Card> mainDeckCards = ServerDataAnalyser.getInstance().convertIDsToCard(deck.getMainDeckCardsID());
+                ArrayList<Card> sideDeckCards = ServerDataAnalyser.getInstance().convertIDsToCard(deck.getSideDeckCardsID());
                 separateMonsterAndMagics(monsterCards, magicCards, mainDeckCards);
                 separateMonsterAndMagics(monsterCards, magicCards, sideDeckCards);
             }
@@ -117,7 +142,7 @@ public class ClientHandler implements Runnable {
     }
 
     private void separateUserCollectionCard(User user, List<MonsterCard> monsterCards, List<MagicCard> magicCards) {
-        ArrayList<Card> collectionCards = ServerDataAnalyse.getInstance().convertIDsToCard(user.getUserCardCollectionInteger());
+        ArrayList<Card> collectionCards = ServerDataAnalyser.getInstance().convertIDsToCard(user.getUserCardCollectionInInteger());
         separateMonsterAndMagics(monsterCards, magicCards, collectionCards);
     }
 
@@ -196,7 +221,7 @@ public class ClientHandler implements Runnable {
             MessageDatabase.getInstance().putToPinnedMessages(ID, toPin);
         }
 
-        chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoggedInClients().size());
+        chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoginClientHashMap().size());
 
         netOut.format("%s\n", ChatBoxCommand.toJson(chatBoxCommand));
         netOut.flush();

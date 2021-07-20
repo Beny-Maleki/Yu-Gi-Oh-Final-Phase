@@ -1,5 +1,6 @@
 package client;
 
+import connector.CardForTrade;
 import connector.TradeRequest;
 import connector.cards.Card;
 import connector.cards.MagicCard;
@@ -13,6 +14,7 @@ public class UserDataBase {
     private final List<Card> USER_CARDS;
     private List<MonsterCard> userMonsterCards;
     private List<MagicCard> userMagicCards;
+    private ArrayList<CardForTrade> cardForTrades;
     private ArrayList<TradeRequest> requests;
 
     {
@@ -61,7 +63,16 @@ public class UserDataBase {
         USER_CARDS.addAll(userMonsterCards);
     }
 
+    public void addElementsToCardOnTrades(ArrayList<CardForTrade> newCardForTrades) {
+        cardForTrades.addAll(newCardForTrades);
+    }
+
     public void setUserTradeRequests(ArrayList<TradeRequest> requests) {
         this.requests = requests;
     }
+
+    public ArrayList<CardForTrade> getCardForTrades() {
+        return cardForTrades;
+    }
+
 }

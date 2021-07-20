@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="423.0" prefWidth="527.0" stylesheets="@../stylesheets/SeeCardsOnTradePage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.SeeCardOnTradeView">
+   <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="423.0" prefWidth="527.0" vbarPolicy="ALWAYS">
+      <VBox fx:id="container" alignment="TOP_CENTER" prefHeight="410.0" prefWidth="512.0" spacing="8.0" style="-fx-background-color: orange;">
+         <Label alignment="CENTER" prefHeight="31.0" prefWidth="515.0" text="CARDS ON TRADE">
+            <font>
+               <Font name="Viner Hand ITC" size="12.0" />
+            </font>
+         </Label>
+         <HBox alignment="CENTER" prefHeight="48.0" prefWidth="500.0"
+               style="-fx-background-color: black; -fx-background-radius: 80;">
+            <Pane prefHeight="50.0" prefWidth="193.0">
+               <ImageView fitHeight="51.0" fitWidth="48.0" layoutX="19.0" pickOnBounds="true"
+                          preserveRatio="true">
+                  <Image url="@../images/avatar3.png"/>
+               </ImageView>
+               <Label alignment="CENTER" layoutX="80.0" layoutY="13.0" prefHeight="22.0" prefWidth="88.0"
+                      style="-fx-background-radius: 20;" text="playerName"/>
+            </Pane>
+            <Pane prefHeight="50.0" prefWidth="137.0">
+               <ImageView fitHeight="41.0" fitWidth="34.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true"
+                          preserveRatio="true">
+                  <Image url="@../images/backOfCard.jpg"/>
+               </ImageView>
+               <ImageView fitHeight="41.0" fitWidth="34.0" layoutX="28.0" layoutY="4.0" pickOnBounds="true"
+                          preserveRatio="true">
+                  <Image url="@../images/backOfCard.jpg"/>
+               </ImageView>
+               <ImageView fitHeight="41.0" fitWidth="34.0" layoutX="42.0" layoutY="4.0" pickOnBounds="true"
+                          preserveRatio="true">
+                  <Image url="@../images/backOfCard.jpg"/>
+               </ImageView>
+               <ImageView fitHeight="41.0" fitWidth="34.0" layoutX="42.0" layoutY="4.0" pickOnBounds="true"
+                          preserveRatio="true">
+                  <Image url="@../images/backOfCard.jpg"/>
+               </ImageView>
+               <ImageView fitHeight="41.0" fitWidth="34.0" layoutX="81.0" layoutY="4.0" pickOnBounds="true"
+                          preserveRatio="true">
+                  <Image url="@../images/backOfCard.jpg"/>
+               </ImageView>
+            </Pane>
+            <Pane prefHeight="48.0" prefWidth="120.0"/>
+         </HBox>
+      </VBox>
+   </ScrollPane>
+</AnchorPane>

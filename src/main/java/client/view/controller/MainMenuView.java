@@ -1,15 +1,17 @@
 package client.view.controller;
 
-import animatefx.animation.BounceIn;
+import animatefx.animation.*;
 import client.controller.menues.menuhandlers.menucontrollers.MainMenuController;
 import client.model.enums.Menu;
 import client.view.AudioHandler;
 import client.view.AudioPath;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
@@ -26,6 +28,8 @@ public class MainMenuView {
     public ImageView tradeButton;
     public AnchorPane tradePopUp;
     public AnchorPane root;
+    public Label tradeLabel;
+    public Pane holder;
 
     {
         controller = new MainMenuController();
@@ -34,6 +38,9 @@ public class MainMenuView {
     @FXML
     public void initialize() {
         tradePopUp.setVisible(false);
+        tradeButton.setOnMouseEntered(event -> {
+            new Tada(tradeButton).play();
+        });
         AudioHandler mainTheme; // stating the game theme music!
         if (AudioHandler.getPlaying() != null) {
             if (!AudioHandler.getPlayingAudioPath().equals(AudioPath.MAIN_MENU)) {
@@ -45,7 +52,15 @@ public class MainMenuView {
             mainTheme = new AudioHandler(AudioPath.MAIN_MENU);
             mainTheme.play();
         }
-        controller.getPlayerTradeRequest();
+        if (!controller.getPlayerTradeRequest()) {
+            Pulse pulse = new Pulse(tradeButton);
+            pulse.setCycleCount(AnimationFX.INDEFINITE);
+            pulse.play();
+            Flash flash = new Flash(tradeLabel);
+            flash.setCycleCount(AnimationFX.INDEFINITE);
+            flash.setSpeed(0.4);
+            flash.play();
+        }
     }
 
     public void run(MouseEvent event) throws IOException {

@@ -29,7 +29,7 @@ public class ServerDataBase {
     }
 
     public void updateID(Card card) {
-        Objects.requireNonNull(ServerDataAnalyse.getInstance().getCardById(Card.numberOfOriginalCards)).setID(card.getID());
+        Objects.requireNonNull(ServerDataAnalyser.getInstance().getCardById(Card.numberOfOriginalCards)).setID(card.getID());
         card.setID(Card.numberOfOriginalCards);
     }
 
@@ -77,8 +77,8 @@ public class ServerDataBase {
         ArrayList<MagicCard> magicCards = new ArrayList<>();
         magicCards = loadMagicCards(magicCards);
         monsterCards = loadMonsterCards(monsterCards);
-        ServerDataAnalyse.getInstance().setGameMagicCards(magicCards);
-        ServerDataAnalyse.getInstance().setGameMonsterCards(monsterCards);
+        ServerDataAnalyser.getInstance().setGameMagicCards(magicCards);
+        ServerDataAnalyser.getInstance().setGameMonsterCards(monsterCards);
         loadUsers();
         //card Json
         //saveCardsToJson(monsterCards, magicCards);

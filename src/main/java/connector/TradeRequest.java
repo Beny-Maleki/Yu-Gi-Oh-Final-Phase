@@ -3,19 +3,19 @@ package connector;
 import client.model.userProp.User;
 
 public class TradeRequest {
-    private CardOnTrade tradeRequest;
+    private CardForTrade tradeRequest;
     private User user;
     private String cardName;
     private int numberOfCard;
 
-    public TradeRequest(CardOnTrade tradeRequest, User user, String cardName, int numberOfCard) {
+    public TradeRequest(CardForTrade tradeRequest, User user, String cardName, int numberOfCard) {
         this.tradeRequest = tradeRequest;
         this.user = user;
         this.cardName = cardName;
         this.numberOfCard = numberOfCard;
     }
 
-    public CardOnTrade getTradeRequest() {
+    public CardForTrade getTradeRequest() {
         return tradeRequest;
     }
 

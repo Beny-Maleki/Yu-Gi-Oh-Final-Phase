@@ -5,10 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import connector.commands.Command;
 import connector.commands.CommandType;
-import connector.commands.commnadclasses.GetUserTradeRequestsCommand;
-import connector.commands.commnadclasses.GetUsersCardCommand;
-import connector.commands.commnadclasses.LogInCommand;
-import connector.commands.commnadclasses.RegisterCommand;
+import connector.commands.commnadclasses.*;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -54,6 +51,10 @@ public class ClientListener extends Thread {
                     break;
                 case GET_USER_TRADE_REQUEST:
                     serverResponse = gson.fromJson(command, GetUserTradeRequestsCommand.class);
+                    break;
+                case GET_CARD_FOR_TRADES:
+                    serverResponse = gson.fromJson(command, GetCardsOnTradeCommand.class);
+                    break;
                 case DUEL:
                 case PROFILE:
             }
@@ -62,7 +63,7 @@ public class ClientListener extends Thread {
             Controller.setResponseException(serverResponse.getException());
 
             try {
-                Thread.sleep(100);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -138,10 +138,6 @@ public class User extends FatherUser {
         return cardCollection;
     }
 
-    public ArrayList<Integer> getUserCardCollectionInteger() {
-        return cardCollection;
-    }
-
     public void addCard(Card card) {
         cardCollection.add(card.getID());
     }

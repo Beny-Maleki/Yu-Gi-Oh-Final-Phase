@@ -9,6 +9,7 @@ import client.network.Client;
 import client.network.ClientListener;
 import client.network.ClientSender;
 import connector.commands.CommandType;
+import connector.commands.commnadclasses.GetCardsOnTradeCommand;
 import connector.commands.commnadclasses.GetUsersCardCommand;
 import connector.commands.commnadclasses.LogInCommand;
 import javafx.scene.control.Label;
@@ -22,33 +23,13 @@ public class LoginPageController extends Controller {
 
         try {
             if (username.equals("") || password.equals("")) throw new EmptyTextFieldException();
+            LogInCommand response = setLoginRequestToServer(username, password);
 
-            ClientSender.getSender().sendMessage(new LogInCommand(CommandType.LOGIN, username, password));
-
-            try {
-                while (ClientListener.getServerResponse().getCommandType() == CommandType.WAITING) {
-                    Thread.sleep(100);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            LogInCommand response = (LogInCommand) ClientListener.getServerResponse();
             if (responseException != null) {
-                System.out.println(responseException.getMessage());
-                message.setText(responseException.getMessage());
-                responseException = null;
+                handleLoginErrors(message);
             } else {
-                processLoginResponse(message, response);
-                ClientSender.getSender().sendMessage(new GetUsersCardCommand(CommandType.GET_USER_CARD, Client.getClient().getToken()));
-                try {
-                    while (ClientListener.getServerResponse().getCommandType() != CommandType.GET_USER_CARD) {
-                        Thread.sleep(100);
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                processGettingUserCardResponse(message);
+                getUserCardsFromDataBase(message, response);
+                getTradeShopInfoFromDataBase();
             }
         } catch (EmptyTextFieldException | IOException e) {
             e.printStackTrace();
@@ -58,12 +39,62 @@ public class LoginPageController extends Controller {
         displayMessage(message);
     }
 
+    private void getTradeShopInfoFromDataBase() throws IOException {
+        try {
+            while (ClientListener.getServerResponse().getCommandType() != CommandType.GET_CARD_FOR_TRADES) {
+                Thread.sleep(100);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        processGettingCardsOnTrade();
+    }
+
+    private void getUserCardsFromDataBase(Label message, LogInCommand response) throws IOException {
+        processLoginResponse(message, response);
+        ClientSender.getSender().sendMessage(new GetUsersCardCommand(CommandType.GET_USER_CARD, Client.getClient().getToken()));
+        try {
+            while (ClientListener.getServerResponse().getCommandType() != CommandType.GET_USER_CARD) {
+                Thread.sleep(100);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        processGettingUserCardResponse(message);
+        ClientSender.getSender().sendMessage(new GetCardsOnTradeCommand(CommandType.GET_CARD_FOR_TRADES));
+    }
+
+    private void handleLoginErrors(Label message) {
+        System.out.println(responseException.getMessage());
+        message.setText(responseException.getMessage());
+        responseException = null;
+    }
+
+    private LogInCommand setLoginRequestToServer(String username, String password) {
+        ClientSender.getSender().sendMessage(new LogInCommand(CommandType.LOGIN, username, password));
+
+        try {
+            while (ClientListener.getServerResponse().getCommandType() != CommandType.LOGIN) {
+                Thread.sleep(100);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return (LogInCommand) ClientListener.getServerResponse();
+    }
+
     private void processGettingUserCardResponse(Label message) throws IOException {
         GetUsersCardCommand getCardResponse = (GetUsersCardCommand) ClientListener.getServerResponse();
         UserDataBase.getInstance().setUserMagicCards(getCardResponse.getUserMagicCard());
         UserDataBase.getInstance().setUserMonsterCards(getCardResponse.getUserMonsterCard());
         moveToPage(message, Menu.MAIN_MENU);
     }
+
+    private void processGettingCardsOnTrade() {
+        GetCardsOnTradeCommand getCardsOnTradeCommand = (GetCardsOnTradeCommand) ClientListener.getServerResponse();
+        UserDataBase.getInstance().addElementsToCardOnTrades(getCardsOnTradeCommand.getCardForTrades());
+    }
+
 
     private void processLoginResponse(Label message, LogInCommand response) {
         LoginUser.setUser(response.getUser());

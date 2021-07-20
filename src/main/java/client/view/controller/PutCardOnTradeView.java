@@ -1,38 +1,46 @@
 package client.view.controller;
 
-import animatefx.animation.BounceIn;
-import animatefx.animation.BounceInUp;
-import animatefx.animation.FlipInX;
-import animatefx.animation.Tada;
+import animatefx.animation.*;
+import client.controller.menues.menuhandlers.menucontrollers.TradePageController;
 import client.model.cards.CardHouse;
 import client.model.enums.Origin;
 import client.model.userProp.LoginUser;
 import connector.cards.Card;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.shape.Polygon;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MakeATradeView {
+public class PutCardOnTradeView {
+    private final TradePageController controller;
     public Label selectedCardDescriptionLabel;
     public Label numberOfTradedCard;
     public ImageView selectedCardImageView;
     public ScrollPane collectionScrollPane;
     public Label numberOfCardInCollection;
+    public Polygon increaseNumberBut;
+    public Button tradeButt;
+    public Polygon decreaseNumberBut;
     HashMap<String, Integer> cardAndNumberHashMap;
     private Card selectedCard;
     private ArrayList<Card> collection;
+    private int numberOfTradingCard;
 
     {
         collection = LoginUser.getUser().getCardCollection();
+        controller = new TradePageController();
+        numberOfTradingCard = 1;
     }
 
     static void setPropertyForImageView(ImageView imageView) {
@@ -50,15 +58,75 @@ public class MakeATradeView {
     @FXML
     public void initialize() {
         selectedCard = null;
+        setDefaultPicForCard();
+        initializeScrollBar();
+        initializeCardNumberControllerButton();
+        initializeTradeButtonBehavior();
+    }
 
+    private void setDefaultPicForCard() {
         try {
             selectedCardImageView.
                     setImage(new Image(new FileInputStream
                             ("src/main/resources/graphicprop/images/backOfCard.jpg")));
+            new BounceInDown(selectedCardImageView).play();
         } catch (FileNotFoundException ignored) {
         }
 
+    }
+
+    private void initializeTradeButtonBehavior() {
+        tradeButt.setOnMouseClicked(event -> {
+            controller.putCardForTrade(numberOfTradingCard, selectedCard.getName());
+            updatePage();
+        });
+    }
+
+    private void updatePage() {
+        collection = LoginUser.getUser().getCardCollection();
         initializeScrollBar();
+        selectedCard = null;
+        FadeOut fadeOut = runFadeOutAnimation();
+        fadeOut.getTimeline().setOnFinished(event -> setPagePropertyVisibility(false));
+        fadeOut.play();
+        setDefaultPicForCard();
+        initializeCardNumberControllerButton();
+    }
+
+    @NotNull
+    private FadeOut runFadeOutAnimation() {
+        new FadeOut(selectedCardDescriptionLabel).play();
+        new FadeOut(tradeButt).play();
+        new FadeOut(increaseNumberBut).play();
+        new FadeOut(decreaseNumberBut).play();
+        new FadeOut(numberOfTradedCard).play();
+        FadeOut fadeOut = new FadeOut(numberOfCardInCollection);
+        return fadeOut;
+    }
+
+    private void setPagePropertyVisibility(boolean state) {
+        selectedCardDescriptionLabel.setVisible(state);
+        tradeButt.setVisible(state);
+        increaseNumberBut.setVisible(state);
+        decreaseNumberBut.setVisible(state);
+        numberOfTradedCard.setVisible(state);
+        numberOfCardInCollection.setVisible(state);
+    }
+
+    private void initializeCardNumberControllerButton() {
+        increaseNumberBut.setOnMouseClicked(event -> {
+            int numberOfCard = cardAndNumberHashMap.get(selectedCard.getName());
+            if (numberOfCard > numberOfTradingCard) {
+                numberOfTradingCard++;
+                numberOfTradedCard.setText(numberOfTradingCard + "X");
+            }
+        });
+        decreaseNumberBut.setOnMouseClicked(event -> {
+            if (numberOfTradingCard != 1) {
+                numberOfTradingCard--;
+                numberOfTradedCard.setText(numberOfTradingCard + "X");
+            }
+        });
     }
 
     private void initializeScrollBar() {
@@ -73,14 +141,14 @@ public class MakeATradeView {
             handleOnMouseEntered(imageView);
             handleOnMouseExited(imageView);
 
-            collectionCardSlotStyler(i, imageView);
+            collectionCardSlotStyler(imageView);
 
             CardHouse cardHouse = makeCardHouseAndAssignImage(imageView, card);
 
             handleOnMouseClick(imageView, cardHouse);
 
             collectionFlowPane.getChildren().add(imageView);
-
+            new FadeInUp(imageView).play();
         }
         configureScrollPane(collectionFlowPane);
     }
@@ -108,6 +176,10 @@ public class MakeATradeView {
 
     private void handleOnMouseClick(ImageView imageView, CardHouse cardHouse) {
         imageView.setOnMouseClicked(mouseEvent -> {
+            numberOfTradingCard = 1;
+            numberOfTradedCard.setText("1X");
+            new FadeIn(tradeButt).play();
+            setPagePropertyVisibility(true);
 
             selectedCardImageView.setImage(cardHouse.getImage());
             new Tada(imageView).play();
@@ -116,13 +188,13 @@ public class MakeATradeView {
             selectedCard = cardHouse.getCard();
 
             selectedCardDescriptionLabel.setText(selectedCard.getCardDetailWithEnters());
-            numberOfCardInCollection.setText("You Have " + cardAndNumberHashMap.get(selectedCard.getName()) + " of this card in your collection");
+            numberOfCardInCollection.setText("You Have (" + cardAndNumberHashMap.get(selectedCard.getName()) + ") of this card in your collection");
             new BounceInUp(selectedCardDescriptionLabel).play();
-            new BounceIn(numberOfCardInCollection).play();
+            new BounceInLeft(numberOfCardInCollection).play();
         });
     }
 
-    private void collectionCardSlotStyler(int i, ImageView imageView) {
+    private void collectionCardSlotStyler(ImageView imageView) {
         imageView.setFitHeight(160 * 0.7);
         imageView.setFitWidth(109 * 0.7);
         imageView.setStyle("-fx-cursor: hand");

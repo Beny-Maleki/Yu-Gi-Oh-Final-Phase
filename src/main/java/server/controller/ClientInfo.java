@@ -7,41 +7,38 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ClientInfo {
-    private static ArrayList<ClientInfo> clientInfos;
-    private static HashMap<String, ClientInfo> loggedInClients;
+    private static final ArrayList<ClientInfo> CLIENT_INFOS;
+    private static final HashMap<String, ClientInfo> LOGIN_CLIENT_HASH_MAP;
 
     static {
-        clientInfos = new ArrayList<>();
-        loggedInClients = new HashMap<>();
+        CLIENT_INFOS = new ArrayList<>();
+        LOGIN_CLIENT_HASH_MAP = new HashMap<>();
     }
 
     private Socket clientSocket;
-    private boolean isLoggedIn;
     private User user;
 
     ClientInfo(Socket clientSocket) {
         this.clientSocket = clientSocket;
-        clientInfos.add(this);
+        CLIENT_INFOS.add(this);
     }
 
     public void setUser(User user) {
         this.user = user;
     }
 
-    public void setToken(String token) {
-    }
 
     public static void addUserToLoggedIn(ClientInfo clientInfo, String token, User user) {
         clientInfo.user = user;
-        loggedInClients.put(token, clientInfo);
+        LOGIN_CLIENT_HASH_MAP.put(token, clientInfo);
     }
 
-    public static HashMap<String, ClientInfo> getLoggedInClients() {
-        return loggedInClients;
+    public static HashMap<String, ClientInfo> getLoginClientHashMap() {
+        return LOGIN_CLIENT_HASH_MAP;
     }
 
     public static User getUserByToken(String token) {
-        return loggedInClients.get(token).user;
+        return LOGIN_CLIENT_HASH_MAP.get(token).user;
     }
 
 }
