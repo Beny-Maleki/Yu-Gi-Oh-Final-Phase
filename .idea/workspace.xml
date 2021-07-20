@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="a small bug fix in Login and Register">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="updating chat box and fixing login process and some more stuff that I don't remember :&quot;)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/network/ClientSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientSender.java" afterDir="false" />
@@ -694,7 +694,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="a small warning fix" />
     <MESSAGE value="initialized GameView" />
     <MESSAGE value="continue some morei in  GameView Initialize" />
     <MESSAGE value="matching to other commits" />
@@ -719,7 +718,8 @@
     <MESSAGE value="bug fix" />
     <MESSAGE value="some other bug fixes" />
     <MESSAGE value="a small bug fix in Login and Register" />
-    <option name="LAST_COMMIT_MESSAGE" value="a small bug fix in Login and Register" />
+    <MESSAGE value="updating chat box and fixing login process and some more stuff that I don't remember :&quot;)" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating chat box and fixing login process and some more stuff that I don't remember :&quot;)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
