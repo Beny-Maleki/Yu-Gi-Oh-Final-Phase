@@ -3,9 +3,11 @@ package client.controller.menues.menuhandlers.menucontrollers;
 import client.UserDataBase;
 import client.model.userProp.LoginUser;
 import client.network.Client;
+import client.network.ClientListener;
 import client.network.ClientSender;
 import connector.CardForTrade;
 import connector.commands.CommandType;
+import connector.commands.commnadclasses.GetCardsOnTradeCommand;
 import connector.commands.commnadclasses.PutCardForTradeCommand;
 
 import java.util.ArrayList;
@@ -31,5 +33,27 @@ public class TradePageController {
                 removedCard++;
             }
         }
+    }
+
+    public ArrayList<CardForTrade> getNewCardOnTrade(ArrayList<CardForTrade> cardsOnTrade) {
+        ClientSender.getSender().sendMessage(new GetCardsOnTradeCommand(CommandType.GET_CARD_FOR_TRADES));
+        try {
+            while (ClientListener.getServerResponse().getCommandType() != CommandType.GET_CARD_FOR_TRADES) {
+                Thread.sleep(100);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        GetCardsOnTradeCommand getCardsOnTradeCommand = (GetCardsOnTradeCommand) ClientListener.getServerResponse();
+        ArrayList<CardForTrade> allTradeRequest = getCardsOnTradeCommand.getCardForTrades();
+        UserDataBase.getInstance().addElementsToCardOnTrades(allTradeRequest);
+        ArrayList<CardForTrade> newTradeRequest = new ArrayList<>();
+        if (LoginUser.getUser() == null) return null;
+        for (CardForTrade cardForTrade : allTradeRequest) {
+            if (!cardsOnTrade.contains(cardForTrade) && cardForTrade.getUser() != LoginUser.getUser()){
+                newTradeRequest.add(cardForTrade);
+            }
+        }
+        return newTradeRequest;
     }
 }

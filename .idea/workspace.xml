@@ -5,43 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add graphics">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/TradePageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/SeeCardOnTradeView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/WatchTradeRequestView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/GetCardsOnTradeCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/ServerResources/CardOnTrade.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WatchTradeRequestPage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/leftArrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/redArrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/SeeCardsOnTradePage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WatchTradeRequestPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/images/orangeBC.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/UserDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/UserDataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/model/userProp/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/userProp/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/DeckModifierView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/DeckModifierView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/MainMenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/MakeATradeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/PutCardOnTradeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/ShopView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/ShopView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/TradePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/TradePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/PutCardOnTradeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/PutCardOnTradeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/SeeCardOnTradeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/SeeCardOnTradeView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/TradePopUpView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/TradePopUpView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connector/CardOnTrade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/CardForTrade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connector/TradeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/TradeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connector/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/cards/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connector/commands/CommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/commands/CommandType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/PutCardOnTradeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/PutCardForTradeCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/ServerDataAnalyse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/ServerDataAnalyser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/ServerDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/ServerDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/ServerResources/MonsterCard.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/ServerResources/MonsterCard.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/ServerResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/ServerResources/Users.Json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/UserAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/UserAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ClientInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MakeATradePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/SeeCardOnTradesPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/PutCardOnTradePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/PutCardOnTradePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/SeeCardOnTradesPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/SeeCardOnTradesPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/TradePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/TradePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/createTradPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/PutCardForTradePage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WatchTradeRequestPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WatchTradeRequestPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/SeeCardsOnTradePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/SeeCardsOnTradePage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,9 +51,10 @@
         <option value="JUnit4 Test Class" />
         <option value="package-info" />
         <option value="Enum" />
-        <option value="FxmlFile" />
         <option value="CSS File" />
         <option value="Class" />
+        <option value="FxmlFile" />
+        <option value="WLPacletInfo" />
       </list>
     </option>
   </component>
@@ -366,13 +343,7 @@
       <workItem from="1626519812161" duration="686000" />
       <workItem from="1626631080537" duration="9805000" />
       <workItem from="1626654385211" duration="7880000" />
-      <workItem from="1626699626715" duration="16433000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۵۹" summary="json">
-      <created>1620413922144</created>
-      <option name="number" value="LOCAL‎۰۰۰۵۹" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۵۹" />
-      <updated>1620413922144</updated>
+      <workItem from="1626699626715" duration="26220000" />
     </task>
     <task id="LOCAL‎۰۰۰۶۰" summary="adding magic actions to json">
       <created>1620573345261</created>
@@ -696,7 +667,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626654430969</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="add graphics">
+      <created>1626750113769</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1626750113769</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

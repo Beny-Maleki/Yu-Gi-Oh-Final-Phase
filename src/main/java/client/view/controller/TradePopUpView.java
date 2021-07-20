@@ -17,11 +17,14 @@ public class TradePopUpView {
     public ImageView exitIcon;
     public Button exitBut;
     public AnchorPane popUp;
+    public AnchorPane seeCardOnTrade;
 
     @FXML
     public void initialize() {
         makeATradePage.setVisible(false);
+        seeCardOnTrade.setVisible(false);
         container.getChildren().add(makeATradePage);
+        container.getChildren().add(seeCardOnTrade);
         exitBut.setOnMouseEntered(event -> {
             if (!exitIcon.isVisible()) {
                 exitIcon.setVisible(true);
@@ -42,8 +45,15 @@ public class TradePopUpView {
 
 
     public void makeATradeBut() {
+        seeCardOnTrade.setVisible(false);
         makeATradePage.setVisible(true);
         new FadeIn(makeATradePage).play();
+    }
+
+    public void showAllCardOnTrade() {
+        makeATradePage.setVisible(false);
+        seeCardOnTrade.setVisible(true);
+        new FadeIn(seeCardOnTrade).play();
     }
 
 }

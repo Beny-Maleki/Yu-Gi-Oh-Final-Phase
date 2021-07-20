@@ -100,8 +100,7 @@ public class PutCardOnTradeView {
         new FadeOut(increaseNumberBut).play();
         new FadeOut(decreaseNumberBut).play();
         new FadeOut(numberOfTradedCard).play();
-        FadeOut fadeOut = new FadeOut(numberOfCardInCollection);
-        return fadeOut;
+        return new FadeOut(numberOfCardInCollection);
     }
 
     private void setPagePropertyVisibility(boolean state) {

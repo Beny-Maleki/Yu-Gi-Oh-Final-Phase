@@ -40,6 +40,7 @@ public class LoginPageController extends Controller {
     }
 
     private void getTradeShopInfoFromDataBase() throws IOException {
+        ClientSender.getSender().sendMessage(new GetCardsOnTradeCommand(CommandType.GET_CARD_FOR_TRADES));
         try {
             while (ClientListener.getServerResponse().getCommandType() != CommandType.GET_CARD_FOR_TRADES) {
                 Thread.sleep(100);
@@ -51,7 +52,7 @@ public class LoginPageController extends Controller {
     }
 
     private void getUserCardsFromDataBase(Label message, LogInCommand response) throws IOException {
-        processLoginResponse(message, response);
+        processLoginResponse(response);
         ClientSender.getSender().sendMessage(new GetUsersCardCommand(CommandType.GET_USER_CARD, Client.getClient().getToken()));
         try {
             while (ClientListener.getServerResponse().getCommandType() != CommandType.GET_USER_CARD) {
@@ -61,7 +62,6 @@ public class LoginPageController extends Controller {
             e.printStackTrace();
         }
         processGettingUserCardResponse(message);
-        ClientSender.getSender().sendMessage(new GetCardsOnTradeCommand(CommandType.GET_CARD_FOR_TRADES));
     }
 
     private void handleLoginErrors(Label message) {
@@ -96,7 +96,7 @@ public class LoginPageController extends Controller {
     }
 
 
-    private void processLoginResponse(Label message, LogInCommand response) {
+    private void processLoginResponse(LogInCommand response) {
         LoginUser.setUser(response.getUser());
         Client.getClient().setToken(response.getToken());
     }

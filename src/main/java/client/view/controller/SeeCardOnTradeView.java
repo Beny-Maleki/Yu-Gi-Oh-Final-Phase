@@ -1,9 +1,13 @@
 package client.view.controller;
 
 import animatefx.animation.BounceInDown;
+import animatefx.animation.FadeIn;
 import client.UserDataBase;
+import client.controller.menues.menuhandlers.menucontrollers.TradePageController;
+import client.model.userProp.LoginUser;
 import connector.CardForTrade;
 import connector.cards.Card;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -22,12 +26,15 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class SeeCardOnTradeView {
-    private final ArrayList<CardForTrade> cardsOnTrade;
+    private final TradePageController controller;
+    private final Timeline timeline = new Timeline();
     public ScrollPane scrollPane;
     public VBox container;
+    private ArrayList<CardForTrade> cardsOnTrade;
 
     {
-        cardsOnTrade = UserDataBase.getInstance().getCardForTrades();
+        cardsOnTrade = new ArrayList<>();
+        controller = new TradePageController();
     }
 
     @FXML
@@ -37,20 +44,26 @@ public class SeeCardOnTradeView {
     }
 
     private void makeAPageForEachRequest(ArrayList<CardForTrade> cardForTrades) {
+
         cardForTrades.forEach(cardForTrade -> {
-            HBox hBox = new HBox();
-            setStyleForRequestBox(hBox);
-            Pane userInfo = new Pane();
-            setUserInfoPaneStyle(userInfo);
-            addUserInfoToPane(cardForTrade, userInfo);
-            Pane cardOnTradeDetail = new Pane();
-            setSizeForCardDetailPane(cardOnTradeDetail);
-            addDecorationImages(cardOnTradeDetail);
-            addTradedCardImage(cardForTrade, cardOnTradeDetail);
-            addNumberOfCardLabel(cardForTrade, cardOnTradeDetail);
-            Pane requestPane = new Pane();
-            addRequestButton(requestPane);
-            hBox.getChildren().addAll(userInfo, cardOnTradeDetail, requestPane);
+            if (cardForTrade.getUser() != LoginUser.getUser()) {
+                HBox hBox = new HBox();
+                setStyleForRequestBox(hBox);
+                Pane userInfo = new Pane();
+                setUserInfoPaneStyle(userInfo);
+                addUserInfoToPane(cardForTrade, userInfo);
+                Pane cardOnTradeDetail = new Pane();
+                setSizeForCardDetailPane(cardOnTradeDetail);
+                addDecorationImages(cardOnTradeDetail);
+                addTradedCardImage(cardForTrade, cardOnTradeDetail);
+                addNumberOfCardLabel(cardForTrade, cardOnTradeDetail);
+                Pane requestPane = new Pane();
+                addRequestButton(requestPane);
+                hBox.getChildren().addAll(userInfo, cardOnTradeDetail, requestPane);
+                container.getChildren().add(hBox);
+                FadeIn fadeIn = new FadeIn(hBox);
+                fadeIn.play();
+            }
         });
     }
 
@@ -127,6 +140,8 @@ public class SeeCardOnTradeView {
             e.printStackTrace();
         }
         Label userNickname = new Label(cardForTrade.getUser().getNickname());
+        userNickname.setPrefWidth(80);
+        userNickname.setPrefHeight(20);
         userNickname.setStyle("-fx-background-radius: 20");
         userNickname.setLayoutX(80);
         userNickname.setLayoutY(13);
@@ -145,11 +160,21 @@ public class SeeCardOnTradeView {
     }
 
     private void autoUpdatePane() {
-        Timeline timeline = new Timeline();
         timeline.getKeyFrames().add(new KeyFrame(
-                Duration.millis(500), event -> {
-                    //Ask server For Change List
+                Duration.millis(5000), event -> {
+            ArrayList<CardForTrade> cards = controller.getNewCardOnTrade(cardsOnTrade);
+            if (cards == null) timeline.stop();
+            else {
+                makeAPageForEachRequest(cards);
+                cardsOnTrade = UserDataBase.getInstance().getCardsForTrade();
+            }
         }
         ));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
+
+    public void stopThread() {
+        timeline.stop();
     }
 }
