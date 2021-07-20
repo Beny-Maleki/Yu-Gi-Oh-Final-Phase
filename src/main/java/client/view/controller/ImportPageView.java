@@ -2,12 +2,13 @@ package client.view.controller;
 
 import animatefx.animation.Wobble;
 import client.controller.menues.menuhandlers.menucontrollers.ImportExportMenuController;
+import client.model.enums.Menu;
+import client.view.ClickButtonHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import client.model.enums.Menu;
 
 import java.io.IOException;
 
@@ -31,6 +32,7 @@ public class ImportPageView {
     }
 
     public void hoverAnimation(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
         new Wobble((Node) event.getSource()).play();
     }
 }

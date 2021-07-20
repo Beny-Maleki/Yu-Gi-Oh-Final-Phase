@@ -1,11 +1,12 @@
 package client.view.controller;
 
 import client.controller.menues.menuhandlers.menucontrollers.LoginPageController;
+import client.model.enums.Menu;
+import client.view.ClickButtonHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import client.model.enums.Menu;
 
 import java.io.IOException;
 
@@ -28,6 +29,10 @@ public class LoginView {
         } else if (event.getSource() == Back) {
             controller.moveToPage(Back, Menu.WELCOME_MENU);
         }
+    }
+
+    public void soundEffect(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
     }
 
 }

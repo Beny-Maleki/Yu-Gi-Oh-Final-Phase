@@ -1,7 +1,12 @@
 package client.view.controller;
 
-import animatefx.animation.*;
+import animatefx.animation.BounceInUp;
+import animatefx.animation.FlipInX;
+import animatefx.animation.Tada;
 import client.controller.menues.menuhandlers.menucontrollers.ImportExportMenuController;
+import client.model.cards.CardHouse;
+import client.model.enums.Menu;
+import client.view.ClickButtonHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,8 +14,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import client.model.cards.CardHouse;
-import client.model.enums.Menu;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -51,6 +54,10 @@ public class ExportPageView extends ShopView{
 
         shownOnStage = slidesOfShopCards.get(0);
         gridPaneBGPane.getChildren().add(shownOnStage);
+    }
+
+    public void soundEffect(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
     }
 
     @Override

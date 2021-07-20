@@ -10,15 +10,15 @@ public class Message {
     private boolean isPinned;
     private boolean isInReplyToAnotherMessage;
     private final String ID;
-    private String message;
+    private String messageString;
     private String IDInReplyTo;
     private User sender;
     private LocalDateTime time;
 
-    public Message(String message, User sender, boolean isInReplyToAnotherMessage, String IDInReplyTo) {
+    public Message(String messageString, User sender, boolean isInReplyToAnotherMessage, String IDInReplyTo) {
         ID = UUID.randomUUID().toString();
         this.sender = sender;
-        this.message = message;
+        this.messageString = messageString;
         this.time = LocalDateTime.now();
         this.isInReplyToAnotherMessage = isInReplyToAnotherMessage;
         if (isInReplyToAnotherMessage) this.IDInReplyTo = IDInReplyTo;
@@ -26,7 +26,23 @@ public class Message {
         MessageDatabase.getInstance().putToAllMessages(ID, this);
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMessageString(String messageString) {
+        this.messageString = messageString;
+    }
+
+    public String getMessageString() {
+        return messageString;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public boolean isInReplyToAnotherMessage() {
+        return isInReplyToAnotherMessage;
     }
 }

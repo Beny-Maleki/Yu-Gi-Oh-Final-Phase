@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #172431;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.ChatRoomView">
+   <children>
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutY="100.0" prefHeight="425.0" prefWidth="500.0" vbarPolicy="ALWAYS">
+         <content>
+            <VBox fx:id="content" minHeight="425.0" prefWidth="500.0" spacing="20.0" style="-fx-background-color: #37536C;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding></VBox>
+         </content></ScrollPane>
+      <TextField fx:id="messageTextField" layoutX="10.0" layoutY="560.0" prefWidth="460.0" promptText="Type your message..." />
+      <ImageView fx:id="sendButton" fitHeight="30.0" fitWidth="30.0" layoutX="470.0" layoutY="558.0" onMouseClicked="#sendMessage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/sendIcon.jpg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="14.0" layoutY="14.0" text="Chat Room" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font></Label>
+      <Label layoutX="180.0" layoutY="21.0" text="Currently online: " textFill="WHITE" />
+      <Label fx:id="numberOfLoggedInsLabel" layoutX="279.0" layoutY="21.0" text="0" textFill="WHITE" />
+      <Button layoutX="460.0" layoutY="10.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: red; -fx-background-radius: 15; -fx-border-radius: 15;" text="X" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+      <Label fx:id="pinnedMessageTitle" layoutX="14.0" layoutY="69.0" text="Pinned Message:" textFill="WHITE" />
+      <Pane fx:id="pinnedMessageContainer" layoutX="118.0" layoutY="62.0" prefHeight="30.0" prefWidth="350.0" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+         <children>
+            <Label fx:id="pinnedMessageLabel" layoutY="6.0" text="0" textFill="WHITE" />
+         </children></Pane>
+      <Button fx:id="cancelReplyButton" layoutX="473.0" layoutY="530.0" mnemonicParsing="false" onAction="#cancelReply" prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: white;" text="X" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Pane layoutX="14.0" layoutY="533.0" prefHeight="20.0" prefWidth="450.0">
+         <children>
+            <Label fx:id="repliedMessageLabel" maxWidth="450.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

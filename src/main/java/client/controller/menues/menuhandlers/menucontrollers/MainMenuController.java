@@ -36,7 +36,8 @@ public class MainMenuController extends Controller {
         ClientSender.getSender().sendMessage(command);
         try {
             while (ClientListener.getServerResponse().getCommandType() != CommandType.GET_USER_TRADE_REQUEST) {
-                Thread.sleep(100);
+                Thread.sleep(10);
+                System.out.println("here i am ");
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

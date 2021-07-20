@@ -7,16 +7,19 @@ import java.util.LinkedHashMap;
 public class MessageDatabase {
     private static MessageDatabase instance;
     private LinkedHashMap<String, Message> allMessages;
-    private LinkedHashMap<String, Message> pinnedMessages;
+    private String pinnedMessageID;
 
     private MessageDatabase() {
         allMessages = new LinkedHashMap<>();
-        pinnedMessages = new LinkedHashMap<>();
     }
 
     public static MessageDatabase getInstance() {
         if (instance == null) instance = new MessageDatabase();
         return instance;
+    }
+
+    public LinkedHashMap<String, Message> getAllMessages() {
+        return allMessages;
     }
 
     public Message getFromAllMessages(String key) {
@@ -31,17 +34,11 @@ public class MessageDatabase {
         allMessages.remove(key);
     }
 
-    public void putToPinnedMessages(String key, Message value) {
-        pinnedMessages.put(key, value);
+    public void setPinnedMessageID(String ID) {
+        pinnedMessageID = ID;
     }
 
-    public Message getFromPinnedMessages(String key) {
-        return pinnedMessages.get(key);
+    public String getPinnedMessageID() {
+        return pinnedMessageID;
     }
-
-    public void removeFromPinnedMessages(String key) {
-        pinnedMessages.remove(key);
-    }
-
-
 }

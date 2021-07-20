@@ -2,6 +2,8 @@ package client.view.controller;
 
 import animatefx.animation.FadeIn;
 import client.controller.menues.menuhandlers.menucontrollers.RegisterPageController;
+import client.model.enums.Menu;
+import client.view.ClickButtonHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -9,7 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import client.model.enums.Menu;
 
 import java.io.IOException;
 
@@ -44,6 +45,11 @@ public class RegisterView {
             mainPane.getChildren().add(avatarPane);
             fadeIn.play();
         }
+    }
+
+
+    public void soundEffect(MouseEvent event) {
+        ClickButtonHandler.getInstance().play();
     }
 
 

@@ -26,13 +26,13 @@
             <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-    <Button fx:id="prevButton" layoutX="290.0" layoutY="540.0" mnemonicParsing="false" onMouseClicked="#run" prefWidth="80.0" style="-fx-cursor: hand;" text="Previous" />
-    <Button fx:id="nextButton" layoutX="423.0" layoutY="540.0" mnemonicParsing="false" onMouseClicked="#run" prefWidth="80.0" style="-fx-cursor: hand;" text="Next" />
+    <Button fx:id="prevButton" layoutX="290.0" layoutY="540.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" prefWidth="80.0" style="-fx-cursor: hand;" text="Previous" />
+    <Button fx:id="nextButton" layoutX="423.0" layoutY="540.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" prefWidth="80.0" style="-fx-cursor: hand;" text="Next" />
     <Label fx:id="numberOfSlide" layoutX="387.0" layoutY="530.0" text="1" textFill="#7a0e08">
         <font>
             <Font name="System Bold" size="27.0" />
         </font>
     </Label>
-    <Button fx:id="back" layoutX="814.0" layoutY="44.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="39.0" prefWidth="80.0" text="Back" />
-   <Button fx:id="exportCard" layoutX="330.0" layoutY="614.0" mnemonicParsing="false" onMouseClicked="#run" prefHeight="25.0" prefWidth="80.0" text="Export" />
+    <Button fx:id="back" layoutX="814.0" layoutY="44.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" prefHeight="39.0" prefWidth="80.0" text="Back" />
+   <Button fx:id="exportCard" layoutX="330.0" layoutY="614.0" mnemonicParsing="false" onMouseEntered="#soundEffect" onMouseClicked="#run" prefHeight="25.0" prefWidth="80.0" text="Export" />
 </AnchorPane>
