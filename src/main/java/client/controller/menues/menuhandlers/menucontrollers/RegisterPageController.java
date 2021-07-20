@@ -51,7 +51,7 @@ public class RegisterPageController extends Controller {
 
     private void waitForServerResponse() {
         try {
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

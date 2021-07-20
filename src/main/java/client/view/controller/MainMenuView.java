@@ -34,7 +34,7 @@ public class MainMenuView {
     public AnchorPane root;
     public AnchorPane chatRoomPopUp;
 
-    public Label tradeLabel;
+    public Label tradeLabel = new Label("Trade");
     public Pane holder;
 
     {

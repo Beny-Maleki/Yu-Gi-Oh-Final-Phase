@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="updating workspace">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="bug fix in Listener">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/ChatRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/ChatRoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/RegisterPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/RegisterPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/ChatRoomView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/ChatRoomView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,6 +199,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="G:/semister 2/java Yu_gi_oh project/yu-gi-oh-Project" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -322,18 +332,6 @@
       <workItem from="1626518022073" duration="1729000" />
       <workItem from="1626519812161" duration="686000" />
       <workItem from="1626631080537" duration="9805000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۶۰" summary="adding magic actions to json">
-      <created>1620573345261</created>
-      <option name="number" value="LOCAL‎۰۰۰۶۰" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۶۰" />
-      <updated>1620573345262</updated>
-    </task>
-    <task id="LOCAL‎۰۰۰۶۱" summary="add some actions">
-      <created>1620995913257</created>
-      <option name="number" value="LOCAL‎۰۰۰۶۱" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۶۱" />
-      <updated>1620995913259</updated>
     </task>
     <task id="LOCAL‎۰۰۰۶۲" summary="actions almost completed">
       <created>1621088675898</created>
@@ -652,7 +650,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626763194955</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="bug fix in communication time">
+      <created>1626765842244</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1626765842244</updated>
+    </task>
+    <task id="LOCAL-00110" summary="bug fix in Listener">
+      <created>1626765968382</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1626765968382</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -672,8 +684,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="initial page changed" />
-    <MESSAGE value="--DeckModifier updated:&#10;hovering cards whilst on them,&#10;changing slides&#10;relevant message&#10;other nodes scheme designed" />
     <MESSAGE value="--DeckModifier updated:&#10;move cards logic added&#10;selected Card improved&#10;button visibilities fixed" />
     <MESSAGE value="a small bug fix" />
     <MESSAGE value="a small bug fix in messages in DeckModifierView" />
@@ -697,7 +707,9 @@
     <MESSAGE value="add login and register communications" />
     <MESSAGE value="updating chat box and communication models" />
     <MESSAGE value="updating workspace" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating workspace" />
+    <MESSAGE value="bug fix in communication time" />
+    <MESSAGE value="bug fix in Listener" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix in Listener" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -705,15 +717,10 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/client/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/SelectedCardProcessor.java</url>
           <line>15</line>
-          <properties class="client.controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor">
+          <properties class="client.controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor" method="process">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/client/view/controller/ChatRoomView.java</url>
-          <line>119</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
