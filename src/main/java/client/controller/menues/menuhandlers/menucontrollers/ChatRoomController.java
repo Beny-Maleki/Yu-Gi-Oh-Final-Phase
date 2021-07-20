@@ -6,6 +6,7 @@ import client.model.userProp.LoginUser;
 import client.model.userProp.User;
 import client.network.ClientListener;
 import client.network.ClientSender;
+import client.view.controller.ChatRoomView;
 import connector.commands.CommandType;
 import connector.commands.commnadclasses.ChatBoxCommand;
 import connector.commands.commnadclasses.ChatCommandType;
@@ -19,8 +20,23 @@ public class ChatRoomController extends Controller{
     private static User sender;
     private static int numberOfLoggedIns;
 
+    static {
+        allMessages = new LinkedHashMap<>();
+    }
 
-    private ChatRoomController(){}
+    private ChatRoomView currentFXMLController;
+
+    private ChatRoomController(){
+    }
+
+
+    public ChatRoomView getCurrentFXMLController() {
+        return currentFXMLController;
+    }
+
+    public void setCurrentFXMLController(ChatRoomView currentFXMLController) {
+        this.currentFXMLController = currentFXMLController;
+    }
 
     public static ChatRoomController getInstance() {
         if (instance == null) instance = new ChatRoomController();
@@ -41,7 +57,7 @@ public class ChatRoomController extends Controller{
 
     private static void waitForServerResponse() {
         try {
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

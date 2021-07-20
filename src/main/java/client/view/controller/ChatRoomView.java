@@ -9,6 +9,9 @@ import client.model.Message;
 import client.model.MessageHistory;
 import client.model.userProp.LoginUser;
 import client.model.userProp.User;
+import client.network.ClientListener;
+import connector.commands.commnadclasses.ChatBoxCommand;
+import connector.commands.commnadclasses.ChatCommandType;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -49,7 +52,6 @@ public class ChatRoomView extends Controller {
     String selectedMessageID;
     String repliedMessageID;
     User selectedUserAvatar;
-    private boolean isInReplyTo;
 
     public void initialize() {
         ChatRoomController.getInstance().initializeData();
@@ -66,14 +68,25 @@ public class ChatRoomView extends Controller {
 
         makeMessages();
 
-        Platform.runLater(() -> {
-            // backend:
-            ChatRoomController.getInstance().updateData();
-            // GUI:
-            updateNumOfLoggedIns();
-            updateMessages();
-            updatePinnedMessage();
-        });
+        ChatRoomController.getInstance().setCurrentFXMLController(this);
+
+        new Thread(() -> {
+            if (ClientListener.getServerResponse() instanceof ChatBoxCommand){
+                ChatBoxCommand response = (ChatBoxCommand) ClientListener.getServerResponse();
+                if (response.getChatCommandType() == ChatCommandType.UPDATE) {
+                    Platform.runLater(() -> {
+                        // backend:
+                        ChatRoomController.getInstance().updateData();
+                        // GUI:
+                        ChatRoomView currentView = ChatRoomController.getInstance().getCurrentFXMLController();
+                        currentView.updateNumOfLoggedIns();
+                        currentView.updateMessages();
+                        currentView.updatePinnedMessage();
+                    });
+                }
+            }
+
+        }).start();
     }
 
     public void updateNumOfLoggedIns() {
@@ -87,8 +100,6 @@ public class ChatRoomView extends Controller {
     }
 
     private void updateMessages() {
-        Set<String> IDs = MessageHistory.getCurrentMessages().keySet();
-
         Set<String> newIDs = MessageHistory.getCurrentMessages().keySet();
         Set<String> prevIDs = ChatRoomController.getAllMessages().keySet();
 
@@ -106,7 +117,7 @@ public class ChatRoomView extends Controller {
     private void updatePinnedMessage() {
         String newPinnedMessageID = ChatRoomController.getPinnedMessageID();
 
-        if (MessageHistory.getPinnedMessageID() != newPinnedMessageID) {
+        if (!MessageHistory.getPinnedMessageID().equals(newPinnedMessageID)) {
             pinnedMessageLabel.setText(MessageHistory.getCurrentMessages().get(newPinnedMessageID).getMessageString());
             new FadeInLeft(pinnedMessageLabel).play();
         }
@@ -322,7 +333,7 @@ public class ChatRoomView extends Controller {
 
     public void sendMessage(MouseEvent mouseEvent) {
         String messageText = messageTextField.getText();
-        String clientControllerResponse = ChatRoomController.getInstance().sendMessage(messageText, isInReplyTo, "");
+        String clientControllerResponse = ChatRoomController.getInstance().sendMessage(messageText, repliedMessageID != null, "");
 
         messageTextField.clear();
 

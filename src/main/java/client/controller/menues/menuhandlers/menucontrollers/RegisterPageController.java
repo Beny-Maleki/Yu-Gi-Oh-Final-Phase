@@ -51,15 +51,11 @@ public class RegisterPageController extends Controller {
 
     private void waitForServerResponse() {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         while (true) {
-            System.out.println();
-            System.out.println("Server response ID: " + ClientListener.getServerResponse().getCommandID());
-            System.out.println("Client sent ID: " + ClientListener.getCurrentCommandID());
-
             if (!ClientListener.getCurrentCommandID().equals(ClientListener.getServerResponse().getCommandID())) break;
         }
         ClientListener.setCurrentCommandID(ClientListener.getServerResponse().getCommandID());
