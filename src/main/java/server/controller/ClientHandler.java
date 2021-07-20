@@ -259,7 +259,6 @@ public class ClientHandler implements Runnable {
             }
             case PIN_MESSAGE: {
                 String ID = chatBoxCommand.getMessageID();
-                Message toPin = MessageDatabase.getInstance().getFromAllMessages(ID);
                 MessageDatabase.getInstance().setPinnedMessageID(ID);
                 chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE);
 

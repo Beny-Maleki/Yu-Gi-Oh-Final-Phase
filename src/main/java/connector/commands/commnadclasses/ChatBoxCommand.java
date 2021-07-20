@@ -103,7 +103,7 @@ public class ChatBoxCommand extends Command {
         return allMessages;
     }
 
-    public String getPinnedMessage() {
+    public String getPinnedMessageID() {
         return pinnedMessageID;
     }
 }

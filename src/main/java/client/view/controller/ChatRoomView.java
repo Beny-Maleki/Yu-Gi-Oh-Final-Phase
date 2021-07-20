@@ -32,6 +32,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
@@ -49,6 +50,12 @@ public class ChatRoomView extends Controller {
     public VBox content;
     public Pane pinnedMessageContainer;
 
+    private static HashMap<String, HBox> messageContainersByID;
+
+    static {
+        messageContainersByID = new HashMap<>();
+    }
+
     String selectedMessageID;
     String repliedMessageID;
     User selectedUserAvatar;
@@ -63,6 +70,8 @@ public class ChatRoomView extends Controller {
         scrollPane.setMinViewportHeight(425);
 
         makeMessages();
+
+        updatePinnedMessage();
 
         ChatRoomController.getInstance().setCurrentFXMLController(this);
 
@@ -127,11 +136,17 @@ public class ChatRoomView extends Controller {
     }
 
     private void updatePinnedMessage() {
-        String newPinnedMessageID = ChatRoomController.getPinnedMessageID();
+        ChatBoxCommand chatBoxCommand = (ChatBoxCommand) ChatRoomController.getResponseCommand();
+        String newPinnedMessageID = chatBoxCommand.getPinnedMessageID();
 
-        if (!MessageHistory.getPinnedMessageID().equals(newPinnedMessageID)) {
-            pinnedMessageLabel.setText(MessageHistory.getCurrentMessages().get(newPinnedMessageID).getMessageString());
+        if (newPinnedMessageID == null) return;
+
+        if (!newPinnedMessageID.equals(MessageHistory.getPinnedMessageID())) {
+            Message pinnedMessageObject = chatBoxCommand.getAllMessages().get(newPinnedMessageID);
+            pinnedMessageLabel.setText(pinnedMessageObject.getMessageString());
             new FadeInLeft(pinnedMessageLabel).play();
+
+            setEventsOfPinnedMessage(pinnedMessageObject, messageContainersByID.get(pinnedMessageObject.getID()));
         }
         MessageHistory.setPinnedMessageID(newPinnedMessageID);
     }
@@ -152,6 +167,7 @@ public class ChatRoomView extends Controller {
         HBox messageContainer = new HBox();
         messageContainer.setPrefWidth(500);
         messageContainer.setSpacing(10);
+        messageContainersByID.put(message.getID(), messageContainer);
 
         Pane messagePane = new Pane();
         messagePane.setPadding(new Insets(5, 15, 0, 15));
@@ -240,7 +256,6 @@ public class ChatRoomView extends Controller {
             repliedMessageID = message.getID();
             repliedMessageLabel.setText("In reply to: " + message.getMessageString());
             cancelReplyButton.setVisible(true);
-
             root.getChildren().remove(options);
         });
 
@@ -249,37 +264,44 @@ public class ChatRoomView extends Controller {
             repliedMessageID = message.getID();
             repliedMessageLabel.setText("In reply to: " + message.getMessageString());
             cancelReplyButton.setVisible(true);
+            root.getChildren().remove(options);
         });
 
         if (message.getSender().getUsername().equals(LoginUser.getUser().getUsername())) {
             Label editLabel = new Label("Edit");
             editLabel.setOnMouseClicked(e -> {
                 editMessage(options, message, messageLabel);
+                root.getChildren().remove(options);
             });
 
             HBox edit = new HBox(editLabel);
             edit.setOnMouseClicked(e -> {
                 editMessage(options, message, messageLabel);
+                root.getChildren().remove(options);
             });
 
             Label pinLabel = new Label("Pin");
             pinLabel.setOnMouseClicked(e -> {
                 pinMessage(options, message, messageContainer);
+                root.getChildren().remove(options);
             });
 
             HBox pin = new HBox(pinLabel);
             pin.setOnMouseClicked(e -> {
                 pinMessage(options, message, messageContainer);
+                root.getChildren().remove(options);
             });
 
             Label deleteLabel = new Label("Delete");
             deleteLabel.setOnMouseClicked(e -> {
                 deleteMessage(options, message, messageContainer);
+                root.getChildren().remove(options);
             });
 
             HBox delete = new HBox(deleteLabel);
             delete.setOnMouseClicked(e -> {
                 deleteMessage(options, message, messageContainer);
+                root.getChildren().remove(options);
             });
 
             options.getChildren().addAll(edit, delete, pin);
@@ -295,20 +317,22 @@ public class ChatRoomView extends Controller {
     private void deleteMessage(VBox options, Message message, HBox messageContainer) {
         ChatRoomController.getInstance().deleteMessage(message.getID());
         content.getChildren().remove(messageContainer);
-        root.getChildren().remove(options);
     }
 
     private void pinMessage(VBox options, Message message, HBox messageContainer) {
         ChatRoomController.getInstance().pinMessage(message.getID());
-        pinnedMessageLabel.setAccessibleText(message.getMessageString());
+        setEventsOfPinnedMessage(message, messageContainer);
+        MessageHistory.setPinnedMessageID(message.getID());
+    }
+
+    private void setEventsOfPinnedMessage(Message message, HBox messageContainer) {
+        pinnedMessageLabel.setText(message.getMessageString());
         pinnedMessageContainer.setOnMouseClicked(e -> {
             scrollPane.vvalueProperty().bind(messageContainer.layoutYProperty());
         });
         pinnedMessageLabel.setOnMouseClicked(e -> {
             scrollPane.vvalueProperty().bind(messageContainer.layoutYProperty());
         });
-        root.getChildren().remove(options);
-
     }
 
     private void editMessage(VBox options, Message message, Label messageLabel) {
@@ -320,7 +344,6 @@ public class ChatRoomView extends Controller {
             messageLabel.setText(messageTextField.getText());
             messageTextField.clear();
         });
-        root.getChildren().remove(options);
     }
 
     private Pane makeAPopUp(Pane parent, double layoutX, double layoutY, double sizeX, double sizeY) {

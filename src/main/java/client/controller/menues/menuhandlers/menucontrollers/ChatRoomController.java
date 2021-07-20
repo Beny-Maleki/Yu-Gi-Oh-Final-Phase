@@ -82,7 +82,7 @@ public class ChatRoomController extends Controller{
         ChatBoxCommand chatBoxCommandResponse = (ChatBoxCommand) ClientListener.getServerResponse();
 
         allMessages = chatBoxCommandResponse.getAllMessages();
-        pinnedMessageID = chatBoxCommandResponse.getPinnedMessage();
+        pinnedMessageID = chatBoxCommandResponse.getPinnedMessageID();
         numberOfLoggedIns = chatBoxCommand.getNumberOfLoggedIns();
     }
 
@@ -101,7 +101,7 @@ public class ChatRoomController extends Controller{
         ChatBoxCommand chatBoxCommandResponse = (ChatBoxCommand) ClientListener.getServerResponse();
 
         allMessages = chatBoxCommandResponse.getAllMessages();
-        pinnedMessageID = chatBoxCommandResponse.getPinnedMessage();
+        pinnedMessageID = chatBoxCommandResponse.getPinnedMessageID();
         numberOfLoggedIns = chatBoxCommand.getNumberOfLoggedIns();
     }
 
