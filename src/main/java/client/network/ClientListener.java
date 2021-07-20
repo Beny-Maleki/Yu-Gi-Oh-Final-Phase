@@ -66,10 +66,22 @@ public class ClientListener extends Thread {
                 case CHAT:
                     serverResponse = gson.fromJson(command, ChatBoxCommand.class);
                     break;
+                case GET_CARD_FOR_TRADES:
+                    serverResponse = gson.fromJson(command, GetCardsOnTradeCommand.class);
+                    break;
                 case DUEL:
                 case PROFILE:
             }
 
+            Controller.setResponseCommand(serverResponse);
+            Controller.setResponseException(serverResponse.getException());
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            serverResponse.setCommandType(CommandType.WAITING);
         }
     }
 }

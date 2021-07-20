@@ -63,6 +63,30 @@ public abstract class Card {
         return new Image(fileInputStream);
     }
 
+    public static Image getCardImage(String cardName) {
+        FileInputStream fileInputStream = null;
+        String nameWithoutSpace = cardName.replaceAll("\\s+", "");
+        try {
+            fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/" + nameWithoutSpace + ".jpg");
+        } catch (FileNotFoundException e) {
+            try {
+                fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/SpellTrap/" + nameWithoutSpace + ".jpg");
+            } catch (FileNotFoundException fileNotFoundException) {
+                try {
+                    fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/Monsters/newMonster.jpg");
+                } catch (FileNotFoundException notFoundException) {
+                    try {
+                        fileInputStream = new FileInputStream("src/main/resources/graphicprop/images/Cards/SpellTrap/newMagic.jpg");
+                    } catch (FileNotFoundException foundException) {
+                        foundException.printStackTrace();
+                    }
+                }
+            }
+        }
+        assert fileInputStream != null;
+        return new Image(fileInputStream);
+    }
+
     public abstract Card getSimilarCard();
 
     public abstract String getCardDetail();

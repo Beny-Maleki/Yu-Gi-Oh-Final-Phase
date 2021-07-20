@@ -1,0 +1,19 @@
+.label {
+    -fx-background-color: #ec743b;
+    -fx-alignment: center;
+}
+
+#container {
+    -fx-background-image: url(../images/orangeBC.jpg);
+    -fx-background-size: cover;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #ec743b;
+    -fx-background-radius: 5em;
+}
+
+.button{
+    -fx-background-color: #ec743b;
+    -fx-alignment: center;
+}

@@ -1,6 +1,7 @@
 package server;
 
 import client.model.userProp.User;
+import connector.CardForTrade;
 import connector.TradeRequest;
 import connector.cards.Card;
 import connector.cards.MagicCard;
@@ -9,21 +10,23 @@ import connector.cards.MonsterCard;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServerDataAnalyse {
-    private static ServerDataAnalyse instance;
+public class ServerDataAnalyser {
+    private static ServerDataAnalyser instance;
     private final List<Card> GAME_CARDS;
     private List<MonsterCard> gameMonsterCards;
     private List<MagicCard> gameMagicCards;
     private ArrayList<TradeRequest> tradeRequests;
+    private ArrayList<CardForTrade> cardsOnTrades;
 
     {
         GAME_CARDS = new ArrayList<>();
         tradeRequests = new ArrayList<>();
+        cardsOnTrades = new ArrayList<>();
     }
 
-    public static ServerDataAnalyse getInstance() {
+    public static ServerDataAnalyser getInstance() {
         if (instance == null) {
-            instance = new ServerDataAnalyse();
+            instance = new ServerDataAnalyser();
         }
         return instance;
     }
@@ -54,7 +57,7 @@ public class ServerDataAnalyse {
     }
 
     public void setGameMagicCards(List<MagicCard> gameMagicCards) {
-        ServerDataAnalyse.getInstance().gameMagicCards = gameMagicCards;
+        ServerDataAnalyser.getInstance().gameMagicCards = gameMagicCards;
         GAME_CARDS.addAll(gameMagicCards);
     }
 
@@ -63,7 +66,7 @@ public class ServerDataAnalyse {
     }
 
     public void setGameMonsterCards(List<MonsterCard> gameMonsterCards) {
-        ServerDataAnalyse.getInstance().gameMonsterCards = gameMonsterCards;
+        ServerDataAnalyser.getInstance().gameMonsterCards = gameMonsterCards;
         GAME_CARDS.addAll(gameMonsterCards);
     }
 
@@ -78,4 +81,11 @@ public class ServerDataAnalyse {
     }
 
 
+    public void putCardForTrade(CardForTrade cardForTrade) {
+        cardsOnTrades.add(cardForTrade);
+    }
+
+    public ArrayList<CardForTrade> getCardsOnTrades() {
+        return cardsOnTrades;
+    }
 }

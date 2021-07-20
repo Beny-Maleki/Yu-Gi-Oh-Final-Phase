@@ -181,7 +181,7 @@ public class DeckModifierView {
     }
 
     private void handleOnMouseEntered(ImageView imageView) {
-        MakeATradeView.setPropertyForImageView(imageView);
+        PutCardOnTradeView.setPropertyForImageView(imageView);
     }
 
     private void handleOnMouseExited(ImageView imageView) {

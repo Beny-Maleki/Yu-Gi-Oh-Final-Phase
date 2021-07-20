@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="423.0" prefWidth="527.0" stylesheets="@../stylesheets/SeeCardsOnTradePage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.SeeCardOnTradeView">
+   <Pane fx:id="holder" prefHeight="423.0" prefWidth="527.0" style="-fx-background-color: orange;" stylesheets="@../stylesheets/SeeCardsOnTradePage.css">
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="417.0" prefWidth="527.0" vbarPolicy="ALWAYS">
+         <VBox fx:id="container" alignment="TOP_CENTER" prefHeight="422.0" prefWidth="512.0" spacing="8.0">
+            <Label alignment="CENTER" prefHeight="31.0" prefWidth="515.0" text="CARDS ON TRADE">
+               <font>
+                  <Font name="Viner Hand ITC" size="12.0" />
+               </font>
+            </Label>
+         </VBox>
+      </ScrollPane>
+   </Pane>
+</AnchorPane>

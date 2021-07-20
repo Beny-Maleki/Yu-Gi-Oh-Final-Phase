@@ -1,5 +1,6 @@
 package client;
 
+import connector.CardForTrade;
 import connector.TradeRequest;
 import connector.cards.Card;
 import connector.cards.MagicCard;
@@ -13,12 +14,14 @@ public class UserDataBase {
     private final List<Card> USER_CARDS;
     private List<MonsterCard> userMonsterCards;
     private List<MagicCard> userMagicCards;
+    private ArrayList<CardForTrade> cardsForTrade;
     private ArrayList<TradeRequest> requests;
 
     {
         USER_CARDS = new ArrayList<>();
         userMonsterCards = new ArrayList<>();
         userMagicCards = new ArrayList<>();
+        cardsForTrade = new ArrayList<>();
     }
 
     public static UserDataBase getInstance() {
@@ -61,7 +64,20 @@ public class UserDataBase {
         USER_CARDS.addAll(userMonsterCards);
     }
 
+    public void addElementsToCardOnTrades(ArrayList<CardForTrade> newCardForTrades) {
+        newCardForTrades.forEach(cardForTrade -> {
+            if (!cardsForTrade.contains(cardForTrade)){
+                cardsForTrade.add(cardForTrade);
+            }
+        });
+    }
+
     public void setUserTradeRequests(ArrayList<TradeRequest> requests) {
         this.requests = requests;
     }
+
+    public ArrayList<CardForTrade> getCardsForTrade() {
+        return cardsForTrade;
+    }
+
 }

@@ -1,32 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
-
-<AnchorPane prefHeight="690.0" prefWidth="871.0" stylesheets="@../stylesheets/TradePage.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.TradePopUpView">
+<AnchorPane fx:id="popUp" prefHeight="690.0" prefWidth="871.0" stylesheets="@../stylesheets/TradePage.css"
+            xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="client.view.controller.TradePopUpView">
     <Pane layoutX="74.0" layoutY="97.0" prefHeight="482.0" prefWidth="682.0" styleClass="popUp">
-        <Pane fx:id="container" layoutX="158.0" layoutY="56.0" prefHeight="426.0" prefWidth="527.0" stylesheets="@../stylesheets/TradePage.css">
-         <children>
-            <Line endX="426.0" layoutX="101.0" layoutY="57.0" startX="-100.0" />
-         </children>
-      </Pane>
-        <Pane layoutX="-2.0" prefHeight="482.0" prefWidth="161.0" styleClass="menu-bar">
-            <Button fx:id="makeATrade" alignment="CENTER" layoutX="2.0" layoutY="62.0" mnemonicParsing="false" onMouseClicked="#makeATradeBut" prefHeight="50.0" prefWidth="158.0" styleClass="popUp-button" text="Make a Trade" />
-            <Button fx:id="acceptATrade" alignment="CENTER" layoutY="112.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="158.0" styleClass="popUp-button" text="Accept Trade" />
-            <Button fx:id="findATrade" alignment="CENTER" layoutY="169.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="158.0" styleClass="popUp-button" text="Find a Trade" />
-         <ImageView fitHeight="373.0" fitWidth="450.0" layoutX="-27.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../images/redCharecter.png" />
-            </image>
-         </ImageView>
+        <Pane fx:id="container" layoutX="158.0" layoutY="56.0" prefHeight="426.0" prefWidth="527.0"
+              stylesheets="@../stylesheets/TradePage.css">
+            <children>
+                <Line endX="426.0" layoutX="101.0" layoutY="57.0" startX="-100.0"/>
+            </children>
         </Pane>
-         <Label alignment="CENTER" layoutX="158.0" prefHeight="57.0" prefWidth="527.0" style="-fx-background-color: #4E3821FF;" text="TRADE" />
+        <Pane layoutX="-2.0" prefHeight="482.0" prefWidth="161.0" styleClass="menu-bar">
+            <Button fx:id="makeATrade" alignment="CENTER" layoutX="2.0" layoutY="62.0" mnemonicParsing="false"
+                    onMouseClicked="#makeATradeBut" prefHeight="50.0" prefWidth="158.0" styleClass="popUp-button"
+                    text="Make a Trade"/>
+            <Button fx:id="acceptATrade" alignment="CENTER" layoutY="112.0" mnemonicParsing="false" prefHeight="50.0"
+                    prefWidth="158.0" styleClass="popUp-button" text="Accept Trade"/>
+            <Button fx:id="findATrade" alignment="CENTER" layoutY="169.0" mnemonicParsing="false" prefHeight="50.0"
+                    onMouseClicked="#showAllCardOnTrade" prefWidth="158.0" styleClass="popUp-button"
+                    text="Find a Trade"/>
+            <ImageView fitHeight="373.0" fitWidth="450.0" layoutX="-27.0" layoutY="204.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <image>
+                    <Image url="@../images/redCharecter.png"/>
+                </image>
+            </ImageView>
+            <ImageView fx:id="exitIcon" fitHeight="15.0" fitWidth="51.0" layoutX="57.0" layoutY="7.0"
+                       pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
+                <image>
+                    <Image url="@../images/leftArrow.png"/>
+                </image>
+            </ImageView>
+            <Button fx:id="exitBut" layoutX="-1.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0"
+                    prefWidth="161.0" style="-fx-background-color: #DE7D40FF;" styleClass="popUp-button" text="exit"/>
+        </Pane>
+        <Label alignment="CENTER" layoutX="158.0" prefHeight="57.0" prefWidth="527.0"
+               style="-fx-background-color: #4E3821FF;" text="TRADE"/>
     </Pane>
 
-    <fx:include  fx:id="makeATradePage" source="MakeATradePage.fxml"/>
+    <fx:include fx:id="makeATradePage" source="PutCardOnTradePage.fxml"/>
+    <fx:include fx:id="seeCardOnTrade" source="SeeCardOnTradesPage.fxml"/>
 </AnchorPane>
