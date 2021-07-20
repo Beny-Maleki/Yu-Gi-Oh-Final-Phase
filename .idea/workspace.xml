@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="bug fix">
+    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="some other bug fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/ChatRoomView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/ChatRoomView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/SeeCardOnTradeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/SeeCardOnTradeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +180,7 @@
       <command value="gradle --build-cache" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainServer">
+  <component name="RunManager" selected="Application.MainClient">
     <configuration name="MainClient" type="Application" factoryName="Application" singleton="false" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -334,12 +333,6 @@
       <workItem from="1626518022073" duration="1729000" />
       <workItem from="1626519812161" duration="686000" />
       <workItem from="1626631080537" duration="9805000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۶۳" summary="add actions to cards">
-      <created>1621096563198</created>
-      <option name="number" value="LOCAL‎۰۰۰۶۳" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۶۳" />
-      <updated>1621096563198</updated>
     </task>
     <task id="LOCAL‎۰۰۰۶۴" summary="restore data again">
       <created>1621101451197</created>
@@ -667,7 +660,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626766663665</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="some other bug fixes">
+      <created>1626781469891</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1626781469891</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -687,7 +687,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="a small bug fix" />
     <MESSAGE value="a small bug fix in messages in DeckModifierView" />
     <MESSAGE value="a small warning fix" />
     <MESSAGE value="initialized GameView" />
@@ -712,7 +711,8 @@
     <MESSAGE value="bug fix in communication time" />
     <MESSAGE value="bug fix in Listener" />
     <MESSAGE value="bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
+    <MESSAGE value="some other bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="some other bug fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

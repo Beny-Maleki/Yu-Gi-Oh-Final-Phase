@@ -32,6 +32,7 @@ public class LoginPageController extends Controller {
             waitForServerResponse();
 
             LogInCommand response = (LogInCommand) ClientListener.getServerResponse();
+
             if (responseException != null) {
                 message.setText(responseException.getMessage());
                 responseException = null;
