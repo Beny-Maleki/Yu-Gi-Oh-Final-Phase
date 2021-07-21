@@ -1,10 +1,7 @@
 package server.controller;
 
 import client.model.Message;
-import client.model.userProp.Deck;
-import client.model.userProp.LoginUser;
-import client.model.userProp.User;
-import client.model.userProp.UserInfoType;
+import client.model.userProp.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import connector.cards.Card;
@@ -108,6 +105,12 @@ public class ClientHandler implements Runnable {
                         chatBoxCommand.changeCommandID();
                         handleChatBox(chatBoxCommand);
                         break;
+                    }
+
+                    case SCORE_BOARD: {
+                        ScoreBoardCommand scoreBoardCommand = yaGson.fromJson(request, ScoreBoardCommand.class);
+                        scoreBoardCommand.changeCommandID();
+                        handleScoreBoard(scoreBoardCommand);
                     }
                 }
             } catch (NoSuchElementException e) {
@@ -306,6 +309,31 @@ public class ClientHandler implements Runnable {
                }
            }
         }
+    }
+
+    private void handleScoreBoard(ScoreBoardCommand scoreBoardCommand) {
+        ArrayList<User> sortedUsers = User.getAllUsers();
+        sortedUsers.sort(Comparator.comparing(User::getScore).thenComparing(User::getNickname));
+        int rank = 1, counter = 1;
+        User tempUser = null;
+        for (User user : sortedUsers) {
+            if (counter == 11) break;
+            if (tempUser != null) {
+                if (user.getScore() > tempUser.getScore()) {
+                    rank = counter;
+                }
+                scoreBoardCommand.addItemToScoreBoardItems(new ScoreboardItem(user.getUsername(), rank, user.getScore()));
+                System.out.println(rank + ": " + user.getUsername());
+            } else {
+                scoreBoardCommand.addItemToScoreBoardItems(new ScoreboardItem(user.getUsername(), 1, user.getScore()));
+                System.out.println("1: " + user.getUsername());
+            }
+            tempUser = user;
+            counter++;
+        }
+
+        netOut.format("%s\n", Command.makeJson(scoreBoardCommand));
+        netOut.flush();
     }
 
 }
