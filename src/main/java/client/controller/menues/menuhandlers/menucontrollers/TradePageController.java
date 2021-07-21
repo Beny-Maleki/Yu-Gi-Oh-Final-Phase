@@ -12,7 +12,17 @@ import connector.commands.commnadclasses.PutCardForTradeCommand;
 
 import java.util.ArrayList;
 
+
 public class TradePageController {
+    private static TradePageController instance;
+
+    public static TradePageController getInstance() {
+        if (instance == null) {
+            instance = new TradePageController();
+        }
+        return instance;
+    }
+
     public void putCardForTrade(int numberOfTradedCard, String nameOfTradedCard) {
         CardForTrade cardForTrade = new CardForTrade(LoginUser.getUser(), nameOfTradedCard, numberOfTradedCard);
         PutCardForTradeCommand message =
@@ -50,10 +60,36 @@ public class TradePageController {
         ArrayList<CardForTrade> newTradeRequest = new ArrayList<>();
         if (LoginUser.getUser() == null) return null;
         for (CardForTrade cardForTrade : allTradeRequest) {
-            if (!cardsOnTrade.contains(cardForTrade) && cardForTrade.getUser() != LoginUser.getUser()){
+            if (!cardsOnTrade.contains(cardForTrade) && cardForTrade.getUser() != LoginUser.getUser()) {
                 newTradeRequest.add(cardForTrade);
             }
         }
         return newTradeRequest;
+    }
+
+    public void updateUserDataBase() {
+        GetCardsOnTradeCommand command = new GetCardsOnTradeCommand(CommandType.GET_CARD_FOR_TRADES);
+        ClientListener.setCurrentCommandID(command.getCommandID());
+        ClientListener.setServerResponse(command);
+        ClientSender.getSender().sendMessage(command);
+        waitForServerResponse();
+        GetCardsOnTradeCommand response = (GetCardsOnTradeCommand) ClientListener.getServerResponse();
+        UserDataBase.getInstance().addElementsToCardOnTrades(response.getCardForTrades());
+    }
+
+    private void waitForServerResponse() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        while (true) {
+            if (!ClientListener.getCurrentCommandID().equals(ClientListener.getServerResponse().getCommandID())) break;
+        }
+        ClientListener.setCurrentCommandID(ClientListener.getServerResponse().getCommandID());
+    }
+
+    public ArrayList<CardForTrade> getCardsOnTrade() {
+        return UserDataBase.getInstance().getCardsForTrade();
     }
 }

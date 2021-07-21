@@ -4,6 +4,8 @@ public enum CommandType {
     WAITING,
     REGISTER,
     LOGIN,
+    LOGOUT,
+    EXIT,
     DUEL,
     PROFILE,
     GET_USER_CARD,

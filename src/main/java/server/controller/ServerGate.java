@@ -1,11 +1,8 @@
 package server.controller;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketException;
 
 
 
@@ -34,6 +31,7 @@ public class ServerGate {
             // make a channel for each client...
             ClientHandler clientHandler = null;
             try {
+                assert socket != null;
                 clientHandler = new ClientHandler(socket);
             } catch (IOException e) {
                 e.printStackTrace();

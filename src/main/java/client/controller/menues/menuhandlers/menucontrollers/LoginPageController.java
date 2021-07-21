@@ -42,11 +42,8 @@ public class LoginPageController extends Controller {
                 GetUsersCardCommand getUsersCardCommand = new GetUsersCardCommand(CommandType.GET_USER_CARD, Client.getClient().getToken());
                 ClientListener.setCurrentCommandID(getUsersCardCommand.getCommandID());
                 ClientListener.setServerResponse(getUsersCardCommand);
-
                 ClientSender.getSender().sendMessage(getUsersCardCommand);
-
                 waitForServerResponse();
-
                 processGettingUserCardResponse(message);
             }
         } catch (EmptyTextFieldException | IOException e) {
