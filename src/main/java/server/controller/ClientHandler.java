@@ -29,7 +29,7 @@ public class ClientHandler implements Runnable {
     ClientHandler(Socket clientSocket) throws IOException {
         netIn = new Scanner(clientSocket.getInputStream());
         netOut = new Formatter(clientSocket.getOutputStream());
-        clientInfo = new ClientInfo(clientSocket);
+        clientInfo = new ClientInfo(clientSocket, netOut);
     }
 
     @Override
@@ -299,15 +299,11 @@ public class ClientHandler implements Runnable {
         Set<String> IDs  = ClientInfo.getLoginClientHashMap().keySet();
         for (String id : IDs) {
            if (!this.clientInfo.getToken().equals(id)) {
-               try {
-                   chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoginClientHashMap().size());
+               chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoginClientHashMap().size());
+                chatBoxCommand.changeCommandID();
 
-                   Formatter netOutThisClient = new Formatter(ClientInfo.getLoginClientHashMap().get(id).getClientSocket().getOutputStream());
-                   netOutThisClient.format("%s\n", Command.makeJson(chatBoxCommand));
-                   netOut.flush();
-               } catch (IOException e) {
-                   e.printStackTrace();
-               }
+               ClientInfo.getLoginClientHashMap().get(id).getNetOut().format("%s\n", Command.makeJson(chatBoxCommand));
+               ClientInfo.getLoginClientHashMap().get(id).getNetOut().flush();
            }
         }
     }
