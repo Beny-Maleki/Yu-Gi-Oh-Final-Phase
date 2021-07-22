@@ -68,36 +68,12 @@ public class ChatRoomView extends Controller {
 
         scrollPane.setMinViewportHeight(425);
 
-        makeMessages();
+        makeMessages((ChatBoxCommand) ClientListener.getServerResponse());
 
         updatePinnedMessage((ChatBoxCommand) ClientListener.getServerResponse());
 
         ChatRoomController.getInstance().setCurrentFXMLController(this);
 
-//        new Thread(() -> {
-//            while (true) {
-//                System.out.println(ChatRoomController.getResponseCommand().getCommandType());
-//                System.out.println(((ChatBoxCommand) ChatRoomController.getResponseCommand()).getChatCommandType());
-//                if (LoginUser.getOnlineThread().equals(OnWorkThreads.CHAT_BOX_THREAD) && ChatRoomController.getResponseCommand().getCommandType().equals(CommandType.CHAT)) {
-//                    ChatBoxCommand response = (ChatBoxCommand) ChatRoomController.getResponseCommand();
-//                        System.out.println(response.getChatCommandType());
-//                    if (response.getChatCommandType().equals(ChatCommandType.UPDATE) && !response.getCommandID().equals(ClientListener.getCurrentCommandID())) {
-//                        Platform.runLater(() -> {
-//                            ChatRoomView currentView = ChatRoomController.getInstance().getCurrentFXMLController();
-//                            currentView.requestUpdate();
-//
-//                            ClientListener.setCurrentCommandID(response.getCommandID());
-//                        });
-//                    } else {
-//                        try {
-//                            Thread.sleep(10);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }
-//            }
-//        }).start();
     }
 
     public void update(ChatBoxCommand response) {
@@ -128,7 +104,7 @@ public class ChatRoomView extends Controller {
         LinkedHashMap<String, Message> newLinkedHM = response.getAllMessages();
         for (String id : newIDs) {
             if (!prevIDs.contains(id)) {
-                visualizeMessage(newLinkedHM.get(id));
+                visualizeMessage(newLinkedHM.get(id), response);
             }
         }
 
@@ -156,7 +132,7 @@ public class ChatRoomView extends Controller {
         MessageHistory.setPinnedMessageID(newPinnedMessageID);
     }
 
-    private void makeMessages() {
+    private void makeMessages(ChatBoxCommand serverResponse) {
         LinkedHashMap<String, Message> allMessages = ChatRoomController.getAllMessages();
 
         if (allMessages.size() == 0) return;
@@ -164,11 +140,11 @@ public class ChatRoomView extends Controller {
         Set<String> IDs = allMessages.keySet();
         for (String id : IDs) {
             Message message = allMessages.get(id);
-            visualizeMessage(message);
+            visualizeMessage(message, serverResponse);
         }
     }
 
-    private void visualizeMessage(Message message) {
+    private void visualizeMessage(Message message, ChatBoxCommand chatBoxCommand) {
         HBox messageContainer = new HBox();
         messageContainer.setPrefWidth(500);
         messageContainer.setSpacing(10);
@@ -189,15 +165,21 @@ public class ChatRoomView extends Controller {
         });
 
         if (message.isInReplyToAnotherMessage()) {
-            messagePane.setPrefHeight(60);
+            messagePane.setPrefHeight(50);
 
-            Label repliedMessage = new Label();
+            Label repliedMessage = new Label(
+                    chatBoxCommand.getAllMessages().get(message.getIDInReplyTo()).getMessageString()
+            );
+            repliedMessage.setStyle("-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #fa346a");
+            repliedMessage.setPadding(new Insets(0,5,0,5));
+            repliedMessage.setMaxWidth(messagePane.getMaxWidth());
 
             Label senderUsernameLabel = new Label(message.getSender().getUsername());
             senderUsernameLabel.setStyle("-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #a966f1");
             senderUsernameLabel.setPadding(new Insets(0, 5, 0, 5));
+            senderUsernameLabel.setLayoutY(17);
 
-            messageTextLabel.setLayoutY(25);
+            messageTextLabel.setLayoutY(35);
         } else {
             messagePane.setPrefHeight(30);
             Label senderUsernameLabel = new Label(message.getSender().getUsername());
@@ -224,7 +206,7 @@ public class ChatRoomView extends Controller {
             messageTextLabel.setStyle("-fx-text-fill: white");
         }
 
-        messageContainer.getChildren().addAll(messagePane);
+        messageContainer.getChildren().add(messagePane);
 
         content.getChildren().add(messageContainer);
     }
