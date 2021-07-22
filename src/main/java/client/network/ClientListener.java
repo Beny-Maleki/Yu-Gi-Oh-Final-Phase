@@ -9,6 +9,7 @@ import connector.commands.commnadclasses.*;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ClientListener extends Thread {
@@ -30,53 +31,56 @@ public class ClientListener extends Thread {
         }
     }
 
-    public static void setCurrentCommandID(String currentCommandID) {
-        ClientListener.currentCommandID = currentCommandID;
-    }
-
     public static String getCurrentCommandID() {
         return currentCommandID;
     }
 
-    public static void setServerResponse(Command serverResponse) {
-        ClientListener.serverResponse = serverResponse;
+    public static void setCurrentCommandID(String currentCommandID) {
+        ClientListener.currentCommandID = currentCommandID;
     }
 
     public static Command getServerResponse() {
         return serverResponse;
     }
 
+    public static void setServerResponse(Command serverResponse) {
+        ClientListener.serverResponse = serverResponse;
+    }
+
     @Override
     public void run() {
-        while (true) {
-            String command = netIn.nextLine();
-            serverResponse = gson.fromJson(command, Command.class);
+        try {
+            while (true) {
+                String command = netIn.nextLine();
+                serverResponse = gson.fromJson(command, Command.class);
 
-            switch (serverResponse.getCommandType()) {
-                case REGISTER:
-                    serverResponse = gson.fromJson(command, RegisterCommand.class);
-                    break;
-                case LOGIN:
-                    serverResponse = gson.fromJson(command, LogInCommand.class);
-                    break;
-                case GET_USER_CARD:
-                    serverResponse = gson.fromJson(command, GetUsersCardCommand.class);
-                    break;
-                case GET_USER_TRADE_REQUEST:
-                    serverResponse = gson.fromJson(command, GetUserTradeRequestsCommand.class);
-                    break;
-                case CHAT:
-                    serverResponse = gson.fromJson(command, ChatBoxCommand.class);
-                    break;
-                case GET_CARD_FOR_TRADES:
-                    serverResponse = gson.fromJson(command, GetCardsOnTradeCommand.class);
-                    break;
-                case DUEL:
-                case PROFILE:
+                switch (serverResponse.getCommandType()) {
+                    case REGISTER:
+                        serverResponse = gson.fromJson(command, RegisterCommand.class);
+                        break;
+                    case LOGIN:
+                        serverResponse = gson.fromJson(command, LogInCommand.class);
+                        break;
+                    case GET_USER_CARD:
+                        serverResponse = gson.fromJson(command, GetUsersCardCommand.class);
+                        break;
+                    case GET_USER_TRADE_REQUEST:
+                        serverResponse = gson.fromJson(command, GetUserTradeRequestsCommand.class);
+                        break;
+                    case CHAT:
+                        serverResponse = gson.fromJson(command, ChatBoxCommand.class);
+                        break;
+                    case GET_CARD_FOR_TRADES:
+                        serverResponse = gson.fromJson(command, GetCardsOnTradeCommand.class);
+                        break;
+                    case DUEL:
+                    case PROFILE:
+                }
+
+                Controller.setResponseException(serverResponse.getException());
+                Controller.setResponseCommand(serverResponse);
             }
-
-            Controller.setResponseException(serverResponse.getException());
-            Controller.setResponseCommand(serverResponse);
+        } catch (NoSuchElementException ignored) {
         }
     }
 }

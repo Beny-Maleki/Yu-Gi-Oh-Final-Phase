@@ -2,6 +2,7 @@ package server.controller;
 
 import client.model.userProp.User;
 
+import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +18,7 @@ public class ClientInfo {
         LOGGED_IN_USERS = new ArrayList<>();
     }
 
-    private Socket clientSocket;
+    private final Socket clientSocket;
     private User user;
     private String token;
 
@@ -55,6 +56,10 @@ public class ClientInfo {
         return LOGGED_IN_USERS;
     }
 
+    public static void removeUserFromLoggedIn(String token) {
+        LOGIN_CLIENT_HASH_MAP.remove(token);
+    }
+
     public static HashMap<String, ClientInfo> getLoginClientHashMap() {
         return LOGIN_CLIENT_HASH_MAP;
     }
@@ -63,4 +68,17 @@ public class ClientInfo {
         return LOGIN_CLIENT_HASH_MAP.get(token).user;
     }
 
+    public static void closeUserSocket(Socket socket) {
+        for (ClientInfo clientInfo : CLIENT_INFOS) {
+            if (clientInfo.getClientSocket() == socket) {
+                try {
+                    socket.close();
+                    System.out.println("socket closed ");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }
 }

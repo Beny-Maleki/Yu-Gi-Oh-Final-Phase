@@ -3,6 +3,12 @@ package client.controller.menues.menuhandlers.menucontrollers;
 import client.controller.Controller;
 import client.model.userProp.ScoreboardItem;
 import client.model.userProp.User;
+import client.network.ClientListener;
+import client.network.ClientSender;
+import connector.commands.CommandType;
+import connector.commands.commnadclasses.LogInCommand;
+import connector.commands.commnadclasses.ScoreBoardCommand;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -19,23 +25,28 @@ public class ScoreboardMenuController extends Controller {
         return instance;
     }
 
-    public void setScoreboardItems() {
-        ArrayList<User> sortedUsers = User.getAllUsers();
-        sortedUsers.sort(Comparator.comparing(User::getScore).thenComparing(User::getNickname));
-        int rank = 1, counter = 1;
-        User tempUser = null;
-        for (User user : sortedUsers) {
-            if (counter == 11) break;
-            if (tempUser != null) {
-                if (user.getScore() > tempUser.getScore()) {
-                    rank = counter;
-                }
-                new ScoreboardItem(user.getUsername(), rank, user.getScore());
-            } else {
-                new ScoreboardItem(user.getUsername(), 1, user.getScore());
-            }
-            tempUser = user;
-            counter++;
+    public ObservableList<ScoreboardItem> setScoreboardItems() {
+        ScoreBoardCommand scoreBoardCommand = new ScoreBoardCommand(CommandType.SCORE_BOARD);
+        ClientListener.setCurrentCommandID(scoreBoardCommand.getCommandID());
+        ClientListener.setServerResponse(scoreBoardCommand);
+
+        ClientSender.getSender().sendMessage(scoreBoardCommand);
+
+        waitForServerResponse();
+
+        ScoreBoardCommand response = (ScoreBoardCommand) ClientListener.getServerResponse();
+        return response.getScoreboardItems();
+    }
+
+    private void waitForServerResponse() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        while (true) {
+            if (!ClientListener.getCurrentCommandID().equals(ClientListener.getServerResponse().getCommandID())) break;
+        }
+        ClientListener.setCurrentCommandID(ClientListener.getServerResponse().getCommandID());
     }
 }

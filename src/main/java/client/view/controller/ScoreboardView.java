@@ -5,6 +5,7 @@ import client.controller.menues.menuhandlers.menucontrollers.ScoreboardMenuContr
 import client.model.enums.Menu;
 import client.model.userProp.ScoreboardItem;
 import client.view.ClickButtonHandler;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -14,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ScoreboardView {
     private static ScoreboardView scoreboardView;
@@ -52,11 +54,11 @@ public class ScoreboardView {
         usernameColumn.setPrefWidth(230);
         usernameColumn.setResizable(false);
 
-        controller.setScoreboardItems();
+        ObservableList<ScoreboardItem> scoreboardItems = controller.setScoreboardItems();
         TableView<ScoreboardItem> tableView = new TableView<>();
         tableView.setId("scoreboard-table");
         tableView.getColumns().addAll(rankColumn, usernameColumn, scoreColumn);
-        tableView.setItems(ScoreboardItem.getScoreboardItems());
+        tableView.setItems(scoreboardItems);
         tableView.setEditable(true);
 
         scoreboardContainer.getChildren().add(tableView);

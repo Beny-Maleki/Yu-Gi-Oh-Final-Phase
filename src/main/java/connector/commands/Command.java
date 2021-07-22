@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 
 import java.util.UUID;
 
-public class Command {
+public  class Command {
     private CommandType commandType;
     private RuntimeException exception;
     protected String token;

@@ -1,10 +1,11 @@
 package client.view.controller;
 
 import animatefx.animation.*;
-import animatefx.animation.BounceIn;
 import client.controller.menues.menuhandlers.menucontrollers.ChatRoomController;
 import client.controller.menues.menuhandlers.menucontrollers.MainMenuController;
 import client.model.enums.Menu;
+import client.model.userProp.LoginUser;
+import client.model.userProp.OnWorkThreads;
 import client.view.AudioHandler;
 import client.view.AudioPath;
 import client.view.ClickButtonHandler;
@@ -92,6 +93,7 @@ public class MainMenuView {
     }
 
     private void playTradePopUpAnimation() {
+        LoginUser.setOnlineThread(OnWorkThreads.TRADE_THREAD);
         new BounceIn(tradePopUp).play();
         tradePopUp.setVisible(true);
     }
