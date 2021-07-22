@@ -76,11 +76,11 @@ public class ChatRoomView extends Controller {
         ChatRoomController.getInstance().setCurrentFXMLController(this);
 
         new Thread(() -> {
-           //while (true) {
+           while (true) {
                if (root.isVisible()) {
                    ChatBoxCommand response = (ChatBoxCommand) ChatRoomController.getResponseCommand();
-                   if (response.getChatCommandType() == ChatCommandType.UPDATE) {
-                       System.out.println("here");
+                   if (response.getChatCommandType().equals(ChatCommandType.UPDATE)) {
+                                        System.out.println(response.getAllMessages());
                        Platform.runLater(() -> {
                            ChatRoomView currentView = ChatRoomController.getInstance().getCurrentFXMLController();
                            currentView.generalUpdate();
@@ -89,7 +89,7 @@ public class ChatRoomView extends Controller {
                        });
                    }
                }
-          // }
+           }
         }).start();
     }
 

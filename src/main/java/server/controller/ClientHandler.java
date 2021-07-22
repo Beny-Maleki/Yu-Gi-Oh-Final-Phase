@@ -275,12 +275,13 @@ public class ClientHandler implements Runnable {
     private void notifyOtherUsers(ChatBoxCommand chatBoxCommand) {
         Set<String> IDs  = ClientInfo.getLoginClientHashMap().keySet();
         for (String id : IDs) {
-           if (!this.clientInfo.getToken().equals(ClientInfo.getLoginClientHashMap().get(id).getToken())) {
+           if (!this.clientInfo.getToken().equals(id)) {
                try {
                    chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoginClientHashMap().size());
 
-                   Formatter netOutThisClient = new Formatter(clientInfo.getClientSocket().getOutputStream());
+                   Formatter netOutThisClient = new Formatter(ClientInfo.getLoginClientHashMap().get(id).getClientSocket().getOutputStream());
                    netOutThisClient.format("%s\n", Command.makeJson(chatBoxCommand));
+                   netOut.flush();
                } catch (IOException e) {
                    e.printStackTrace();
                }
