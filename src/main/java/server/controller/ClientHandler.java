@@ -40,59 +40,79 @@ public class ClientHandler implements Runnable {
         Gson yaGson = new GsonBuilder().create();
 
         while (true) {
-            String request = netIn.nextLine();
-            Command command = yaGson.fromJson(request, Command.class);
+            try {
+                String request = netIn.nextLine();
+                Command command = yaGson.fromJson(request, Command.class);
 
-            switch (command.getCommandType()) {
-                case REGISTER: {
-                    RegisterCommand registerCommand = yaGson.fromJson(request, RegisterCommand.class);
-                    registerCommand.changeCommandID();
-                    handleRegister(registerCommand);
-                    break;
-                }
-                case LOGIN: {
-                    LogInCommand logInCommand = yaGson.fromJson(request, LogInCommand.class);
-                    logInCommand.changeCommandID();
-                    handleLogIn(logInCommand);
-                    break;
-                }
+                switch (command.getCommandType()) {
+                    case REGISTER: {
+                        RegisterCommand registerCommand = yaGson.fromJson(request, RegisterCommand.class);
+                        registerCommand.changeCommandID();
+                        handleRegister(registerCommand);
+                        break;
+                    }
+                    case LOGIN: {
+                        LogInCommand logInCommand = yaGson.fromJson(request, LogInCommand.class);
+                        logInCommand.changeCommandID();
+                        handleLogIn(logInCommand);
+                        break;
+                    }
 
-                case GET_USER_CARD: {
-                    GetUsersCardCommand getUsersCardCommand = yaGson.fromJson(request, GetUsersCardCommand.class);
-                    getUsersCardCommand.changeCommandID();
-                    handleUserCardRequest(getUsersCardCommand);
-                    break;
-                }
-                case GET_USER_TRADE_REQUEST: {
-                    GetUserTradeRequestsCommand getUserTradeRequestsCommand =
-                            yaGson.fromJson(request, GetUserTradeRequestsCommand.class);
-                    getUserTradeRequestsCommand.changeCommandID();
-                    handleUserTradeRequests(getUserTradeRequestsCommand);
-                    break;
-                }
+                    case GET_USER_CARD: {
+                        GetUsersCardCommand getUsersCardCommand = yaGson.fromJson(request, GetUsersCardCommand.class);
+                        getUsersCardCommand.changeCommandID();
+                        handleUserCardRequest(getUsersCardCommand);
+                        break;
+                    }
+                    case GET_USER_TRADE_REQUEST: {
+                        GetUserTradeRequestsCommand getUserTradeRequestsCommand =
+                                yaGson.fromJson(request, GetUserTradeRequestsCommand.class);
+                        getUserTradeRequestsCommand.changeCommandID();
+                        handleUserTradeRequests(getUserTradeRequestsCommand);
+                        break;
+                    }
 
-                case PUT_CARD_FOR_TRADE: {
-                    PutCardForTradeCommand putCardForTradeCommand =
-                            yaGson.fromJson(request, PutCardForTradeCommand.class);
-                    handleNewCardOnTrade(putCardForTradeCommand);
-                    break;
-                }
+                    case PUT_CARD_FOR_TRADE: {
+                        PutCardForTradeCommand putCardForTradeCommand =
+                                yaGson.fromJson(request, PutCardForTradeCommand.class);
+                        putCardForTradeCommand.changeCommandID();
+                        handleNewCardOnTrade(putCardForTradeCommand);
+                        break;
+                    }
 
-                case GET_CARD_FOR_TRADES: {
-                    GetCardsOnTradeCommand getCardsOnTradeCommand =
-                            yaGson.fromJson(request, GetCardsOnTradeCommand.class);
-                    handleGetCardsOnTradeCommand(getCardsOnTradeCommand);
-                    break;
-                }
+                    case GET_CARD_FOR_TRADES: {
+                        GetCardsOnTradeCommand getCardsOnTradeCommand =
+                                yaGson.fromJson(request, GetCardsOnTradeCommand.class);
+                        getCardsOnTradeCommand.changeCommandID();
+                        handleGetCardsOnTradeCommand(getCardsOnTradeCommand);
+                        break;
+                    }
 
-                case CHAT: {
-                    ChatBoxCommand chatBoxCommand = yaGson.fromJson(request, ChatBoxCommand.class);
-                    chatBoxCommand.changeCommandID();
-                    handleChatBox(chatBoxCommand);
-                    break;
+                    case LOGOUT: {
+                        LogoutCommand logoutCommand =
+                                yaGson.fromJson(request, LogoutCommand.class);
+                        logoutCommand.changeCommandID();
+                        ClientInfo.removeUserFromLoggedIn(logoutCommand.getToken());
+                        break;
+                    }
+                    case EXIT: {
+                        ExitCommand exitCommand =
+                                yaGson.fromJson(request, ExitCommand.class);
+                        exitCommand.changeCommandID();
+                        ClientInfo.closeUserSocket(exitCommand.getSocket());
+                        break;
+                    }
+
+                    case CHAT: {
+                        ChatBoxCommand chatBoxCommand = yaGson.fromJson(request, ChatBoxCommand.class);
+                        chatBoxCommand.changeCommandID();
+                        handleChatBox(chatBoxCommand);
+                        break;
+                    }
                 }
+            } catch (NoSuchElementException e) {
+                break;
             }
-
         }
     }
 

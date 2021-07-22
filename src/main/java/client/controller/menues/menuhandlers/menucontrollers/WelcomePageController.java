@@ -1,12 +1,9 @@
 package client.controller.menues.menuhandlers.menucontrollers;
 
 
-import com.google.gson.Gson;
 import client.controller.Controller;
-import client.model.userProp.Deck;
-import client.model.userProp.User;
+import client.network.Client;
 
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class WelcomePageController extends Controller {
@@ -22,17 +19,10 @@ public class WelcomePageController extends Controller {
         return controller;
     }
 
-    public void saveData() throws IOException {
-        FileWriter writer = new FileWriter("ServerResources//Decks.Json");
-        writer.write(new Gson().toJson(Deck.getAllDecks()));
-        writer.close();
-        writer = new FileWriter("ServerResources//Users.Json");
-        writer.write(new Gson().toJson(User.getAllUsers()));
-        writer.close();
-    }
 
     public void exit() throws IOException {
-        saveData();
+        Client.getClient().getSocket().close();
+        //ClientSender.getSender().sendMessage(new ExitCommand(CommandType.EXIT, Client.getClient().getSocket()));
         System.exit(0);
     }
 }

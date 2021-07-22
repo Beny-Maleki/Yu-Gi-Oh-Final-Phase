@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="423.0" prefWidth="527.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.controller.MakeARequestView">
+   <Pane prefHeight="299.0" prefWidth="527.0" style="-fx-background-color: #B76A32;">
+      <ImageView fx:id="selectedCardImageView" fitHeight="200.0" fitWidth="150.0" layoutX="336.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../images/backOfCard.jpg" />
+      </ImageView>
+      <ImageView fx:id="tradedCard" fitHeight="200.0" fitWidth="150.0" layoutX="40.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../images/backOfCard.jpg" />
+      </ImageView>
+      <Line endX="52.4000244140625" layoutX="250.0" layoutY="103.0" startX="-58.0" stroke="#200204" strokeWidth="5.0" />
+      <Polygon fill="#200204" layoutX="247.0" layoutY="106.0" points="25.0, -0.399993896484375, 66.5999755859375, -0.399993896484375, 25.0, -26.79998779296875" stroke="#ad848400" strokeType="INSIDE" />
+      <Button fx:id="requestButt" alignment="CENTER" layoutX="214.0" layoutY="115.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="77.0" style="-fx-background-color: #200204;" text="REQUEST" textFill="WHITE">
+         <font>
+            <Font name="Viner Hand ITC" size="12.0" />
+         </font></Button>
+      <Line endX="52.4000244140625" fill="#ff000000" layoutX="258.0" layoutY="160.0" startX="-58.0" stroke="#200204" strokeWidth="5.0" />
+      <Polygon fill="#200204" layoutX="165.0" layoutY="184.0" points="67.0, -1.600006103515625, 67.0, -26.79998779296875, 25.0, -26.79998779296875" stroke="#ad848400" strokeType="INSIDE" />
+      <Polygon fx:id="increaseNumberBut" fill="#200204" layoutX="427.0" layoutY="301.0" points="0.0, -40.40000915527344, 11.800003051757812, -47.59999084472656, 1.52587890625E-5, -55.59999084472656" stroke="WHITE" strokeType="INSIDE" />
+      <Polygon fx:id="decreaseNumberBut" fill="#1f0204" layoutX="389.0" layoutY="305.0" points="1.52587890625E-5, -44.80000305175781, -13.399951934814453, -53.59999084472656, 0.0, -60.0" stroke="WHITE" strokeType="INSIDE" />
+      <Label fx:id="numberOfTradedCard" alignment="CENTER" layoutX="400.0" layoutY="243.0" prefHeight="20.0" prefWidth="18.0" style="-fx-border-radius: 200; -fx-border-color: white; -fx-background-color: #200204; -fx-background-radius: 200;" text="1X" textFill="WHITE" />
+      <Line endX="425.69287109375" endY="-9.02066421508789" layoutX="100.0" layoutY="301.0" startX="-98.10572814941406" startY="-9.020660400390625" strokeWidth="4.0" />
+      <Line endX="463.20001220703125" endY="-7.600006103515625" layoutX="64.0" layoutY="22.0" startX="-64.00001525878906" startY="-7.600006103515625" strokeWidth="2.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0" startY="0.7022900754258832">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="0.550000011920929" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Line>
+      <Line endX="463.20001220703125" endY="-7.600006103515625" layoutX="63.0" layoutY="13.0" startX="-64.00001525878906" startY="-7.600006103515625" strokeWidth="2.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0" startY="0.7022900754258832">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="0.550000011920929" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Line>
+      <Line endX="463.20001220703125" endY="-7.600006103515625" layoutX="64.0" layoutY="30.0" startX="-64.00001525878906" startY="-7.600006103515625" strokeWidth="2.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0" startY="0.7022900754258832">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="0.550000011920929" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Line>
+   </Pane>
+   <ScrollPane fx:id="collectionScrollPane" layoutY="333.0" prefHeight="149.0" prefWidth="527.0" />
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="299.0" prefHeight="33.0" prefWidth="530.0" style="-fx-background-color: #B76A32;" text="COLLECTION" textFill="WHITE">
+      <font>
+         <Font name="Viner Hand ITC" size="15.0" />
+      </font>
+   </Label>
+</AnchorPane>

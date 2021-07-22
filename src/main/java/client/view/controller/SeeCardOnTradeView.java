@@ -2,11 +2,13 @@ package client.view.controller;
 
 import animatefx.animation.BounceInDown;
 import animatefx.animation.FadeIn;
+import client.UserDataBase;
 import client.controller.menues.menuhandlers.menucontrollers.TradePageController;
 import client.model.userProp.LoginUser;
+import client.model.userProp.OnWorkThreads;
 import connector.CardForTrade;
 import connector.cards.Card;
-import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,26 +25,26 @@ import java.util.ArrayList;
 
 public class SeeCardOnTradeView {
     private final TradePageController controller;
-    private final Timeline timeline = new Timeline();
+    private final ArrayList<CardForTrade> previousCardsData;
     public ScrollPane scrollPane;
     public VBox container;
-    private ArrayList<CardForTrade> cardsOnTrade;
 
     {
-        cardsOnTrade = new ArrayList<>();
-        controller = new TradePageController();
+        previousCardsData = new ArrayList<>();
+        controller = TradePageController.getInstance();
     }
 
     @FXML
     public void initialize() {
-//        autoUpdatePane();
-        makeAPageForEachRequest(cardsOnTrade);
+        autoUpdate();
     }
 
-    private void makeAPageForEachRequest(ArrayList<CardForTrade> cardForTrades) {
+    private synchronized void makeAPageForEachRequest(ArrayList<CardForTrade> cardForTrades) {
 
         cardForTrades.forEach(cardForTrade -> {
-            if (cardForTrade.getUser() != LoginUser.getUser()) {
+            if (!cardForTrade.getUser().getUsername().equals(LoginUser.getUser().getUsername())
+                    && !isEqual(cardForTrade.getCardName(), previousCardsData)) {
+                System.out.println("making pane");
                 HBox hBox = new HBox();
                 setStyleForRequestBox(hBox);
                 Pane userInfo = new Pane();
@@ -59,8 +61,19 @@ public class SeeCardOnTradeView {
                 container.getChildren().add(hBox);
                 FadeIn fadeIn = new FadeIn(hBox);
                 fadeIn.play();
-            }
+                previousCardsData.add(cardForTrade);
+            } else System.out.println("find a similar card ");
         });
+
+    }
+
+    public boolean isEqual(String name,
+                           ArrayList<CardForTrade> prev) {
+        for (CardForTrade cardForTrade : prev) {
+            if (cardForTrade.getCardName().equals(name))
+                return true;
+        }
+        return false;
     }
 
     private void addRequestButton(Pane requestPane) {
@@ -155,22 +168,18 @@ public class SeeCardOnTradeView {
         hBox.setPrefHeight(48);
     }
 
-//    private void autoUpdatePane() {
-//        timeline.getKeyFrames().add(new KeyFrame(
-//                Duration.millis(5000), event -> {
-//            ArrayList<CardForTrade> cards = controller.getNewCardOnTrade(cardsOnTrade);
-//            if (cards == null) timeline.stop();
-//            else {
-//                makeAPageForEachRequest(cards);
-//                cardsOnTrade = UserDataBase.getInstance().getCardsForTrade();
-//            }
-//        }
-//        ));
-//        timeline.setCycleCount(Animation.INDEFINITE);
-//        timeline.play();
-//    }
-
-//    public void stopThread() {
-//        timeline.stop();
-//    }
+    private void autoUpdate() {
+        new Thread(() -> {
+            while (true) {
+                if (LoginUser.getOnlineThread() == OnWorkThreads.TRADE_THREAD) {
+                    System.out.println("in if");
+                    controller.updateUserDataBase();
+                    ArrayList<CardForTrade> newCards = UserDataBase.getInstance().getCardsForTrade();
+                    Platform.runLater(() -> {
+                        makeAPageForEachRequest(newCards);
+                    });
+                } else System.out.println("out of if");
+            }
+        }).start();
+    }
 }
