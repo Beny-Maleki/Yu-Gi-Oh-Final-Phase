@@ -172,13 +172,18 @@ public class SeeCardOnTradeView {
         new Thread(() -> {
             while (true) {
                 if (LoginUser.getOnlineThread() == OnWorkThreads.TRADE_THREAD) {
-                    System.out.println("in if");
                     controller.updateUserDataBase();
                     ArrayList<CardForTrade> newCards = UserDataBase.getInstance().getCardsForTrade();
                     Platform.runLater(() -> {
                         makeAPageForEachRequest(newCards);
                     });
-                } else System.out.println("out of if");
+                } else {
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }).start();
     }

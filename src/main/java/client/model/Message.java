@@ -42,6 +42,10 @@ public class Message {
         return ID;
     }
 
+    public String getIDInReplyTo() {
+        return IDInReplyTo;
+    }
+
     public boolean isInReplyToAnotherMessage() {
         return isInReplyToAnotherMessage;
     }

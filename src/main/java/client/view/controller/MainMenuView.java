@@ -100,6 +100,7 @@ public class MainMenuView {
 
     private void showChatRoom() {
         ChatRoomController.getInstance().initializeData();
+        LoginUser.setOnlineThread(OnWorkThreads.CHAT_BOX_THREAD);
         for (Node child : root.getChildren()) {
             if (child != chatRoomPopUp) {
                 child.setDisable(true);

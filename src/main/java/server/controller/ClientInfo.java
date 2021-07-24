@@ -5,12 +5,14 @@ import client.model.userProp.User;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.HashMap;
 
 public class ClientInfo {
     private static final ArrayList<ClientInfo> CLIENT_INFOS;
     private static final HashMap<String, ClientInfo> LOGIN_CLIENT_HASH_MAP;
     private static final ArrayList<User> LOGGED_IN_USERS;
+    private final Formatter netOut;
 
     static {
         CLIENT_INFOS = new ArrayList<>();
@@ -22,9 +24,26 @@ public class ClientInfo {
     private User user;
     private String token;
 
-    ClientInfo(Socket clientSocket) {
+    ClientInfo(Socket clientSocket, Formatter formatter) {
         this.clientSocket = clientSocket;
         CLIENT_INFOS.add(this);
+        netOut = formatter;
+    }
+
+    public Formatter getNetOut() {
+        return netOut;
+    }
+
+    public Socket getClientSocket() {
+        return clientSocket;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setToken(String token) {
@@ -68,14 +87,5 @@ public class ClientInfo {
             }
 
         }
-    }
-
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Socket getClientSocket() {
-        return clientSocket;
     }
 }

@@ -8,11 +8,10 @@ import client.controller.menues.menuhandlers.menucontrollers.ChatRoomController;
 import client.model.Message;
 import client.model.MessageHistory;
 import client.model.userProp.LoginUser;
+import client.model.userProp.OnWorkThreads;
 import client.model.userProp.User;
-import connector.commands.CommandType;
+import client.network.ClientListener;
 import connector.commands.commnadclasses.ChatBoxCommand;
-import connector.commands.commnadclasses.ChatCommandType;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -63,48 +62,32 @@ public class ChatRoomView extends Controller {
     public void initialize() {
         ChatRoomController.getInstance().initializeData();
 
-        updateNumOfLoggedIns();
+        updateNumOfLoggedIns((ChatBoxCommand) ClientListener.getServerResponse());
 
         messageTextField.clear();
 
         scrollPane.setMinViewportHeight(425);
 
-        makeMessages();
+        makeMessages((ChatBoxCommand) ClientListener.getServerResponse());
 
-        updatePinnedMessage();
+        updatePinnedMessage((ChatBoxCommand) ClientListener.getServerResponse());
 
         ChatRoomController.getInstance().setCurrentFXMLController(this);
 
-        new Thread(() -> {
-           //while (true) {
-               if (root.isVisible()) {
-                   ChatBoxCommand response = (ChatBoxCommand) ChatRoomController.getResponseCommand();
-                   if (response.getChatCommandType() == ChatCommandType.UPDATE) {
-                       System.out.println("here");
-                       Platform.runLater(() -> {
-                           ChatRoomView currentView = ChatRoomController.getInstance().getCurrentFXMLController();
-                           currentView.generalUpdate();
-
-                           ChatRoomController.setResponseCommand(new ChatBoxCommand(CommandType.WAITING));
-                       });
-                   }
-               }
-          // }
-        }).start();
     }
 
-    public void generalUpdate() {
-        ChatRoomController.getInstance().updateData();
-
-        updateNumOfLoggedIns();
-        updateMessages();
-        updatePinnedMessage();
-        ChatRoomController.setResponseCommand(new ChatBoxCommand(CommandType.WAITING));
+    public void update(ChatBoxCommand response) {
+        generalUpdate(response);
     }
 
-    public void updateNumOfLoggedIns() {
-        ChatBoxCommand chatBoxCommand = (ChatBoxCommand) ChatRoomController.getResponseCommand();
-        int newNumberOfLoggedIns = chatBoxCommand.getNumberOfLoggedIns();
+    public void generalUpdate(ChatBoxCommand response) {
+        updateNumOfLoggedIns(response);
+        updateMessages(response);
+        updatePinnedMessage(response);
+    }
+
+    public void updateNumOfLoggedIns(ChatBoxCommand response) {
+        int newNumberOfLoggedIns = response.getNumberOfLoggedIns();
 
         if (MessageHistory.getCurrentNumberOfLoggedIns() != newNumberOfLoggedIns) {
             numberOfLoggedInsLabel.setText(String.valueOf(newNumberOfLoggedIns));
@@ -114,15 +97,14 @@ public class ChatRoomView extends Controller {
         MessageHistory.setCurrentNumberOfLoggedIns(newNumberOfLoggedIns);
     }
 
-    private void updateMessages() {
-        ChatBoxCommand chatBoxCommand = (ChatBoxCommand) ChatRoomController.getResponseCommand();
-        Set<String> newIDs = chatBoxCommand.getAllMessages().keySet();
+    private void updateMessages(ChatBoxCommand response) {
+        Set<String> newIDs = response.getAllMessages().keySet();
         Set<String> prevIDs = MessageHistory.getCurrentMessages().keySet();
 
-        LinkedHashMap<String, Message> newLinkedHM = chatBoxCommand.getAllMessages();
+        LinkedHashMap<String, Message> newLinkedHM = response.getAllMessages();
         for (String id : newIDs) {
             if (!prevIDs.contains(id)) {
-                visualizeMessage(newLinkedHM.get(id));
+                visualizeMessage(newLinkedHM.get(id), response);
             }
         }
 
@@ -135,14 +117,13 @@ public class ChatRoomView extends Controller {
         scrollPane.vvalueProperty().bind(content.heightProperty());
     }
 
-    private void updatePinnedMessage() {
-        ChatBoxCommand chatBoxCommand = (ChatBoxCommand) ChatRoomController.getResponseCommand();
-        String newPinnedMessageID = chatBoxCommand.getPinnedMessageID();
+    private void updatePinnedMessage(ChatBoxCommand response) {
+        String newPinnedMessageID = response.getPinnedMessageID();
 
         if (newPinnedMessageID == null) return;
 
         if (!newPinnedMessageID.equals(MessageHistory.getPinnedMessageID())) {
-            Message pinnedMessageObject = chatBoxCommand.getAllMessages().get(newPinnedMessageID);
+            Message pinnedMessageObject = response.getAllMessages().get(newPinnedMessageID);
             pinnedMessageLabel.setText(pinnedMessageObject.getMessageString());
             new FadeInLeft(pinnedMessageLabel).play();
 
@@ -151,7 +132,7 @@ public class ChatRoomView extends Controller {
         MessageHistory.setPinnedMessageID(newPinnedMessageID);
     }
 
-    private void makeMessages() {
+    private void makeMessages(ChatBoxCommand serverResponse) {
         LinkedHashMap<String, Message> allMessages = ChatRoomController.getAllMessages();
 
         if (allMessages.size() == 0) return;
@@ -159,11 +140,11 @@ public class ChatRoomView extends Controller {
         Set<String> IDs = allMessages.keySet();
         for (String id : IDs) {
             Message message = allMessages.get(id);
-            visualizeMessage(message);
+            visualizeMessage(message, serverResponse);
         }
     }
 
-    private void visualizeMessage(Message message) {
+    private void visualizeMessage(Message message, ChatBoxCommand chatBoxCommand) {
         HBox messageContainer = new HBox();
         messageContainer.setPrefWidth(500);
         messageContainer.setSpacing(10);
@@ -184,10 +165,21 @@ public class ChatRoomView extends Controller {
         });
 
         if (message.isInReplyToAnotherMessage()) {
-            // assigning size and layouts according to isInReplyToAnother == true !
-            //TODO: complete the styles of this block!
             messagePane.setPrefHeight(50);
-            messageTextLabel.setLayoutY(20);
+
+            Label repliedMessage = new Label(
+                    chatBoxCommand.getAllMessages().get(message.getIDInReplyTo()).getMessageString()
+            );
+            repliedMessage.setStyle("-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #fa346a");
+            repliedMessage.setPadding(new Insets(0,5,0,5));
+            repliedMessage.setMaxWidth(messagePane.getMaxWidth());
+
+            Label senderUsernameLabel = new Label(message.getSender().getUsername());
+            senderUsernameLabel.setStyle("-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #a966f1");
+            senderUsernameLabel.setPadding(new Insets(0, 5, 0, 5));
+            senderUsernameLabel.setLayoutY(17);
+
+            messageTextLabel.setLayoutY(35);
         } else {
             messagePane.setPrefHeight(30);
             Label senderUsernameLabel = new Label(message.getSender().getUsername());
@@ -214,7 +206,7 @@ public class ChatRoomView extends Controller {
             messageTextLabel.setStyle("-fx-text-fill: white");
         }
 
-        messageContainer.getChildren().addAll(messagePane);
+        messageContainer.getChildren().add(messagePane);
 
         content.getChildren().add(messageContainer);
     }
@@ -232,15 +224,51 @@ public class ChatRoomView extends Controller {
         avatar.setCursor(Cursor.HAND);
         avatar.setOnMouseClicked(e -> {
             selectedUserAvatar = message.getSender();
-            showUserDetails();
+            showUserDetails(message.getSender(), image);
         });
         avatar.setFitHeight(30);
         avatar.setFitWidth(30);
         return avatar;
     }
 
-    private void showUserDetails() {
+    private void showUserDetails(User user, Image avatarImage) {
+        Pane pane = makeAPopUp(root, 100, 100, 300, 300);
+        pane.setStyle("-fx-background-color: black; -fx-border-radius: 10; -fx-background-radius: 10");
 
+        Button closeButtonOfProfile = new Button("X");
+        closeButtonOfProfile.setCursor(Cursor.HAND);
+        closeButtonOfProfile.setPrefWidth(20);
+        closeButtonOfProfile.setPrefHeight(20);
+        closeButtonOfProfile.setStyle("-fx-text-fill: white; -fx-background-color: red; -fx-background-radius: 10; -fx-border-radius: 10");
+        closeButtonOfProfile.setOnAction(e -> {
+            new FadeOut(pane).play();
+            root.getChildren().remove(pane);
+        });
+
+        ImageView avatar = new ImageView(avatarImage);
+        avatar.setFitWidth(100);
+        avatar.setFitHeight(100);
+        avatar.setLayoutY(50);
+        avatar.setLayoutX(100);
+        pane.getChildren().add(avatar);
+
+        Label username = new Label("Username: " + user.getUsername());
+        Label nickname = new Label("Nickname: " + user.getNickname());
+        Label score = new Label("Score: " + user.getScore());
+
+        username.setLayoutX(50);
+        username.setLayoutY(200);
+        username.setStyle("-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold");
+
+        nickname.setLayoutX(50);
+        nickname.setLayoutY(225);
+        nickname.setStyle("-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold");
+
+        score.setLayoutX(50);
+        score.setLayoutY(250);
+        score.setStyle("-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold");
+
+        pane.getChildren().addAll(closeButtonOfProfile, username, nickname, score);
     }
 
     private void showOptions(MouseEvent mouseEvent, Message message, HBox messageContainer, Label messageLabel) {
@@ -380,7 +408,7 @@ public class ChatRoomView extends Controller {
         messageTextField.clear();
 
         if (clientControllerResponse.equals("SUCCESSFUL")) {
-            updateMessages();
+            updateMessages((ChatBoxCommand) ClientListener.getServerResponse());
         }
     }
 
@@ -391,6 +419,7 @@ public class ChatRoomView extends Controller {
     }
 
     public void close(ActionEvent actionEvent) {
+        LoginUser.setOnlineThread(OnWorkThreads.NONE);
         FadeOut fadeOut = new FadeOut(root);
         fadeOut.getTimeline().setOnFinished(e -> {
             root.setVisible(false);
