@@ -75,6 +75,10 @@ public class ClientInfo {
         return LOGIN_CLIENT_HASH_MAP.get(token).user;
     }
 
+    public static ArrayList<ClientInfo> getClientInfos() {
+        return CLIENT_INFOS;
+    }
+
     public static void closeUserSocket(Socket socket) {
         for (ClientInfo clientInfo : CLIENT_INFOS) {
             if (clientInfo.getClientSocket() == socket) {

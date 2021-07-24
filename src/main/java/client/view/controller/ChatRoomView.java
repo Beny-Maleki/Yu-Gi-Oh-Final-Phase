@@ -11,7 +11,9 @@ import client.model.userProp.LoginUser;
 import client.model.userProp.OnWorkThreads;
 import client.model.userProp.User;
 import client.network.ClientListener;
+import connector.MessageWrapper;
 import connector.commands.commnadclasses.ChatBoxCommand;
+import connector.commands.commnadclasses.ChatCommandType;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -31,6 +33,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Set;
@@ -82,8 +85,21 @@ public class ChatRoomView extends Controller {
 
     public void generalUpdate(ChatBoxCommand response) {
         updateNumOfLoggedIns(response);
-        updateMessages(response);
+        if (response.getChatCommandType() == ChatCommandType.UPDATE_NEW) {
+            updateNewMessages(response);
+        } else if (response.getChatCommandType() == ChatCommandType.EDIT_MESSAGE) {
+            updateEditedMessage(response);
+        }
         updatePinnedMessage(response);
+    }
+
+    private void updateEditedMessage(ChatBoxCommand response) {
+        ArrayList<MessageWrapper> wrappers = MessageWrapper.getMessageWrappers();
+        for (MessageWrapper wrapper : wrappers) {
+            if (wrapper.getMessage().getID().equals(response.getMessageID())) {
+                wrapper.getMessageTextLabel().setText(response.getSentMessage());
+            }
+        }
     }
 
     public void updateNumOfLoggedIns(ChatBoxCommand response) {
@@ -97,7 +113,8 @@ public class ChatRoomView extends Controller {
         MessageHistory.setCurrentNumberOfLoggedIns(newNumberOfLoggedIns);
     }
 
-    private void updateMessages(ChatBoxCommand response) {
+    private void updateNewMessages(ChatBoxCommand response) {
+        if (response.getAllMessages() == null) return;
         Set<String> newIDs = response.getAllMessages().keySet();
         Set<String> prevIDs = MessageHistory.getCurrentMessages().keySet();
 
@@ -122,13 +139,13 @@ public class ChatRoomView extends Controller {
 
         if (newPinnedMessageID == null) return;
 
-        if (!newPinnedMessageID.equals(MessageHistory.getPinnedMessageID())) {
-            Message pinnedMessageObject = response.getAllMessages().get(newPinnedMessageID);
-            pinnedMessageLabel.setText(pinnedMessageObject.getMessageString());
-            new FadeInLeft(pinnedMessageLabel).play();
+        Message pinnedMessageObject = response.getAllMessages().get(newPinnedMessageID);
+        System.out.println(pinnedMessageObject.getMessageString());
+        pinnedMessageLabel.setText(pinnedMessageObject.getMessageString());
+        new FadeInLeft(pinnedMessageLabel).play();
 
-            setEventsOfPinnedMessage(pinnedMessageObject, messageContainersByID.get(pinnedMessageObject.getID()));
-        }
+        setEventsOfPinnedMessage(pinnedMessageObject, messageContainersByID.get(pinnedMessageObject.getID()));
+
         MessageHistory.setPinnedMessageID(newPinnedMessageID);
     }
 
@@ -171,7 +188,7 @@ public class ChatRoomView extends Controller {
                     chatBoxCommand.getAllMessages().get(message.getIDInReplyTo()).getMessageString()
             );
             repliedMessage.setStyle("-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #fa346a");
-            repliedMessage.setPadding(new Insets(0,5,0,5));
+            repliedMessage.setPadding(new Insets(0, 5, 0, 5));
             repliedMessage.setMaxWidth(messagePane.getMaxWidth());
 
             Label senderUsernameLabel = new Label(message.getSender().getUsername());
@@ -209,6 +226,8 @@ public class ChatRoomView extends Controller {
         messageContainer.getChildren().add(messagePane);
 
         content.getChildren().add(messageContainer);
+
+        new MessageWrapper(message, messagePane, messageTextLabel);
     }
 
     private ImageView makeAvatar(Message message) {
@@ -369,7 +388,7 @@ public class ChatRoomView extends Controller {
             ChatRoomController.getInstance().editMessage(message.getID(), messageTextField.getText());
             content.getChildren().remove(options);
             sendButton.setOnMouseClicked(this::sendMessage);
-            messageLabel.setText(messageTextField.getText());
+//            messageLabel.setText(messageTextField.getText());
             messageTextField.clear();
         });
     }
@@ -408,7 +427,7 @@ public class ChatRoomView extends Controller {
         messageTextField.clear();
 
         if (clientControllerResponse.equals("SUCCESSFUL")) {
-            updateMessages((ChatBoxCommand) ClientListener.getServerResponse());
+            updateNewMessages((ChatBoxCommand) ClientListener.getServerResponse());
         }
     }
 

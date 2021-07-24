@@ -71,7 +71,13 @@ public class ClientListener extends Thread {
                         break;
                     case CHAT:
                         serverResponse = gson.fromJson(command, ChatBoxCommand.class);
-                        if (((ChatBoxCommand)serverResponse).getChatCommandType() == ChatCommandType.UPDATE) {
+                        ChatCommandType chatCommandType = ((ChatBoxCommand)serverResponse).getChatCommandType();
+
+                        if ( chatCommandType == ChatCommandType.UPDATE_EDIT ||
+                             chatCommandType == ChatCommandType.UPDATE_PIN ||
+                             chatCommandType == ChatCommandType.UPDATE_NEW ||
+                             chatCommandType == ChatCommandType.UPDATE_OMIT ||
+                             chatCommandType == ChatCommandType.UPDATE_NUM_LOGGED_INS) {
                             Platform.runLater(() -> ChatRoomController.getInstance().getCurrentFXMLController().update((ChatBoxCommand) serverResponse));
                         }
                         break;

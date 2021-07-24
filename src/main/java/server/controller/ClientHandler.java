@@ -8,6 +8,7 @@ import connector.cards.Card;
 import connector.cards.MagicCard;
 import connector.cards.MonsterCard;
 import connector.commands.Command;
+import connector.commands.CommandType;
 import connector.commands.commnadclasses.*;
 import connector.exceptions.AlreadyLoggedIn;
 import connector.exceptions.DuplicateNicknameException;
@@ -233,6 +234,30 @@ public class ClientHandler implements Runnable {
 
         netOut.format("%s\n", Command.makeJson(logInCommand));
         netOut.flush();
+
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Set<String> tokens = ClientInfo.getLoginClientHashMap().keySet();
+            for (String token : tokens) {
+                User u = ClientInfo.getUserByToken(token);
+                for (ClientInfo info : ClientInfo.getClientInfos()) {
+                    if (!u.equals(user)) {
+                        if (info.getUser().equals(u)) {
+                            ChatBoxCommand chatBoxCommand = new ChatBoxCommand(CommandType.CHAT, ChatCommandType.UPDATE_NUM_LOGGED_INS, "chera?");
+                            chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoggedInUsers().size());
+                            System.out.println(u.getUsername());
+                            clientInfo.getNetOut().format("%s\n", Command.makeJson(chatBoxCommand));
+                            clientInfo.getNetOut().flush();
+                        }
+                    }
+                }
+            }
+        }).start();
     }
 
     private void handleChatBox(ChatBoxCommand chatBoxCommand) {
@@ -258,7 +283,7 @@ public class ClientHandler implements Runnable {
                 chatBoxCommand.setAllMessages(MessageDatabase.getInstance().getAllMessages());
                 chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoginClientHashMap().size());
                 chatBoxCommand.setPinnedMessageID(MessageDatabase.getInstance().getPinnedMessageID());
-                chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE);
+                chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE_NEW);
 
                 notifyOtherUsers(chatBoxCommand);
                 break;
@@ -266,7 +291,7 @@ public class ClientHandler implements Runnable {
             case OMIT_MESSAGE: {
                 String ID = chatBoxCommand.getMessageID();
                 MessageDatabase.getInstance().removeFromAllMessages(ID);
-                chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE);
+                chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE_OMIT);
 
                 notifyOtherUsers(chatBoxCommand);
                 break;
@@ -275,7 +300,7 @@ public class ClientHandler implements Runnable {
                 String ID = chatBoxCommand.getMessageID();
                 Message message = MessageDatabase.getInstance().getFromAllMessages(ID);
                 message.setMessageString(chatBoxCommand.getSentMessage());
-                chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE);
+                chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE_EDIT);
 
                 notifyOtherUsers(chatBoxCommand);
                 break;
@@ -283,7 +308,7 @@ public class ClientHandler implements Runnable {
             case PIN_MESSAGE: {
                 String ID = chatBoxCommand.getMessageID();
                 MessageDatabase.getInstance().setPinnedMessageID(ID);
-                chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE);
+                chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE_PIN);
 
                 notifyOtherUsers(chatBoxCommand);
                 break;

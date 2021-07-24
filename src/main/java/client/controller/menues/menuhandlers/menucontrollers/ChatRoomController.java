@@ -86,25 +86,6 @@ public class ChatRoomController extends Controller{
         numberOfLoggedIns = chatBoxCommand.getNumberOfLoggedIns();
     }
 
-    public static void updateData() {
-        ChatBoxCommand chatBoxCommand = new ChatBoxCommand(
-                CommandType.CHAT, null, ChatCommandType.UPDATE, false, null, LoginUser.getUser()
-        );
-        ClientListener.setCurrentCommandID(chatBoxCommand.getCommandID());
-        ClientListener.setServerResponse(chatBoxCommand);
-        sender = LoginUser.getUser();
-
-        ClientSender.getSender().sendMessage(chatBoxCommand);
-
-        ChatRoomController.waitForServerResponse();
-
-        ChatBoxCommand chatBoxCommandResponse = (ChatBoxCommand) ClientListener.getServerResponse();
-
-        allMessages = chatBoxCommandResponse.getAllMessages();
-        pinnedMessageID = chatBoxCommandResponse.getPinnedMessageID();
-        numberOfLoggedIns = chatBoxCommand.getNumberOfLoggedIns();
-    }
-
     public String sendMessage(String messageText, boolean isInReplyTo, String IDInReplyTo) {
         if (matcher("\\s*", messageText).matches()) {
             return "INVALID_MESSAGE";
