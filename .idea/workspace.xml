@@ -4,28 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="add sound effects to final phase">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/model/userProp/OnWorkThreads.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/MakeARequestView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/ExitCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/LogoutCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MakeARequestPage.fxml" afterDir="false" />
+    <list default="true" id="ea4469e4-a6cb-451b-aa5d-157aec7a9ad1" name="Default Changelist" comment="add scoreBoard fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/LoginPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/TradePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/TradePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/model/userProp/LoginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/model/userProp/LoginUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/ScoreboardMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/ScoreboardMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/ClientListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/MainMenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/SeeCardOnTradeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/SeeCardOnTradeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connector/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connector/commands/CommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/commands/CommandType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/view/controller/ScoreboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/view/controller/ScoreboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/ScoreBoardCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connector/commands/commnadclasses/ScoreBoardCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/ServerResources/Users.Json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/ServerResources/Users.Json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ClientInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ClientInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ServerGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ServerGate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/PutCardOnTradePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/PutCardOnTradePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/SeeCardOnTradesPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graphicprop/fxml/SeeCardOnTradesPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,29 +82,29 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WelcomePage.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/RegisterPage.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/ProfilePageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/StageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DecksView.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/server/ServerResources/Users.Json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/LoginView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/server/ServerResources/Decks.Json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/Main.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/model/gameprop/Player.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/ProfileView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/GameView.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/client/model/Exceptions/EmptyTextFieldException.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/DecksView.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/client/model/enums/Menu.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/WelcomePage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/LoginPage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/GameView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/MainPage.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/MainMenu.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/model/gameprop/Player.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/WelcomePage.css" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/LoginPage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/ProfileView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/RegisterPage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/WelcomeView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/stylesheets/DecksView.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphicprop/fxml/DecksView.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/StageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/LoginView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/controller/menues/menuhandlers/menucontrollers/ProfilePageController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/view/controller/RegisterView.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/ServerResources/Users.Json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/ServerResources/Decks.Json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/client/model/enums/Menu.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="proportion" value="0.6115204" />
@@ -199,11 +185,11 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.MainClient">
-    <configuration name="MainClient" type="Application" factoryName="Application" singleton="false" temporary="true">
+    <configuration name="MainClient" type="Application" factoryName="Application" activateToolWindowBeforeRun="false" singleton="false" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="client.Main" />
-      <module name="YuGiOh" />
+      <module name="Yu-Gi-Oh-Final-Phase" />
       <option name="VM_PARAMETERS" value="--module-path F:\javaFx\lib --add-modules javafx.controls,javafx.fxml,javafx.media" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -213,18 +199,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="server.Main" />
-      <module name="YuGiOh" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
+      <module name="Yu-Gi-Oh-Final-Phase" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -264,7 +239,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="45f87b1a-8403-4c06-b2b2-57ebfe555883" name="Default Changelist" comment="" />
+      <changelist id="ea4469e4-a6cb-451b-aa5d-157aec7a9ad1" name="Default Changelist" comment="add scoreBoard fixes" />
       <created>1618706541361</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -349,12 +324,8 @@
       <workItem from="1626518022073" duration="1729000" />
       <workItem from="1626519812161" duration="686000" />
       <workItem from="1626631080537" duration="9805000" />
-    </task>
-    <task id="LOCAL‎۰۰۰۶۷" summary="add actions completely">
-      <created>1621174939152</created>
-      <option name="number" value="LOCAL‎۰۰۰۶۷" />
-      <option name="presentableId" value="LOCAL‎۰۰۰۶۷" />
-      <updated>1621174939152</updated>
+      <workItem from="1626899336136" duration="844000" />
+      <workItem from="1627133743555" duration="3142000" />
     </task>
     <task id="LOCAL-00068" summary="user Gson">
       <created>1621880644477</created>
@@ -686,7 +657,13 @@
       <option name="project" value="LOCAL" />
       <updated>1626798308615</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL‎۰۰۱۱۶" summary="add scoreBoard fixes">
+      <created>1626895773402</created>
+      <option name="number" value="LOCAL‎۰۰۱۱۶" />
+      <option name="presentableId" value="LOCAL‎۰۰۱۱۶" />
+      <updated>1626895773403</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -706,7 +683,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="continue some morei in  GameView Initialize" />
     <MESSAGE value="matching to other commits" />
     <MESSAGE value="continue a little more on GameView" />
     <MESSAGE value="a small bug fix at DeckModifier" />
@@ -731,7 +707,8 @@
     <MESSAGE value="a small bug fix in Login and Register" />
     <MESSAGE value="updating chat box and fixing login process and some more stuff that I don't remember :&quot;)" />
     <MESSAGE value="update workspace" />
-    <option name="LAST_COMMIT_MESSAGE" value="update workspace" />
+    <MESSAGE value="add scoreBoard fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="add scoreBoard fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -739,7 +716,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/client/controller/gamecontrollers/gamestagecontroller/handlers/changeposition/processors/SelectedCardProcessor.java</url>
           <line>15</line>
-          <properties class="client.controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor" method="process">
+          <properties class="client.controller.gamecontrollers.gamestagecontroller.handlers.changeposition.processors.SelectedCardProcessor">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="3" />
