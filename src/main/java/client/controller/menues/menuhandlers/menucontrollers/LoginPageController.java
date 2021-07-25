@@ -9,7 +9,6 @@ import client.network.Client;
 import client.network.ClientListener;
 import client.network.ClientSender;
 import connector.commands.CommandType;
-import connector.commands.commnadclasses.ChatBoxCommand;
 import connector.commands.commnadclasses.GetUsersCardCommand;
 import connector.commands.commnadclasses.LogInCommand;
 import javafx.scene.control.Label;
@@ -31,9 +30,6 @@ public class LoginPageController extends Controller {
             ClientSender.getSender().sendMessage(logInCommand);
 
             waitForServerResponse();
-
-            if (ClientListener.getServerResponse() instanceof  ChatBoxCommand)
-            System.out.println(((ChatBoxCommand) ClientListener.getServerResponse()).getMessageID());
 
             LogInCommand response = (LogInCommand) ClientListener.getServerResponse();
 

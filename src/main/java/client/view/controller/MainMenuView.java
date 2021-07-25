@@ -10,7 +10,6 @@ import client.view.AudioHandler;
 import client.view.AudioPath;
 import client.view.ClickButtonHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -99,13 +98,8 @@ public class MainMenuView {
     }
 
     private void showChatRoom() {
-        ChatRoomController.getInstance().initializeData();
-        LoginUser.setOnlineThread(OnWorkThreads.CHAT_BOX_THREAD);
-        for (Node child : root.getChildren()) {
-            if (child != chatRoomPopUp) {
-                child.setDisable(true);
-            }
-        }
+        ChatRoomController.getInstance().getCurrentFXMLController().initialize();
+
         new BounceIn(chatRoomPopUp).play();
         chatRoomPopUp.setVisible(true);
     }

@@ -3,12 +3,12 @@ package client.view.controller;
 import animatefx.animation.FadeInLeft;
 import animatefx.animation.FadeInUp;
 import animatefx.animation.FadeOut;
+import animatefx.animation.Flash;
 import client.controller.Controller;
 import client.controller.menues.menuhandlers.menucontrollers.ChatRoomController;
 import client.model.Message;
 import client.model.MessageHistory;
 import client.model.userProp.LoginUser;
-import client.model.userProp.OnWorkThreads;
 import client.model.userProp.User;
 import client.network.ClientListener;
 import connector.MessageWrapper;
@@ -63,6 +63,12 @@ public class ChatRoomView extends Controller {
     User selectedUserAvatar;
 
     public void initialize() {
+        content.getChildren().clear();
+        MessageWrapper.getMessageWrappers().clear();
+        MessageHistory.getCurrentMessages().clear();
+        MessageHistory.setCurrentNumberOfLoggedIns(0);
+        MessageHistory.setPinnedMessageID(null);
+
         ChatRoomController.getInstance().initializeData();
 
         updateNumOfLoggedIns((ChatBoxCommand) ClientListener.getServerResponse());
@@ -87,10 +93,24 @@ public class ChatRoomView extends Controller {
         updateNumOfLoggedIns(response);
         if (response.getChatCommandType() == ChatCommandType.UPDATE_NEW) {
             updateNewMessages(response);
-        } else if (response.getChatCommandType() == ChatCommandType.EDIT_MESSAGE) {
+        } else if (response.getChatCommandType() == ChatCommandType.UPDATE_EDIT) {
             updateEditedMessage(response);
+        } else if (response.getChatCommandType() == ChatCommandType.UPDATE_OMIT) {
+            updateOmittedMessage(response);
+        } else if (response.getChatCommandType() == ChatCommandType.UPDATE_PIN) {
+            updatePinnedMessage(response);
         }
-        updatePinnedMessage(response);
+    }
+
+    private void updateOmittedMessage(ChatBoxCommand response) {
+        ArrayList<MessageWrapper> wrappers = MessageWrapper.getMessageWrappers();
+        for (MessageWrapper wrapper : wrappers) {
+            if (wrapper.getMessage().getID().equals(response.getMessageID())) {
+                MessageHistory.getCurrentMessages().remove(response.getMessageID());
+                content.getChildren().remove(wrapper.getMessageContainer());
+                break;
+            }
+        }
     }
 
     private void updateEditedMessage(ChatBoxCommand response) {
@@ -125,11 +145,7 @@ public class ChatRoomView extends Controller {
             }
         }
 
-        MessageHistory.getCurrentMessages().clear();
-        for (String newID : newIDs) {
-            Message newMessage = ChatRoomController.getAllMessages().get(newID);
-            MessageHistory.getCurrentMessages().put(newID, newMessage);
-        }
+        MessageHistory.setCurrentMessages((LinkedHashMap<String, Message>) response.getAllMessages().clone());
 
         scrollPane.vvalueProperty().bind(content.heightProperty());
     }
@@ -139,18 +155,35 @@ public class ChatRoomView extends Controller {
 
         if (newPinnedMessageID == null) return;
 
-        Message pinnedMessageObject = response.getAllMessages().get(newPinnedMessageID);
-        System.out.println(pinnedMessageObject.getMessageString());
+        Message pinnedMessageObject = MessageHistory.getCurrentMessages().get(newPinnedMessageID);
         pinnedMessageLabel.setText(pinnedMessageObject.getMessageString());
         new FadeInLeft(pinnedMessageLabel).play();
 
-        setEventsOfPinnedMessage(pinnedMessageObject, messageContainersByID.get(pinnedMessageObject.getID()));
+        Pane messagePane = null;
+        for (MessageWrapper messageWrapper : MessageWrapper.getMessageWrappers()) {
+            if (messageWrapper.getMessage().getID().equals(newPinnedMessageID)) {
+                messagePane = messageWrapper.getMessagePane();
+            }
+        }
+        pinnedOnMouseClick(newPinnedMessageID, pinnedMessageObject, messagePane);
 
         MessageHistory.setPinnedMessageID(newPinnedMessageID);
     }
 
+    private void pinnedOnMouseClick(String newPinnedMessageID, Message pinnedMessageObject, Pane messagePane) {
+        HBox messageContainer = null;
+        for (MessageWrapper messageWrapper : MessageWrapper.getMessageWrappers()) {
+            if (messageWrapper.getMessage().getID().equals(newPinnedMessageID)) {
+                messageContainer = messageWrapper.getMessageContainer();
+                break;
+            }
+        }
+
+        setEventsOfPinnedMessage(pinnedMessageObject, messageContainer, messagePane);
+    }
+
     private void makeMessages(ChatBoxCommand serverResponse) {
-        LinkedHashMap<String, Message> allMessages = ChatRoomController.getAllMessages();
+        LinkedHashMap<String, Message> allMessages = serverResponse.getAllMessages();
 
         if (allMessages.size() == 0) return;
 
@@ -159,6 +192,8 @@ public class ChatRoomView extends Controller {
             Message message = allMessages.get(id);
             visualizeMessage(message, serverResponse);
         }
+
+        MessageHistory.setCurrentMessages(serverResponse.getAllMessages());
     }
 
     private void visualizeMessage(Message message, ChatBoxCommand chatBoxCommand) {
@@ -174,29 +209,49 @@ public class ChatRoomView extends Controller {
         Label messageTextLabel = new Label(message.getMessageString());
         messageTextLabel.setPadding(new Insets(0, 5, 0, 5));
 
-        messagePane.getChildren().add(messageTextLabel);
-        messagePane.setCursor(Cursor.HAND);
-        messagePane.setOnMouseClicked(e -> {
-            selectedMessageID = message.getID();
-            showOptions(e, message, messageContainer, messageTextLabel);
-        });
 
         if (message.isInReplyToAnotherMessage()) {
-            messagePane.setPrefHeight(50);
+            // replied section:
+            Pane repliedMessagePane = new Pane();
+            repliedMessagePane.setPadding(new Insets(0, 5, 0, 5));
+            repliedMessagePane.setStyle("-fx-background-color: #580f0f; -fx-background-radius: 10; -fx-border-radius: 10");
+            repliedMessagePane.toFront();
 
-            Label repliedMessage = new Label(
-                    chatBoxCommand.getAllMessages().get(message.getIDInReplyTo()).getMessageString()
-            );
-            repliedMessage.setStyle("-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #fa346a");
+            Label repliedMessageSender = new Label(chatBoxCommand.getAllMessages().get(message.getIDInReplyTo()).getSender().getUsername());
+            repliedMessageSender.setStyle("-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #ff7b7b");
+            repliedMessageSender.setPadding(new Insets(0, 5, 0, 5));
+
+            Label repliedMessage = new Label(chatBoxCommand.getAllMessages().get(message.getIDInReplyTo()).getMessageString());
+            repliedMessage.setStyle("-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #e02e5d");
             repliedMessage.setPadding(new Insets(0, 5, 0, 5));
-            repliedMessage.setMaxWidth(messagePane.getMaxWidth());
+            repliedMessage.setLayoutY(repliedMessageSender.getHeight() + 15);
 
+            repliedMessagePane.setOnMouseClicked(e -> {
+                e.consume();
+                for (MessageWrapper wrapper : MessageWrapper.getMessageWrappers()) {
+                    if (wrapper.getMessage().getID().equals(repliedMessageID)) {
+                        makeVisible(wrapper.getMessageContainer());
+                        flashContainer(wrapper.getMessagePane());
+                        e.consume();
+                        break;
+                    }
+                }
+            });
+            repliedMessagePane.setLayoutY(10);
+            repliedMessagePane.setLayoutX(5);
+            repliedMessagePane.getChildren().addAll(repliedMessageSender, repliedMessage);
+            ////
+
+            //main section:
             Label senderUsernameLabel = new Label(message.getSender().getUsername());
             senderUsernameLabel.setStyle("-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #a966f1");
             senderUsernameLabel.setPadding(new Insets(0, 5, 0, 5));
-            senderUsernameLabel.setLayoutY(17);
+            senderUsernameLabel.setLayoutY(45);
 
-            messageTextLabel.setLayoutY(35);
+            messageTextLabel.setLayoutY(62.5);
+            ////
+
+            messagePane.getChildren().addAll(repliedMessagePane, senderUsernameLabel);
         } else {
             messagePane.setPrefHeight(30);
             Label senderUsernameLabel = new Label(message.getSender().getUsername());
@@ -206,6 +261,13 @@ public class ChatRoomView extends Controller {
 
             messageTextLabel.setLayoutY(13);
         }
+
+        messagePane.getChildren().add(messageTextLabel);
+        messagePane.setCursor(Cursor.HAND);
+        messagePane.setOnMouseClicked(e -> {
+            selectedMessageID = message.getID();
+            showOptions(e, message, messageContainer, messageTextLabel, messagePane);
+        });
 
         if (LoginUser.getUser().getUsername().equals(message.getSender().getUsername())) {
             //positioning and styling messages according to sender!
@@ -227,7 +289,28 @@ public class ChatRoomView extends Controller {
 
         content.getChildren().add(messageContainer);
 
-        new MessageWrapper(message, messagePane, messageTextLabel);
+        new MessageWrapper(message, messagePane, messageTextLabel, messageContainer);
+    }
+
+    private void flashContainer(Pane messagePane) {
+        Flash flash = new Flash(messagePane);
+        flash.setCycleCount(4);
+        flash.play();
+    }
+
+    private void makeVisible(HBox messageContainer) {
+        double h = scrollPane.getContent().getBoundsInLocal().getHeight();
+        double y = (messageContainer.getBoundsInParent().getMaxY() + messageContainer.getBoundsInParent().getMinY()) / 2.0;
+        double v = scrollPane.getViewportBounds().getHeight();
+
+        scrollPane.layout();
+        scrollPane.applyCss();
+        messageContainer.getParent().layout();
+        messageContainer.getParent().applyCss();
+        messageContainer.layout();
+        messageContainer.applyCss();
+
+        scrollPane.setVvalue(scrollPane.getVmax() * ((y - 0.5 * v) / (h - v)));
     }
 
     private ImageView makeAvatar(Message message) {
@@ -248,6 +331,33 @@ public class ChatRoomView extends Controller {
         avatar.setFitHeight(30);
         avatar.setFitWidth(30);
         return avatar;
+    }
+
+    private Pane makeAPopUp(Pane parent, double layoutX, double layoutY, double sizeX, double sizeY) {
+        Pane pane = new Pane();
+        pane.setLayoutX(layoutX);
+        pane.setLayoutY(layoutY);
+        pane.setPrefWidth(sizeX);
+        pane.setPrefHeight(sizeY);
+        parent.getChildren().add(pane);
+
+        return pane;
+    }
+
+    private VBox makeOptions(Pane parent, double layoutX, double layoutY, double sizeX, double sizeY) {
+        VBox vBox = new VBox();
+        vBox.setStyle("fx-background-color:  #37536C; -fx-border-radius: 5; -fx-background-radius: 5");
+        vBox.setLayoutX(layoutX);
+        vBox.setLayoutY(layoutY);
+        vBox.setPrefWidth(sizeX);
+        vBox.setPrefHeight(sizeY);
+
+        parent.getChildren().add(vBox);
+        for (Node child : parent.getChildren()) {
+            if (child != vBox) child.setDisable(true);
+        }
+
+        return vBox;
     }
 
     private void showUserDetails(User user, Image avatarImage) {
@@ -290,95 +400,93 @@ public class ChatRoomView extends Controller {
         pane.getChildren().addAll(closeButtonOfProfile, username, nickname, score);
     }
 
-    private void showOptions(MouseEvent mouseEvent, Message message, HBox messageContainer, Label messageLabel) {
-        double layoutX = 0;
-        double layoutY = 0;
+    private void showOptions(MouseEvent mouseEvent, Message message, HBox messageContainer, Label messageLabel, Pane messagePane) {
+        double layoutX = mouseEvent.getSceneX() - 250 ;
+        double layoutY = mouseEvent.getSceneY() - 50 ;
+        if (layoutX > 450) {
+            layoutX = 450;
+        }
         double sizeX = 50;
         double sizeY = 40;
 
         VBox options = makeOptions(content, layoutX, layoutY, sizeX, sizeY);
 
-        Label replyLabel = new Label("Reply");
-        replyLabel.setOnMouseClicked(e -> {
-            repliedMessageID = message.getID();
-            repliedMessageLabel.setText("In reply to: " + message.getMessageString());
-            cancelReplyButton.setVisible(true);
-            root.getChildren().remove(options);
-        });
-
-        HBox reply = new HBox(replyLabel);
-        reply.setOnMouseClicked(e -> {
-            repliedMessageID = message.getID();
-            repliedMessageLabel.setText("In reply to: " + message.getMessageString());
-            cancelReplyButton.setVisible(true);
-            root.getChildren().remove(options);
-        });
 
         if (message.getSender().getUsername().equals(LoginUser.getUser().getUsername())) {
             Label editLabel = new Label("Edit");
-            editLabel.setOnMouseClicked(e -> {
-                editMessage(options, message, messageLabel);
-                root.getChildren().remove(options);
-            });
-
             HBox edit = new HBox(editLabel);
+            edit.setCursor(Cursor.HAND);
             edit.setOnMouseClicked(e -> {
                 editMessage(options, message, messageLabel);
-                root.getChildren().remove(options);
+                clearOptions(options);
             });
 
             Label pinLabel = new Label("Pin");
-            pinLabel.setOnMouseClicked(e -> {
-                pinMessage(options, message, messageContainer);
-                root.getChildren().remove(options);
-            });
-
             HBox pin = new HBox(pinLabel);
+            pin.setCursor(Cursor.HAND);
             pin.setOnMouseClicked(e -> {
-                pinMessage(options, message, messageContainer);
-                root.getChildren().remove(options);
+                pinMessage(message, messageContainer);
+                clearOptions(options);
             });
 
             Label deleteLabel = new Label("Delete");
-            deleteLabel.setOnMouseClicked(e -> {
-                deleteMessage(options, message, messageContainer);
-                root.getChildren().remove(options);
-            });
-
             HBox delete = new HBox(deleteLabel);
+            delete.setCursor(Cursor.HAND);
             delete.setOnMouseClicked(e -> {
-                deleteMessage(options, message, messageContainer);
-                root.getChildren().remove(options);
+                deleteMessage(message, messageContainer);
+                clearOptions(options);
             });
 
             options.getChildren().addAll(edit, delete, pin);
         }
 
-        options.getChildren().add(reply);
+        Label replyLabel = new Label("Reply");
+        HBox reply = new HBox(replyLabel);
+        reply.setCursor(Cursor.HAND);
+        reply.setOnMouseClicked(e -> {
+            repliedMessageID = message.getID();
+            repliedMessageLabel.setText("In reply to: " + message.getMessageString());
+            cancelReplyButton.setVisible(true);
+            clearOptions(options);
+        });
+
+        Label closeLabel = new Label("Close");
+        HBox close = new HBox(closeLabel);
+        close.setCursor(Cursor.HAND);
+        close.setOnMouseClicked(e -> {
+            clearOptions(options);
+        });
+
+        options.getChildren().addAll(reply, close);
         options.setStyle("-fx-background-color: white");
-        options.toFront();
         root.getChildren().add(options);
 
     }
 
-    private void deleteMessage(VBox options, Message message, HBox messageContainer) {
+    private void clearOptions(VBox options) {
+        root.getChildren().remove(options);
+        for (Node n : content.getChildren()) {
+            n.setDisable(false);
+        }
+    }
+
+    private void deleteMessage(Message message, HBox messageContainer) {
         ChatRoomController.getInstance().deleteMessage(message.getID());
-        content.getChildren().remove(messageContainer);
     }
 
-    private void pinMessage(VBox options, Message message, HBox messageContainer) {
+    private void pinMessage(Message message, HBox messageContainer) {
         ChatRoomController.getInstance().pinMessage(message.getID());
-        setEventsOfPinnedMessage(message, messageContainer);
-        MessageHistory.setPinnedMessageID(message.getID());
     }
 
-    private void setEventsOfPinnedMessage(Message message, HBox messageContainer) {
+    private void setEventsOfPinnedMessage(Message message, HBox messageContainer, Pane messagePane) {
         pinnedMessageLabel.setText(message.getMessageString());
         pinnedMessageContainer.setOnMouseClicked(e -> {
-            scrollPane.vvalueProperty().bind(messageContainer.layoutYProperty());
+            makeVisible(messageContainer);
+            flashContainer(messagePane);
         });
         pinnedMessageLabel.setOnMouseClicked(e -> {
-            scrollPane.vvalueProperty().bind(messageContainer.layoutYProperty());
+            makeVisible(messageContainer);
+            flashContainer(messagePane);
         });
     }
 
@@ -386,45 +494,21 @@ public class ChatRoomView extends Controller {
         messageTextField.setText(message.getMessageString());
         sendButton.setOnMouseClicked(e -> {
             ChatRoomController.getInstance().editMessage(message.getID(), messageTextField.getText());
-            content.getChildren().remove(options);
             sendButton.setOnMouseClicked(this::sendMessage);
-//            messageLabel.setText(messageTextField.getText());
+
             messageTextField.clear();
         });
     }
 
-    private Pane makeAPopUp(Pane parent, double layoutX, double layoutY, double sizeX, double sizeY) {
-        Pane pane = new Pane();
-        pane.setLayoutX(layoutX);
-        pane.setLayoutY(layoutY);
-        pane.setPrefWidth(sizeX);
-        pane.setPrefHeight(sizeY);
-        parent.getChildren().add(pane);
-
-        return pane;
-    }
-
-    private VBox makeOptions(Pane parent, double layoutX, double layoutY, double sizeX, double sizeY) {
-        VBox vBox = new VBox();
-        vBox.setStyle("fx-background-color:  #37536C; -fx-border-radius: 5; -fx-background-radius: 5");
-        vBox.setLayoutX(layoutX);
-        vBox.setLayoutY(layoutY);
-        vBox.setPrefWidth(sizeX);
-        vBox.setPrefHeight(sizeY);
-
-        parent.getChildren().add(vBox);
-        for (Node child : parent.getChildren()) {
-            if (child != vBox) child.setDisable(true);
-        }
-
-        return vBox;
-    }
-
     public void sendMessage(MouseEvent mouseEvent) {
         String messageText = messageTextField.getText();
-        String clientControllerResponse = ChatRoomController.getInstance().sendMessage(messageText, repliedMessageID != null, "");
+        String clientControllerResponse = ChatRoomController.getInstance().sendMessage(messageText, repliedMessageID != null, repliedMessageID);
+
 
         messageTextField.clear();
+        repliedMessageID = null;
+        repliedMessageLabel.setText("");
+        cancelReplyButton.setVisible(false);
 
         if (clientControllerResponse.equals("SUCCESSFUL")) {
             updateNewMessages((ChatBoxCommand) ClientListener.getServerResponse());
@@ -438,15 +522,11 @@ public class ChatRoomView extends Controller {
     }
 
     public void close(ActionEvent actionEvent) {
-        LoginUser.setOnlineThread(OnWorkThreads.NONE);
         FadeOut fadeOut = new FadeOut(root);
         fadeOut.getTimeline().setOnFinished(e -> {
             root.setVisible(false);
         });
 
         fadeOut.play();
-        for (Node node : root.getParent().getChildrenUnmodifiable()) {
-            node.setDisable(false);
-        }
     }
 }

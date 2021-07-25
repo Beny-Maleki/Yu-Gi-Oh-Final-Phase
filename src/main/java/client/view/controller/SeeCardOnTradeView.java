@@ -44,7 +44,6 @@ public class SeeCardOnTradeView {
         cardForTrades.forEach(cardForTrade -> {
             if (!cardForTrade.getUser().getUsername().equals(LoginUser.getUser().getUsername())
                     && !isEqual(cardForTrade.getCardName(), previousCardsData)) {
-                System.out.println("making pane");
                 HBox hBox = new HBox();
                 setStyleForRequestBox(hBox);
                 Pane userInfo = new Pane();
@@ -62,7 +61,7 @@ public class SeeCardOnTradeView {
                 FadeIn fadeIn = new FadeIn(hBox);
                 fadeIn.play();
                 previousCardsData.add(cardForTrade);
-            } else System.out.println("find a similar card ");
+            }
         });
 
     }

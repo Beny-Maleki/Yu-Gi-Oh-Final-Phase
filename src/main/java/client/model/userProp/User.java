@@ -130,7 +130,6 @@ public class User extends FatherUser {
         for (Integer ID : cardCollection) {
             cards.add(UserDataBase.getInstance().getCardById(ID));
         }
-        System.out.println(cards);
         return cards;
     }
 

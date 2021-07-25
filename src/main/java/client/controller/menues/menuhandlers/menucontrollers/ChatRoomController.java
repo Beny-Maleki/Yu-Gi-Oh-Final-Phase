@@ -92,8 +92,8 @@ public class ChatRoomController extends Controller{
         }
 
 
-        ChatBoxCommand chatBoxCommand = new ChatBoxCommand( // TODO: isInReplyToAnother, IDInReplyTo
-                CommandType.CHAT, messageText, ChatCommandType.NEW_MESSAGE, false, null, LoginUser.getUser()
+        ChatBoxCommand chatBoxCommand = new ChatBoxCommand(
+                CommandType.CHAT, messageText, ChatCommandType.NEW_MESSAGE, isInReplyTo, IDInReplyTo, LoginUser.getUser()
         );
         ClientListener.setServerResponse(chatBoxCommand);
         ClientListener.setCurrentCommandID(chatBoxCommand.getCommandID());
@@ -144,9 +144,9 @@ public class ChatRoomController extends Controller{
     public String pinMessage(String ID) {
         sender = LoginUser.getUser();
 
-        ChatBoxCommand chatBoxCommand = new ChatBoxCommand(
-                CommandType.CHAT, ChatCommandType.PIN_MESSAGE, ID
-        );
+        ChatBoxCommand chatBoxCommand = new ChatBoxCommand(CommandType.CHAT, ChatCommandType.PIN_MESSAGE, null);
+        chatBoxCommand.setPinnedMessageID(ID);
+
         ClientListener.setCurrentCommandID(chatBoxCommand.getCommandID());
         ClientListener.setServerResponse(chatBoxCommand);
         chatBoxCommand.setSender(sender);

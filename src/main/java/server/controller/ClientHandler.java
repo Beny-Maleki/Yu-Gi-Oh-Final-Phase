@@ -90,7 +90,16 @@ public class ClientHandler implements Runnable {
                         LogoutCommand logoutCommand =
                                 yaGson.fromJson(request, LogoutCommand.class);
                         logoutCommand.changeCommandID();
+                        for (User loggedInUser : ClientInfo.getLoggedInUsers()) {
+                            if (loggedInUser.getUsername().equals(ClientInfo.getLoginClientHashMap().get(logoutCommand.getToken()).getUser().getUsername())) {
+                                ClientInfo.getLoggedInUsers().remove(ClientInfo.getLoginClientHashMap().get(logoutCommand.getToken()).getUser());
+                            }
+                        }
                         ClientInfo.removeUserFromLoggedIn(logoutCommand.getToken());
+
+                        ChatBoxCommand response = new ChatBoxCommand(CommandType.CHAT, ChatCommandType.UPDATE_NUM_LOGGED_INS, null);
+                        response.setNumberOfLoggedIns(ClientInfo.getLoggedInUsers().size());
+                        notifyOtherUsers(response);
                         break;
                     }
                     case EXIT: {
@@ -248,11 +257,10 @@ public class ClientHandler implements Runnable {
                 for (ClientInfo info : ClientInfo.getClientInfos()) {
                     if (!u.equals(user)) {
                         if (info.getUser().equals(u)) {
-                            ChatBoxCommand chatBoxCommand = new ChatBoxCommand(CommandType.CHAT, ChatCommandType.UPDATE_NUM_LOGGED_INS, "chera?");
+                            ChatBoxCommand chatBoxCommand = new ChatBoxCommand(CommandType.CHAT, ChatCommandType.UPDATE_NUM_LOGGED_INS, null);
                             chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoggedInUsers().size());
-                            System.out.println(u.getUsername());
-                            clientInfo.getNetOut().format("%s\n", Command.makeJson(chatBoxCommand));
-                            clientInfo.getNetOut().flush();
+                            info.getNetOut().format("%s\n", Command.makeJson(chatBoxCommand));
+                            info.getNetOut().flush();
                         }
                     }
                 }
@@ -306,16 +314,17 @@ public class ClientHandler implements Runnable {
                 break;
             }
             case PIN_MESSAGE: {
-                String ID = chatBoxCommand.getMessageID();
+                String ID = chatBoxCommand.getPinnedMessageID();
                 MessageDatabase.getInstance().setPinnedMessageID(ID);
                 chatBoxCommand.setChatCommandType(ChatCommandType.UPDATE_PIN);
+
 
                 notifyOtherUsers(chatBoxCommand);
                 break;
             }
         }
 
-
+        chatBoxCommand.setNumberOfLoggedIns(ClientInfo.getLoggedInUsers().size());
         netOut.format("%s\n", Command.makeJson(chatBoxCommand));
         netOut.flush();
     }

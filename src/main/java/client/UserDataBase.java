@@ -37,12 +37,10 @@ public class UserDataBase {
 
     public Card getCardById(int ID) {
         for (Card card : USER_CARDS) {
-            System.out.println("card name is " + card.getName() + "and the card id is  " + card.getID());
             if (card.getID() == ID) {
                 return card;
             }
         }
-        System.out.println("cant find this  " + ID);
         return null;
     }
 

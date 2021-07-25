@@ -342,7 +342,6 @@ public class DeckModifierView {
                         }
                     } else {
                         Card card = mainDeck.get((i * 10) + (5 * j) + k);
-                             if ((i * 10) + (5 * j) + k ==  14 || (i * 10) + (5 * j) + k == 53) System.out.println(card.getName());
                         CardHouse cardHouse = makeCardHouseAndAssignImage(imageView, card);
                         handleOnMouseClick(imageView, cardHouse);
                     }
