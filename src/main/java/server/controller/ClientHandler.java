@@ -121,6 +121,7 @@ public class ClientHandler implements Runnable {
                         ScoreBoardCommand scoreBoardCommand = yaGson.fromJson(request, ScoreBoardCommand.class);
                         scoreBoardCommand.changeCommandID();
                         handleScoreBoard(scoreBoardCommand);
+                        break;
                     }
                 }
             } catch (NoSuchElementException e) {
@@ -344,13 +345,13 @@ public class ClientHandler implements Runnable {
 
     private void handleScoreBoard(ScoreBoardCommand scoreBoardCommand) {
         ArrayList<User> sortedUsers = User.getAllUsers();
-        sortedUsers.sort(Comparator.comparing(User::getScore).thenComparing(User::getNickname));
+        sortedUsers.sort(Comparator.comparing(User::getScore).thenComparing(User::getNickname).reversed());
         int rank = 1, counter = 1;
         User tempUser = null;
         for (User user : sortedUsers) {
             if (counter == 11) break;
             if (tempUser != null) {
-                if (user.getScore() > tempUser.getScore()) {
+                if (user.getScore() < tempUser.getScore()) {
                     rank = counter;
                 }
                 scoreBoardCommand.addItemToScoreBoardItems(new ScoreboardItem(user.getUsername(), rank, user.getScore()));

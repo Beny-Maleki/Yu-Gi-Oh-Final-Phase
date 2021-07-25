@@ -3,20 +3,18 @@ package connector.commands.commnadclasses;
 import client.model.userProp.ScoreboardItem;
 import connector.commands.Command;
 import connector.commands.CommandType;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
 public class ScoreBoardCommand extends Command {
-    private ObservableList<ScoreboardItem> scoreboardItems;
+    private ArrayList<ScoreboardItem> scoreboardItems;
 
     public ScoreBoardCommand(CommandType commandType) {
         super(commandType);
-        scoreboardItems = FXCollections.observableArrayList();
+        scoreboardItems = new ArrayList<>();
     }
 
-    public ObservableList<ScoreboardItem> getScoreboardItems() {
+    public ArrayList<ScoreboardItem> getScoreboardItems() {
         return scoreboardItems;
     }
 

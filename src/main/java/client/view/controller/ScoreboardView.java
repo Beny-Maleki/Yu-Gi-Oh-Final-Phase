@@ -1,13 +1,16 @@
 package client.view.controller;
 
+import animatefx.animation.FadeIn;
 import animatefx.animation.Tada;
 import client.controller.menues.menuhandlers.menucontrollers.ScoreboardMenuController;
 import client.model.enums.Menu;
 import client.model.userProp.ScoreboardItem;
 import client.view.ClickButtonHandler;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,6 +26,13 @@ public class ScoreboardView {
     public Button Back;
     public ScoreboardMenuController controller;
     public VBox scoreboardContainer;
+    public Button refresh;
+    public Label message;
+
+    private TableColumn<ScoreboardItem, String> usernameColumn;
+    private TableColumn<ScoreboardItem, String> scoreColumn;
+    private TableColumn<ScoreboardItem, String> rankColumn;
+    private TableView<ScoreboardItem> tableView;
 
     {
         controller = ScoreboardMenuController.getInstance();
@@ -35,39 +45,56 @@ public class ScoreboardView {
         return scoreboardView;
     }
 
-    public void setDetails() {
-        TableColumn<ScoreboardItem, String> rankColumn = new TableColumn<>("Rank");
+    public void setColumns() {
+        rankColumn = new TableColumn<>("Rank");
         rankColumn.setCellValueFactory(new PropertyValueFactory<>("rank"));
         rankColumn.setId("rank-column");
         rankColumn.setPrefWidth(100);
         rankColumn.setResizable(false);
 
-        TableColumn<ScoreboardItem, String> scoreColumn = new TableColumn<>("Score");
+        scoreColumn = new TableColumn<>("Score");
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
         scoreColumn.setId("score-column");
         scoreColumn.setPrefWidth(160);
         scoreColumn.setResizable(false);
 
-        TableColumn<ScoreboardItem, String> usernameColumn = new TableColumn<>("Username");
+        usernameColumn = new TableColumn<>("Username");
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         usernameColumn.setId("username-column");
         usernameColumn.setPrefWidth(230);
         usernameColumn.setResizable(false);
+    }
 
-        ObservableList<ScoreboardItem> scoreboardItems = controller.setScoreboardItems();
-        TableView<ScoreboardItem> tableView = new TableView<>();
+    public TableView<ScoreboardItem> setTableView() {
+
+        ArrayList<ScoreboardItem> scoreboardItemArrayList = controller.setScoreboardItems();
+        ObservableList<ScoreboardItem> scoreboardItems = FXCollections.observableArrayList(scoreboardItemArrayList);
+        tableView = new TableView<>();
         tableView.setId("scoreboard-table");
         tableView.getColumns().addAll(rankColumn, usernameColumn, scoreColumn);
         tableView.setItems(scoreboardItems);
         tableView.setEditable(true);
 
-        scoreboardContainer.getChildren().add(tableView);
+        return tableView;
+    }
+
+    public void setDetails() {
+        setColumns();
+        scoreboardContainer.getChildren().add(setTableView());
     }
 
     public void run(MouseEvent event) throws IOException {
         if (event.getSource() == Back) {
             controller.moveToPage(Back, Menu.WELCOME_MENU);
+        } else if (event.getSource() == refresh) {
+            refresh();
         }
+    }
+
+    public void refresh() {
+        message.setText("score board refreshed");
+        ScoreboardMenuController.getInstance().displayMessage(message);
+        new FadeIn(setTableView()).play();
     }
 
     public void hoverAnimation(MouseEvent event) {

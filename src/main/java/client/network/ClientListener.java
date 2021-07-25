@@ -84,6 +84,9 @@ public class ClientListener extends Thread {
                     case GET_CARD_FOR_TRADES:
                         serverResponse = gson.fromJson(command, GetCardsOnTradeCommand.class);
                         break;
+                    case SCORE_BOARD:
+                        serverResponse = gson.fromJson(command, ScoreBoardCommand.class);
+                        break;
                     case DUEL:
                     case PROFILE:
                 }
