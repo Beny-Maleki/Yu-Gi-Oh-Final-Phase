@@ -186,7 +186,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="client.Main" />
-      <module name="Yu-Gi-Oh-Final-Phase" />
+      <module name="YuGiOh" />
       <option name="VM_PARAMETERS" value="--module-path F:\javaFx\lib --add-modules javafx.controls,javafx.fxml,javafx.media" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -196,7 +196,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="server.Main" />
-      <module name="Yu-Gi-Oh-Final-Phase" />
+      <module name="YuGiOh" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
