@@ -1,4 +1,5 @@
 # Our Advanced Programming Course Project!
+![Image Not Found](https://cdn2.steamgriddb.com/grid/fa3efbedadf84cb99ae07e10370c2c0d.jpg)
 ## Yu-Gi-Oh! Card Game
 
 In this project, we tried to create a video game that resembles <a href="https://yugioh.fandom.com/wiki/Yu-Gi-Oh!_Power_of_Chaos:_Joey_the_Passion"> <i> Yu-Gi-Oh! Power of Chaos: Joey the Passion </i> </a>.
